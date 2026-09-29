@@ -1,5 +1,7 @@
 # Experiment 001 — DSK/SEER feature-generation gate
 
+**Superseded execution order:** `KMER_RECONSTRUCTION_GATE.md` is the active minimum gate. First complete the two-isolate shared-feature test with verified input accounting; only then begin the size-ranked resource panel below. This file retains the subsequent panel design, not an independent authorization to run it.
+
 ## Purpose
 
 This gate decides whether the verified dataset-2 raw-read route can be carried forward
@@ -31,7 +33,7 @@ treated as the DSK feature count.
 
 Input:
 - checksum-verified `ERR1067709` reads,
-- the committed SPAdes 4.3.0 pilot assembly and documented contig filter.
+- the documented SPAdes 4.3.0 pilot procedure and contig filter; the assembly FASTA was not committed and must be re-staged.
 
 Run DSK at k=31 on the filtered assembly and record:
 
@@ -49,7 +51,7 @@ Run DSK at k=31 on the filtered assembly and record:
 Do not compare the canonical DSK count numerically to the earlier forward-only Python
 count as if they should be equal.
 
-## Gate B — measure biological/input-size variation
+## Gate B — measure biological/input-size variation (only after the two-isolate combine check)
 
 Do not extrapolate from one isolate.
 
@@ -89,7 +91,9 @@ Create deterministic nested subsets of the completed panel:
 
 For each subset run the historical SEER `combineKmers` path with:
 
-`combineKmers -s samples.tsv -o all_kmers --min_samples 2`
+`combineKmers -r samples.tsv -o all_kmers --min_samples 2`
+
+The original SEER source's no-argument help prints `-s`, but its actual parser accepts `-r` / `--samples`. It silently reduces an invalid minimum above the sample-list length to one, and skips missing k-mer files while continuing. Validate distinct names and files, row uniqueness, read completion, and independent shared-set equality as specified in the active gate.
 
 Record:
 
@@ -137,5 +141,5 @@ Until this gate passes:
 
 ## Next commit condition
 
-Commit only measured outputs from Gates A-C and the resulting feasibility decision.
+Commit only measured outputs from the active two-isolate gate and, after it passes, Gates B-C and the resulting feasibility decision.
 Do not add model code, dashboards, or architecture before this gate resolves.
