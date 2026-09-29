@@ -83,3 +83,48 @@ cannot be substituted into a paper-specific reproduction without provenance
 and equivalence checks.
 
 https://github.com/gradlab/mtrC-GWAS/blob/master/README.md
+
+
+## 2026-09-29 verification update
+
+Additional source checks were completed against the PLOS article and the related
+`gradlab/mtrC-GWAS` repository.
+
+### Verified from the PLOS article
+
+- The paper's Data Availability statement says the underlying study data are publicly
+  available via SRA/ENA accession numbers and S7.
+- The supporting-information index exposes S1-S7 tables and figures, including S5
+  aggregate AZM performance and S7 isolate/MIC metadata.
+- The inspected article page does **not** expose per-isolate predictions, trained model
+  files, random seeds, or the 10 outer train/test memberships.
+- The primary feature/model recipe is confirmed as DSK 31-mers, SEER `combinekmers`,
+  binary presence/absence matrices, Kover SCM, and ranger RF.
+- Outer evaluation is confirmed as 10 unique random stratified two-thirds/one-third
+  train/test partitions. Five-fold CV is an inner model-selection/tuning step, not the
+  outer evaluation design.
+
+### Related Grad Lab assembly source
+
+The public `gradlab/mtrC-GWAS` README links a SharePoint archive labeled
+"Assemblies available". The linked study is a later Nature Communications analysis,
+not the Hicks 2019 model artifact. Its paper states that intermediate genomics outputs
+such as de novo assemblies may be available from the authors.
+
+The SharePoint URL could not be opened from the current research environment.
+Therefore:
+
+- archive accessibility = **UNVERIFIED**
+- archive contents = **UNVERIFIED**
+- exact accession overlap with Hicks aggregate cohort = **UNVERIFIED**
+- assembly-procedure equivalence to Hicks 2019 = **UNVERIFIED**
+
+Do not use that archive as a Hicks reconstruction input until those checks pass.
+
+### Current replayability conclusion
+
+The study is **not declared non-replayable**. Public raw sequence data and phenotype
+metadata are available, so a from-scratch reconstruction remains possible in principle.
+However, exact numerical reproduction of the published 10-repeat result remains
+provenance-limited unless the original outer partitions/seeds and model artifacts are
+recovered.
