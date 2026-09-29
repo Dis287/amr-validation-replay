@@ -130,6 +130,14 @@ A from-scratch reconstruction remains possible in principle because public seque
 - The related later `gradlab/mtrC-GWAS` SharePoint archive remains unverified for accessibility, contents, and equivalence; it is separate from the checked Zenodo archive.
 - Primary DSK and SEER documentation confirms reverse-complement canonicalization and SEER `combineKmers --min_samples 2`. The pilot's direct forward 31-mer number cannot stand in for DSK output; a single isolate cannot test the shared-feature matrix. A second distinct dataset-2 isolate is required for the minimum combine pilot. See `KMER_RECONSTRUCTION_GATE.md`. Original SEER source resolves `-r` (despite no-argument help showing `-s`), silently resets an invalid minimum to 1, and skips missing input files. The gate requires explicit two-input and shared-set checks. `FEATURE_GENERATION_GATE.md` retains the later size-ranked panel but its earlier order is superseded.
 
+## Two-isolate gate result (2026-09-29)
+
+Both ENA read pairs (ERR1067709 and ERR1082197) passed manifest size/MD5 verification and assembled with declared SPAdes 4.3.0 settings. The first contig SHA-256 reproduced the earlier pilot exactly. DSK 2.3.3 canonical 31-mer counts matched an independent per-k-mer and abundance check for both isolates (2,089,781 and 962,089). Their independent shared set contained 875,897 k-mers.
+
+Original SEER 1.1.3 `combineKmers --min_samples 2` exited zero but emitted 875,898 rows: one false singleton and one duplicated sample tag on a shared row. The independent verifier failed as required. **Toolchain feature-integrity gate = FAIL for this binary; no Hicks metric replay.** The second assembly raw N50 was 7,802 bp, and cohort-level N50 eligibility remains unresolved. See `TWO_ISOLATE_GATE_RESULT.md` and `verify_two_isolate_features.py`.
+
+Next: test a source-identified corrected SEER implementation against the same two ASCII files and independently check exact shared-set/sample output; separately assess cohort QC. Do not expand to the size-ranked panel yet.
+
 **Resource decision:** full 1,102-run reconstruction is not yet authorized by feasibility evidence. The single run demonstrates bounded assembly, but runtime variation, aggregate feature union, DSK/SEER behavior, and Kover/ranger memory and compute remain unmeasured. Do not download the entire dataset on a one-isolate extrapolation.
 
 ## Active task — Experiment 001 only
@@ -183,4 +191,4 @@ Latest checked Experiment 001 pilot commit before this state update:
 
 Continue only from this line:
 
-> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. If unavailable, re-stage the checksum-verified SPAdes pilot and a second dataset-2 isolate, validate DSK 31-mer counting and SEER two-isolate combine, then sample resource variation, and decide whether a full dataset-2 method reconstruction is feasible. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
+> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. The checksum-verified two-isolate DSK count gate passed, but SEER 1.1.3 combine output failed independent integrity checks. Test a source-identified corrected implementation on the same files and resolve cohort QC before any resource-variation panel or full dataset-2 reconstruction. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
