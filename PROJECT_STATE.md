@@ -136,7 +136,9 @@ Both ENA read pairs (ERR1067709 and ERR1082197) passed manifest size/MD5 verific
 
 Original SEER 1.1.3 `combineKmers --min_samples 2` exited zero but emitted 875,898 rows: one false singleton and one duplicated sample tag on a shared row. The independent verifier failed as required. **Toolchain feature-integrity gate = FAIL for this binary; no Hicks metric replay.** The second assembly raw N50 was 7,802 bp, and cohort-level N50 eligibility remains unresolved. See `TWO_ISOLATE_GATE_RESULT.md` and `verify_two_isolate_features.py`.
 
-Next: test a source-identified corrected SEER implementation against the same two ASCII files and independently check exact shared-set/sample output; separately assess cohort QC. Do not expand to the size-ranked panel yet.
+A source-identified corrected upstream SEER implementation at commit `a6bd405754726467a93f39820fb4719457395ae7` was compiled without source edits and run on the **same** DSK ASCII files and sample list. It emitted exactly 875,897 rows, matching the independent shared set with zero missing/extra features or sample/abundance errors. **Corrected two-isolate feature-combine integrity gate = PASS.** The historical 1.1.3 failure remains documented. See `CORRECTED_SEER_RETEST.md`. This pass is limited to two isolates and is not proof of Hicks's exact SEER version or full-cohort replay.
+
+Next: resolve assembly/QC treatment (especially ERR1082197 raw N50 7,802 bp) and measure resource variation on a deterministic panel before full reconstruction.
 
 ### Source-identified SEER correction
 
@@ -214,4 +216,4 @@ Latest checked Experiment 001 pilot commit before this state update:
 
 Continue only from this line:
 
-> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. The checksum-verified two-isolate DSK count gate passed, but SEER 1.1.3 combine output failed independent integrity checks. Test a source-identified corrected implementation on the same files and resolve cohort QC before any resource-variation panel or full dataset-2 reconstruction. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
+> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. The corrected upstream SEER two-isolate combine passed exact independent feature and tag checks; the old 1.1.3 binary failed. Resolve cohort assembly/QC, then run the deterministic resource-variation panel before deciding on full dataset-2 reconstruction. Keep Hicks-specific versions, partitions, and metric replay unverified. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
