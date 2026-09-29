@@ -1,6 +1,6 @@
 # 31-mer reconstruction gate: method check before scaling
 
-Status: **source-verified method correction; DSK/SEER execution pending** (2026-09-29). This note records a decision boundary, not a new model result.
+Status: **two-isolate DSK counts and corrected SEER combine passed exact independent checks** (2026-09-29). The original SEER 1.1.3 binary failed; see `TWO_ISOLATE_GATE_RESULT.md` and `CORRECTED_SEER_RETEST.md`. This gate note records the method boundary, not a model result.
 
 ## Primary evidence inspected
 
