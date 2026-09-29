@@ -1,0 +1,867 @@
+{
+  "schema": "amr-resource-panel-checkpoint-v1",
+  "date": "2026-09-29",
+  "status": "PASS_AT_N4_ONLY",
+  "selection": [
+    {
+      "label": "min",
+      "rank_zero_based": 0,
+      "run_accession": "ERR1067833",
+      "s7_dataset": "2",
+      "s7_azm_mic": "1",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/003/ERR1067833/ERR1067833_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/003/ERR1067833/ERR1067833_2.fastq.gz",
+      "fastq_bytes": "35204390;35451915",
+      "fastq_md5": "b2e9cf0b59ad5f339c32a1c7cbe8dd9b;4ff4e92056137f16f49ff7bf45cac20c",
+      "total_bytes": 70656305
+    },
+    {
+      "label": "p10",
+      "rank_zero_based": 110,
+      "run_accession": "ERR1067740",
+      "s7_dataset": "2",
+      "s7_azm_mic": "0.5",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/000/ERR1067740/ERR1067740_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/000/ERR1067740/ERR1067740_2.fastq.gz",
+      "fastq_bytes": "87872847;89268361",
+      "fastq_md5": "4571426afa06e4645477a2f78c9a15b6;55e8622fcc0cfa531b1abddaddf89d63",
+      "total_bytes": 177141208
+    },
+    {
+      "label": "p25",
+      "rank_zero_based": 275,
+      "run_accession": "ERR1067765",
+      "s7_dataset": "2",
+      "s7_azm_mic": "0.5",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/005/ERR1067765/ERR1067765_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/005/ERR1067765/ERR1067765_2.fastq.gz",
+      "fastq_bytes": "113016971;113900948",
+      "fastq_md5": "6ace1e2116e0c9404db1c07d007c59d7;7b5a5076a5d6d2b636e5f347b797379f",
+      "total_bytes": 226917919
+    },
+    {
+      "label": "median",
+      "rank_zero_based": 550,
+      "run_accession": "ERR855281",
+      "s7_dataset": "2",
+      "s7_azm_mic": "1",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855281/ERR855281_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855281/ERR855281_2.fastq.gz",
+      "fastq_bytes": "159832392;165310988",
+      "fastq_md5": "4d94a6c4e9bf48574b1268494f079a5c;48937b9dceeb433a3757b0903f0d0936",
+      "total_bytes": 325143380
+    },
+    {
+      "label": "p75",
+      "rank_zero_based": 826,
+      "run_accession": "ERR855022",
+      "s7_dataset": "2",
+      "s7_azm_mic": "0.125",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855022/ERR855022_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855022/ERR855022_2.fastq.gz",
+      "fastq_bytes": "174914715;180309252",
+      "fastq_md5": "5dd2d5e869875046cab33a515ba1af8b;09992162f84607c77ce4ea5e4de72fc3",
+      "total_bytes": 355223967
+    },
+    {
+      "label": "p90",
+      "rank_zero_based": 991,
+      "run_accession": "ERR854935",
+      "s7_dataset": "2",
+      "s7_azm_mic": "0.5",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854935/ERR854935_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854935/ERR854935_2.fastq.gz",
+      "fastq_bytes": "192013858;197548971",
+      "fastq_md5": "8455b4df44da542a1de5b31d9676eb73;43b24bac47caef467cce9fec0f67345b",
+      "total_bytes": 389562829
+    },
+    {
+      "label": "p99",
+      "rank_zero_based": 1090,
+      "run_accession": "ERR223664",
+      "s7_dataset": "2 and 3",
+      "s7_azm_mic": "0.25",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223664/ERR223664_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223664/ERR223664_2.fastq.gz",
+      "fastq_bytes": "377899592;393134325",
+      "fastq_md5": "59ecbe0c66b5ad93ead9577308724bce;668fb209d9ef01b1897c1105e09ef7ba",
+      "total_bytes": 771033917
+    },
+    {
+      "label": "max",
+      "rank_zero_based": 1101,
+      "run_accession": "ERR223688",
+      "s7_dataset": "2 and 3",
+      "s7_azm_mic": "0.5",
+      "library_layout": "PAIRED",
+      "fastq_ftp": "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223688/ERR223688_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223688/ERR223688_2.fastq.gz",
+      "fastq_bytes": "529561823;548974863",
+      "fastq_md5": "7cec28e9c5123b8a4ec8dee92efe71c6;a7f04fcc8cddc16b3d54f267d551528c",
+      "total_bytes": 1078536686
+    }
+  ],
+  "protocol": {
+    "spades": "4.3.0 default with -t 2 -m 8",
+    "filter": "length>=200 and SPAdes header _cov_>=10",
+    "quast": "5.2.0 --min-contig 200",
+    "dsk": "2.3.3 -kmer-size 31 -abundance-min 1",
+    "seer_commit": "a6bd405754726467a93f39820fb4719457395ae7",
+    "stage_timeout_seconds": {
+      "spades": 2700,
+      "dsk": 900,
+      "combine": 900
+    },
+    "sample_interval_seconds": 0.5
+  },
+  "tool_sha256": {
+    "spades_archive": "e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034",
+    "dsk_archive": "626a4663f70323a80834c013f1d9dcb4a3b3a73a1c9ab5da95a013783d81b0f6",
+    "quast_archive": "ccd911087cfa254ad4b8eadac4f95d4685e44c3996f5516b8e0ce6f7cfa7e0db",
+    "seer_source_archive": "e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01",
+    "combine_binary": "8991982a6da7397012f7786920d8623219e3a9f38fb37712f8915883c15b1397"
+  },
+  "isolates": {
+    "ERR1067833": {
+      "inputs": [
+        {
+          "path": ".panel/work/ERR1067833/ERR1067833_1.fastq.gz",
+          "expected_size": 35204390,
+          "actual_size": 35204390,
+          "expected_md5": "b2e9cf0b59ad5f339c32a1c7cbe8dd9b",
+          "actual_md5": "b2e9cf0b59ad5f339c32a1c7cbe8dd9b",
+          "pass": true
+        },
+        {
+          "path": ".panel/work/ERR1067833/ERR1067833_2.fastq.gz",
+          "expected_size": 35451915,
+          "actual_size": 35451915,
+          "expected_md5": "4ff4e92056137f16f49ff7bf45cac20c",
+          "actual_md5": "4ff4e92056137f16f49ff7bf45cac20c",
+          "pass": true
+        }
+      ],
+      "spades": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067833_spades",
+        "command": [
+          ".panel/tools/SPAdes-4.3.0-Linux/bin/spades.py",
+          "-1",
+          ".panel/work/ERR1067833/ERR1067833_1.fastq.gz",
+          "-2",
+          ".panel/work/ERR1067833/ERR1067833_2.fastq.gz",
+          "-o",
+          ".panel/work/ERR1067833/stage/spades",
+          "-t",
+          "2",
+          "-m",
+          "8"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 319.781,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1202484,
+        "sampled_peak_watch_dir_bytes": 607562038,
+        "final_watch_dir_bytes": 46378898,
+        "log_sha256": "c4ea9db5ef3431714b85d2cf8b58d4e7b02a628ba333db874f3dce3c33c075a1"
+      },
+      "filter": {
+        "raw_contigs": 765,
+        "raw_bases": 2101942,
+        "raw_n50_all_lengths": 5973,
+        "filtered_contigs": 83,
+        "filtered_bases": 788061,
+        "filtered_n50_all_lengths": 27360,
+        "filter": "length>=200 and SPAdes header _cov_>=10"
+      },
+      "quast": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067833_quast",
+        "command": [
+          "python",
+          ".panel/tools/quast-5.2.0/quast.py",
+          "--min-contig",
+          "200",
+          "--no-plots",
+          "--no-html",
+          "--no-icarus",
+          "-t",
+          "2",
+          "-l",
+          "raw,filtered",
+          "-o",
+          ".panel/work/ERR1067833/stage/quast",
+          ".panel/work/ERR1067833/stage/spades/contigs.fasta",
+          ".panel/work/ERR1067833/stage/filtered.fasta"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 1.009,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 68692,
+        "sampled_peak_watch_dir_bytes": 2954592,
+        "final_watch_dir_bytes": 8602,
+        "log_sha256": "6e46c80becaaa26755eb20c4b8411d406c7d89597106dae14b984cea28025bdc"
+      },
+      "dsk": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067833_dsk_retry",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk",
+          "-file",
+          ".panel/work/ERR1067833/stage/filtered.fasta",
+          "-kmer-size",
+          "31",
+          "-abundance-min",
+          "1",
+          "-out",
+          ".panel/work/ERR1067833/stage/kmers",
+          "-out-tmp",
+          ".panel/work/ERR1067833/stage/dsk_tmp",
+          "-max-memory",
+          "8000"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 900,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.502,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 2164,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 0,
+        "log_sha256": "c5ec2472bec85bdd236f2d547fe0dc6db4cc0afde5544fb6927e2f6e7c7e78dc"
+      },
+      "dsk2ascii": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067833_dsk2ascii_retry",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk2ascii",
+          "-file",
+          ".panel/work/ERR1067833/stage/kmers.h5",
+          "-out",
+          ".panel/work/ERR1067833/stage/kmers.txt"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.504,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 2716,
+        "sampled_peak_watch_dir_bytes": 62513278,
+        "final_watch_dir_bytes": 88992793,
+        "log_sha256": "dcd156ab8fbc1aeb40797dd7b9f08ee1a2164a19a5a6497ab6da56093a3f1d99"
+      },
+      "verification": {
+        "independent_canonical_31mers": 778809,
+        "dsk_rows": 778809,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "filtered_fasta_sha256": "0de958181746e78640c401e58179dac88342894580e1a45b20a50d516c114df2",
+        "dsk_ascii_sha256": "d4665bc941e08293817f33973c99872824e44bd612ad9e965c18982a536a10d0",
+        "dsk_ascii_bytes": 26479515
+      }
+    },
+    "ERR1067740": {
+      "inputs": [
+        {
+          "path": ".panel/work/ERR1067740/ERR1067740_1.fastq.gz",
+          "expected_size": 87872847,
+          "actual_size": 87872847,
+          "expected_md5": "4571426afa06e4645477a2f78c9a15b6",
+          "actual_md5": "4571426afa06e4645477a2f78c9a15b6",
+          "pass": true
+        },
+        {
+          "path": ".panel/work/ERR1067740/ERR1067740_2.fastq.gz",
+          "expected_size": 89268361,
+          "actual_size": 89268361,
+          "expected_md5": "55e8622fcc0cfa531b1abddaddf89d63",
+          "actual_md5": "55e8622fcc0cfa531b1abddaddf89d63",
+          "pass": true
+        }
+      ],
+      "spades": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067740_spades",
+        "command": [
+          ".panel/tools/SPAdes-4.3.0-Linux/bin/spades.py",
+          "-1",
+          ".panel/work/ERR1067740/ERR1067740_1.fastq.gz",
+          "-2",
+          ".panel/work/ERR1067740/ERR1067740_2.fastq.gz",
+          "-o",
+          ".panel/work/ERR1067740/stage/spades",
+          "-t",
+          "2",
+          "-m",
+          "8"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 927.973,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1505836,
+        "sampled_peak_watch_dir_bytes": 1498138988,
+        "final_watch_dir_bytes": 51066666,
+        "log_sha256": "2966bf0dbc5b126d8e2cdd3e52835be6428fe6b4b4ed3b9c719467bbb60a541e"
+      },
+      "filter": {
+        "raw_contigs": 522,
+        "raw_bases": 2122278,
+        "raw_n50_all_lengths": 11305,
+        "filtered_contigs": 86,
+        "filtered_bases": 1045003,
+        "filtered_n50_all_lengths": 48575,
+        "filter": "length>=200 and SPAdes header _cov_>=10"
+      },
+      "quast": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067740_quast",
+        "command": [
+          "python",
+          ".panel/tools/quast-5.2.0/quast.py",
+          "--min-contig",
+          "200",
+          "--no-plots",
+          "--no-html",
+          "--no-icarus",
+          "-t",
+          "2",
+          "-l",
+          "raw,filtered",
+          "-o",
+          ".panel/work/ERR1067740/stage/quast",
+          ".panel/work/ERR1067740/stage/spades/contigs.fasta",
+          ".panel/work/ERR1067740/stage/filtered.fasta"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.506,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 2484,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 8630,
+        "log_sha256": "efba6a293f35e46c1d547a0dc88ae73d347246971cde3efd9d5932fdb14a4482"
+      },
+      "dsk": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067740_dsk",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk",
+          "-file",
+          ".panel/work/ERR1067740/stage/filtered.fasta",
+          "-kmer-size",
+          "31",
+          "-abundance-min",
+          "1",
+          "-out",
+          ".panel/work/ERR1067740/stage/kmers",
+          "-out-tmp",
+          ".panel/work/ERR1067740/stage/dsk_tmp",
+          "-max-memory",
+          "8000"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 900,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.502,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1988,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 0,
+        "log_sha256": "da45f1bd7c5e8ffd2e4396c8df24535b1de384bbf0f235ddce2c112979a8bc45"
+      },
+      "dsk2ascii": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067740_dsk2ascii",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk2ascii",
+          "-file",
+          ".panel/work/ERR1067740/stage/kmers.h5",
+          "-out",
+          ".panel/work/ERR1067740/stage/kmers.txt"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.505,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 3156,
+        "sampled_peak_watch_dir_bytes": 71193730,
+        "final_watch_dir_bytes": 106229468,
+        "log_sha256": "7f19aaa8f21482b07ce80c1b869401384af06d818b7b63f033e7a3504b8f40af"
+      },
+      "verification": {
+        "independent_canonical_31mers": 1030460,
+        "dsk_rows": 1030460,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "filtered_fasta_sha256": "67d693062907c52033ddfb057ec45bcaec6e50a9b602f8f6a12a121bf29b6b63",
+        "dsk_ascii_sha256": "d0c64665d48d2df9b3c48fba86ff8e97c1df2c415a5818cf88314c0f7a655682",
+        "dsk_ascii_bytes": 35035738
+      }
+    },
+    "ERR1067765": {
+      "inputs": [
+        {
+          "path": ".panel/work/ERR1067765/ERR1067765_1.fastq.gz",
+          "expected_size": 113016971,
+          "actual_size": 113016971,
+          "expected_md5": "6ace1e2116e0c9404db1c07d007c59d7",
+          "actual_md5": "6ace1e2116e0c9404db1c07d007c59d7",
+          "pass": true
+        },
+        {
+          "path": ".panel/work/ERR1067765/ERR1067765_2.fastq.gz",
+          "expected_size": 113900948,
+          "actual_size": 113900948,
+          "expected_md5": "7b5a5076a5d6d2b636e5f347b797379f",
+          "actual_md5": "7b5a5076a5d6d2b636e5f347b797379f",
+          "pass": true
+        }
+      ],
+      "spades": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067765_spades",
+        "command": [
+          ".panel/tools/SPAdes-4.3.0-Linux/bin/spades.py",
+          "-1",
+          ".panel/work/ERR1067765/ERR1067765_1.fastq.gz",
+          "-2",
+          ".panel/work/ERR1067765/ERR1067765_2.fastq.gz",
+          "-o",
+          ".panel/work/ERR1067765/stage/spades",
+          "-t",
+          "2",
+          "-m",
+          "8"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 1225.248,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1745412,
+        "sampled_peak_watch_dir_bytes": 2512553407,
+        "final_watch_dir_bytes": 764232130,
+        "log_sha256": "5911a8aa675294ac122c519392aba0909b1cdc82d90c891ca5cd93f0373c8d4e"
+      },
+      "filter": {
+        "raw_contigs": 418,
+        "raw_bases": 2152823,
+        "raw_n50_all_lengths": 48784,
+        "filtered_contigs": 127,
+        "filtered_bases": 2127568,
+        "filtered_n50_all_lengths": 48784,
+        "filter": "length>=200 and SPAdes header _cov_>=10"
+      },
+      "quast": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067765_quast",
+        "command": [
+          "python",
+          ".panel/tools/quast-5.2.0/quast.py",
+          "--min-contig",
+          "200",
+          "--no-plots",
+          "--no-html",
+          "--no-icarus",
+          "-t",
+          "2",
+          "-l",
+          "raw,filtered",
+          "-o",
+          ".panel/work/ERR1067765/stage/quast",
+          ".panel/work/ERR1067765/stage/spades/contigs.fasta",
+          ".panel/work/ERR1067765/stage/filtered.fasta"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.503,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 2912,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 8624,
+        "log_sha256": "73e5bac2844de158f2f1739ccc95f47d21ab64f7c632bcd3d526f0c610db918b"
+      },
+      "dsk": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067765_dsk",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk",
+          "-file",
+          ".panel/work/ERR1067765/stage/filtered.fasta",
+          "-kmer-size",
+          "31",
+          "-abundance-min",
+          "1",
+          "-out",
+          ".panel/work/ERR1067765/stage/kmers",
+          "-out-tmp",
+          ".panel/work/ERR1067765/stage/dsk_tmp",
+          "-max-memory",
+          "8000"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 900,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.503,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1760,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 0,
+        "log_sha256": "25d40c78598b29f20f8009cecb65f65e52e2c4ef437ee35f0d5033e6c4e21861"
+      },
+      "dsk2ascii": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067765_dsk2ascii",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk2ascii",
+          "-file",
+          ".panel/work/ERR1067765/stage/kmers.h5",
+          "-out",
+          ".panel/work/ERR1067765/stage/kmers.txt"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.504,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1608,
+        "sampled_peak_watch_dir_bytes": 802679242,
+        "final_watch_dir_bytes": 874143859,
+        "log_sha256": "75c82b88d54f88cbfdee902e9b5aebcbaaf3de506fa029170f8e0f9e549568db"
+      },
+      "verification": {
+        "independent_canonical_31mers": 2101892,
+        "dsk_rows": 2101892,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "filtered_fasta_sha256": "4c38f70a5cc3f9c33ff4a42a0cd3956a576722f1ffaca62eaee195a741693ec7",
+        "dsk_ascii_sha256": "f97d2b9d2c01a47822cf260ea2299c3ca735e0fad26011f1316a05a570e09064",
+        "dsk_ascii_bytes": 71464617
+      }
+    },
+    "ERR855281": {
+      "inputs": [
+        {
+          "path": ".panel/work/ERR855281/ERR855281_1.fastq.gz",
+          "expected_size": 159832392,
+          "actual_size": 159832392,
+          "expected_md5": "4d94a6c4e9bf48574b1268494f079a5c",
+          "actual_md5": "4d94a6c4e9bf48574b1268494f079a5c",
+          "pass": true
+        },
+        {
+          "path": ".panel/work/ERR855281/ERR855281_2.fastq.gz",
+          "expected_size": 165310988,
+          "actual_size": 165310988,
+          "expected_md5": "48937b9dceeb433a3757b0903f0d0936",
+          "actual_md5": "48937b9dceeb433a3757b0903f0d0936",
+          "pass": true
+        }
+      ],
+      "spades": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR855281_spades",
+        "command": [
+          ".panel/tools/SPAdes-4.3.0-Linux/bin/spades.py",
+          "-1",
+          ".panel/work/ERR855281/ERR855281_1.fastq.gz",
+          "-2",
+          ".panel/work/ERR855281/ERR855281_2.fastq.gz",
+          "-o",
+          ".panel/work/ERR855281/stage/spades",
+          "-t",
+          "2",
+          "-m",
+          "8"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 898.353,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1199408,
+        "sampled_peak_watch_dir_bytes": 2173101342,
+        "final_watch_dir_bytes": 826762657,
+        "log_sha256": "63d37a8f5bdebfce8856f6f0c6cf50501eaf3d110c69a792aa28db7fb9d10f82"
+      },
+      "filter": {
+        "raw_contigs": 400,
+        "raw_bases": 2140134,
+        "raw_n50_all_lengths": 39039,
+        "filtered_contigs": 149,
+        "filtered_bases": 2116377,
+        "filtered_n50_all_lengths": 39039,
+        "filter": "length>=200 and SPAdes header _cov_>=10"
+      },
+      "quast": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR855281_quast",
+        "command": [
+          "python",
+          ".panel/tools/quast-5.2.0/quast.py",
+          "--min-contig",
+          "200",
+          "--no-plots",
+          "--no-html",
+          "--no-icarus",
+          "-t",
+          "2",
+          "-l",
+          "raw,filtered",
+          "-o",
+          ".panel/work/ERR855281/stage/quast",
+          ".panel/work/ERR855281/stage/spades/contigs.fasta",
+          ".panel/work/ERR855281/stage/filtered.fasta"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 1.007,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 81420,
+        "sampled_peak_watch_dir_bytes": 8611,
+        "final_watch_dir_bytes": 8611,
+        "log_sha256": "e911338da21ae5980abae38cbcf2593d72de0c8fc29747588eaaad0cc37a7f0d"
+      },
+      "dsk": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR855281_dsk",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk",
+          "-file",
+          ".panel/work/ERR855281/stage/filtered.fasta",
+          "-kmer-size",
+          "31",
+          "-abundance-min",
+          "1",
+          "-out",
+          ".panel/work/ERR855281/stage/kmers",
+          "-out-tmp",
+          ".panel/work/ERR855281/stage/dsk_tmp",
+          "-max-memory",
+          "8000"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 900,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.503,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 3212,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 0,
+        "log_sha256": "7de400fd31670726e5aa784b2c4abd25df0136cef0213caf8c09c4923a99496c"
+      },
+      "dsk2ascii": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR855281_dsk2ascii",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk2ascii",
+          "-file",
+          ".panel/work/ERR855281/stage/kmers.h5",
+          "-out",
+          ".panel/work/ERR855281/stage/kmers.txt"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 300,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 0.508,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 1896,
+        "sampled_peak_watch_dir_bytes": 865002742,
+        "final_watch_dir_bytes": 936131446,
+        "log_sha256": "5641dc41ba810816974e453fd60bfad3f1ae9f42b166b33cac45214af4b3508d"
+      },
+      "verification": {
+        "independent_canonical_31mers": 2092013,
+        "dsk_rows": 2092013,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "filtered_fasta_sha256": "a74eb50ddba37ee649c32c74f7ecd93aad4327527cb75dc539d6cf295b50374d",
+        "dsk_ascii_sha256": "51e5e92c04017ae1d2e6c1a0554161f4a2653f3002c9e1263e8240651a030431",
+        "dsk_ascii_bytes": 71128704
+      }
+    }
+  },
+  "combine_n2": {
+    "schema": "amr-resource-stage-v1",
+    "name": "panel2_combine_corrected",
+    "command": [
+      ".panel/tools/combineKmers-a6bd405",
+      "-r",
+      ".panel/work/panel2_samples.tsv",
+      "-o",
+      ".panel/work/panel2_combined",
+      "--min_samples",
+      "2"
+    ],
+    "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+    "timeout_seconds": 900,
+    "timed_out": false,
+    "exit_code": 0,
+    "wall_seconds": 4.541,
+    "sample_interval_seconds": 0.5,
+    "sampled_peak_process_tree_rss_kib": 227860,
+    "sampled_peak_watch_dir_bytes": 447685264,
+    "final_watch_dir_bytes": 447685264,
+    "log_sha256": "b34c5cfe8c539909345318b255db9eea64f5403db39abd2fdd6b99561879cea1"
+  },
+  "verification_n2": {
+    "samples": [
+      "ERR1067833",
+      "ERR1067740"
+    ],
+    "dsk_checks": [
+      {
+        "independent_count": 778809,
+        "dsk_count": 778809,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "duplicate_rows": 0
+      },
+      {
+        "independent_count": 1030460,
+        "dsk_count": 1030460,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "duplicate_rows": 0
+      }
+    ],
+    "independent_shared": 439012,
+    "seer_unique_output": 439012,
+    "seer_errors": {
+      "missing_shared": 0
+    },
+    "first_errors": []
+  },
+  "rejected_attempts": [
+    {
+      "stage": "ERR1067833_dsk",
+      "reason": "temporary directory absent",
+      "exit_code": 1,
+      "partial_outputs_rejected": true,
+      "evidence": {
+        "schema": "amr-resource-stage-v1",
+        "name": "ERR1067833_dsk",
+        "command": [
+          ".panel/tools/dsk-v2.3.3-bin-Linux/bin/dsk",
+          "-file",
+          ".panel/work/ERR1067833/stage/filtered.fasta",
+          "-kmer-size",
+          "31",
+          "-abundance-min",
+          "1",
+          "-out",
+          ".panel/work/ERR1067833/stage/kmers",
+          "-out-tmp",
+          ".panel/work/ERR1067833/stage/dsk_tmp",
+          "-max-memory",
+          "8000"
+        ],
+        "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+        "timeout_seconds": 900,
+        "timed_out": false,
+        "exit_code": 1,
+        "wall_seconds": 0.502,
+        "sample_interval_seconds": 0.5,
+        "sampled_peak_process_tree_rss_kib": 2012,
+        "sampled_peak_watch_dir_bytes": 0,
+        "final_watch_dir_bytes": 0,
+        "log_sha256": "ec87a54497d54a1a2689e53ae227159336af8af611f525f1785680fc6787e621"
+      }
+    }
+  ],
+  "boundaries": [
+    "Historical Hicks SPAdes/QUAST versions and cohort N50 cutoff remain unknown.",
+    "This checkpoint establishes the declared current reconstruction protocol only at the deterministic nested n=4 subset.",
+    "This checkpoint does not establish n=8, n=1102, full-cohort feasibility, the historical Hicks feature matrix, or a Hicks SCM/RF metric replay.",
+    "The only authorized next scaling gate is the predeclared p75, p90, p99, and maximum isolates followed by exact corrected-SEER n=8 verification.",
+    "Sub-second DSK stages can complete between 0.5-second samples; their sampled RSS values are lower bounds."
+  ],
+  "combine_n4": {
+    "schema": "amr-resource-stage-v1",
+    "name": "panel4_combine_corrected",
+    "command": [
+      ".panel/tools/combineKmers-a6bd405",
+      "-r",
+      ".panel/work/panel4_samples.tsv",
+      "-o",
+      ".panel/work/panel4_combined",
+      "--min_samples",
+      "2"
+    ],
+    "cwd": "/workspace/scratch/135804399626/amr-panel-run",
+    "timeout_seconds": 900,
+    "timed_out": false,
+    "exit_code": 0,
+    "wall_seconds": 16.724,
+    "sample_interval_seconds": 0.5,
+    "sampled_peak_process_tree_rss_kib": 417732,
+    "sampled_peak_watch_dir_bytes": 2833604479,
+    "final_watch_dir_bytes": 2833604479,
+    "log_sha256": "bf1462b9074c812f3ef5b1ab14b6b8b7b68c4d93b2ed6c0f1a4ae9025446840d"
+  },
+  "verification_n4": {
+    "samples": [
+      "ERR1067833",
+      "ERR1067740",
+      "ERR1067765",
+      "ERR855281"
+    ],
+    "input_rows": {
+      "ERR1067833": 778809,
+      "ERR1067740": 1030460,
+      "ERR1067765": 2101892,
+      "ERR855281": 2092013
+    },
+    "input_sha256": {
+      "ERR1067833": "d4665bc941e08293817f33973c99872824e44bd612ad9e965c18982a536a10d0",
+      "ERR1067740": "d0c64665d48d2df9b3c48fba86ff8e97c1df2c415a5818cf88314c0f7a655682",
+      "ERR1067765": "f97d2b9d2c01a47822cf260ea2299c3ca735e0fad26011f1316a05a570e09064",
+      "ERR855281": "51e5e92c04017ae1d2e6c1a0554161f4a2653f3002c9e1263e8240651a030431"
+    },
+    "independent_union": 2243633,
+    "independent_present_in_at_least_two": 2093979,
+    "seer_output_rows": 2093979,
+    "seer_unique_output": 2093979,
+    "seer_errors": {
+      "missing_expected": 0
+    },
+    "first_errors": [],
+    "combined_sha256": "2b07e55e25ee8b3e105ba87b1d7359b6ce4d807329ca2f2df3e20d1e00d1ba52",
+    "combined_bytes": 23582413
+  }
+}
