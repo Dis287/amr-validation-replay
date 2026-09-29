@@ -209,8 +209,7 @@ KILL:
 
 https://github.com/Dis287/amr-validation-replay
 
-Latest checked Experiment 001 pilot commit before this state update:
-`d22974aa3bd6f36fc6a392f0c0441784962d8cdb`
+Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797c30212b55033`; read the current main files linked above for authoritative status.
 
 ## Resume instruction
 
