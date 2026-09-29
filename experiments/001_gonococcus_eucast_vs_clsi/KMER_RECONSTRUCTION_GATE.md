@@ -19,7 +19,7 @@ Status: **source-verified method correction; DSK/SEER execution pending** (2026-
 
 ## Execution boundary observed here
 
-The previous pilot's FASTQs and SPAdes contigs were in transient `/tmp/hicks_pilot`; they are no longer present in this execution workspace. The current repo contains the manifest and measurements, not sequence data or assembled contigs. DSK and SEER executables are not installed here. An attempted 15-second HTTPS HEAD request for the ENA pilot read did not return a response body before timeout; this does not establish that the public read is unavailable.
+The previous pilot's FASTQs and SPAdes contigs were in transient `/tmp/hicks_pilot`; they are no longer present in this execution workspace. The current repo contains the manifest and measurements, not sequence data or assembled contigs. DSK and SEER executables are not installed here. An attempted 15-second HTTPS HEAD request for the ENA pilot read did not complete before timeout; this does not establish that the public read is unavailable.
 
 ## Decision and next bounded experiment
 
