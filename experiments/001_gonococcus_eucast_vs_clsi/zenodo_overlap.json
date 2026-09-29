@@ -1,0 +1,18 @@
+{
+  "accession_mapped_and_archive_present": 1102,
+  "archive_fasta_count": 1102,
+  "archive_fasta_without_s7_dataset2_match": 0,
+  "azm_non_susceptible_clsi_mic_gt_1": 295,
+  "azm_non_susceptible_eucast_mic_gt_0_25": 910,
+  "inputs": {
+    "accession_map_sha256": "97b9c30a948de4884c68bbb7928d76b1c27033382e2313f941436d5b6f89a1fd",
+    "assemblies_md5": "fb93e97d22814f2dbe008dbeb2efd72c",
+    "s7_sha256": "3c55bf27cd4fcb6f24f16d882d0e7b1752ba0ac1a8ec160ff30e008e08a39c41"
+  },
+  "s7_dataset2_tagged_runs": 1102,
+  "s7_dataset2_without_archive_fasta": 0,
+  "s7_dataset_labels": {
+    "2": 926,
+    "2 and 3": 176
+  }
+}
