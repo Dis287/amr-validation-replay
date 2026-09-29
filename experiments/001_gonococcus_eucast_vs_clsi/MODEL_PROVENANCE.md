@@ -4,7 +4,8 @@
 
 Hicks et al., *PLOS Computational Biology* (2019), DOI
 `10.1371/journal.pcbi.1007349`, Materials and methods, “ML-based prediction of
-resistance phenotypes,” and the article's Supporting information index.
+resistance phenotypes,” Supporting information index, and the downloaded S5
+DOCX table.
 
 https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007349
 
@@ -19,7 +20,10 @@ https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007349
 - SCM: Kover, at most five rules; five-fold cross-validation selected the
   conjunctive/disjunctive model and the listed trade-off parameter.
 - RF: ranger, 1,000 trees; five-fold cross-validation selected tree depth and
-  `mtry` from the paper's stated candidate values.
+  `mtry` from the paper's stated candidate values. S5 labels its reported
+  training-set RF selection metric as out-of-bag (OOB), so the precise
+  relationship between its OOB figures and the method's five-fold tuning
+  description needs resolution before claiming an exact reconstruction.
 - **Outer evaluation:** each analysis used 10 random, distinct, stratified
   partitions. Two-thirds of isolates trained the model and the remaining
   third tested it. The paper reports mean balanced accuracy and 95% confidence
@@ -28,11 +32,19 @@ https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007349
   four individual gonococcal datasets lacked enough CLSI AZM non-susceptible
   isolates and were assessed only under EUCAST for AZM.
 
-Random seeds, exact outer test memberships, trained models, per-isolate
-predictions, and the assembled 31-mer feature matrix were not identified in
-the inspected main text or the descriptions of S1–S7. The supplemental files
-themselves and other repositories still require inspection. Their availability
-remains **UNKNOWN**, not disproved.
+S5 reports aggregate-cohort outer-test mean balanced accuracy (95% CI):
+
+| Model | EUCAST | CLSI | Difference (CLSI minus EUCAST) |
+| --- | ---: | ---: | ---: |
+| SCM S/NS | 77.60% (76.74–78.46) | 85.32% (83.68–86.95) | +7.72 points |
+| RF-C S/NS | 84.04% (83.11–84.98) | 88.03% (86.28–89.79) | +3.99 points |
+
+These are **published values**, not our replay. S5 contains summary metrics,
+not per-isolate prediction vectors. Random seeds, exact outer test
+memberships, trained models, per-isolate predictions, and the assembled
+31-mer feature matrix were not identified in the inspected main text or S5.
+Other supplemental files and repositories still require inspection. Their
+availability remains **UNKNOWN**, not disproved.
 
 ## Distinguish the two comparisons
 
