@@ -1,0 +1,67 @@
+{
+  "experiment": "001B_independent_mechanism_replay",
+  "status": "INDEPENDENT_CLAIM_IMPACT_REPRODUCED",
+  "integrity_boundary": {
+    "is_original_2019_kover_model": false,
+    "uses_original_2019_predictions": false,
+    "purpose": "Independent test of whether the same genotype-derived prediction vector changes balanced accuracy when only AZM breakpoint semantics change."
+  },
+  "cohort": {
+    "n": 3799,
+    "source_mic_table": "Leonardini/CABBAGE: SelectedTables/PMID_31479500_pcbi.1007349.s007_NGonorrhoeae_Processed.csv",
+    "source_mechanism_table": "gradlab/mtrC-GWAS: metadata/strain-table-filtered.csv",
+    "overlap_fraction_of_experiment_001": 0.9627470856563609
+  },
+  "phenotype_semantics": {
+    "EUCAST_non_susceptible_if_AZM_MIC_gt": 0.25,
+    "CLSI_non_susceptible_if_AZM_MIC_gt": 1.0,
+    "EUCAST_non_susceptible_n": 1755,
+    "CLSI_non_susceptible_n": 512,
+    "labels_changed_n": 1243,
+    "labels_changed_fraction": 0.3271913661489866
+  },
+  "features": [
+    "MtrA",
+    "MtrC",
+    "FarA",
+    "Mtr_Upregulation"
+  ],
+  "model": {
+    "type": "deterministic_pattern_classifier",
+    "validation": "5-fold out-of-fold",
+    "fold_assignment": "FNV-1a hash(accession) mod 5",
+    "training_rule": "For each categorical mechanism pattern, compare Laplace-smoothed P(pattern|NS) with P(pattern|S) under equal class priors.",
+    "reason": "Transparent reproducible classifier using only committed genotype-derived mechanism metadata; no MIC used as a feature."
+  },
+  "results": {
+    "EUCAST_trained_predictions_scored_on_EUCAST": {
+      "balanced_accuracy": 0.6246784418017295,
+      "sensitivity": 0.947008547008547,
+      "specificity": 0.30234833659491195,
+      "tp": 1662,
+      "tn": 618,
+      "fp": 1426,
+      "fn": 93
+    },
+    "same_EUCAST_prediction_vector_scored_on_CLSI": {
+      "balanced_accuracy": 0.5641349325943109,
+      "sensitivity": 0.923828125,
+      "specificity": 0.20444174018862185,
+      "tp": 473,
+      "tn": 672,
+      "fp": 2615,
+      "fn": 39
+    },
+    "semantics_only_balanced_accuracy_delta": -0.06054350920741863,
+    "CLSI_trained_predictions_scored_on_CLSI": {
+      "balanced_accuracy": 0.5632920643824155,
+      "sensitivity": 0.94921875,
+      "specificity": 0.17736537876483116,
+      "tp": 486,
+      "tn": 583,
+      "fp": 2704,
+      "fn": 26
+    }
+  },
+  "conclusion": "On 3,799 public overlapping isolates, the same out-of-fold genotype-derived prediction vector loses 6.05 percentage points of balanced accuracy when evaluation labels change from EUCAST to CLSI semantics. This independently demonstrates claim-level metric sensitivity to breakpoint semantics, but it is not a reproduction of the original 2019 Kover/RF model."
+}
