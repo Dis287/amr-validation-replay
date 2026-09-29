@@ -54,8 +54,24 @@ The paper further reports significantly higher balanced accuracy for AZM classif
 than EUCAST across datasets evaluated under both standards (P < 0.0001). That metric-impact claim
 is currently recorded as **published evidence**, not yet an independently rerun model result.
 
+## Independent metric replay (Experiment 001B)
+
+Using 3,799 isolates shared between the CABBAGE-processed 2019 gonococcal MIC table and Grad Lab's
+public `mtrC-GWAS` resistance-mechanism metadata, a deterministic 5-fold out-of-fold mechanism
+classifier was trained without using MIC as a feature.
+
+With the **same EUCAST-trained prediction vector**:
+- balanced accuracy against EUCAST labels: **62.47%**
+- balanced accuracy against CLSI labels: **56.41%**
+- semantics-only delta: **-6.05 percentage points**
+
+This independently demonstrates claim-level metric sensitivity to breakpoint semantics.
+
+Integrity boundary: this is **not** a reproduction of the original 2019 Kover/RF model. The original
+31-mer matrix and prediction vectors were not found in the public paper/repositories checked.
+
 ## Immediate next gate
 
-Independently replay a model's predictions against both valid label semantics and compute the
-metric delta. Until that rerun is completed, the repo must not claim independent reproduction
-of the model-performance change.
+Recover or reconstruct the original 2019 31-mer/Kover/RF prediction pipeline closely enough to
+reproduce the paper-specific balanced-accuracy delta. Until that succeeds, the repository must keep
+the original-model replay state as `NOT YET REPRODUCED`.
