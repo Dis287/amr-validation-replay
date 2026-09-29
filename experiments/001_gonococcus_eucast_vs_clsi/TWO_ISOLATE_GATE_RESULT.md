@@ -1,5 +1,7 @@
 # Experiment 001: two-isolate 31-mer toolchain result
 
+**Subsequent retest:** upstream corrected SEER commit `a6bd405754726467a93f39820fb4719457395ae7` passed on these unchanged inputs. See `CORRECTED_SEER_RETEST.md`. The failure below remains the measured outcome for SEER 1.1.3 only.
+
 **Gate outcome: FAIL for SEER 1.1.3 output integrity; DSK count checks PASS.** Measured 2026-09-29. This is a bounded toolchain result, not a Hicks model reproduction or a whole-cohort resource estimate.
 
 ## Inputs, versions, and methods
