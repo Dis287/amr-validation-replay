@@ -36,6 +36,10 @@ Potential claim states:
 - NON_REPLAYABLE
 - UNKNOWN
 
+## Evidence status
+
+The technical thesis under test is that phenotype semantics can alter a model-validation claim. The measured label and fixed-prediction effects below support that mechanism. The Hicks model result has not yet been independently replayed, and a commercial/buyer claim is not established.
+
 ## What is already proven
 
 ### Experiment 001A — phenotype semantic drift
@@ -60,7 +64,11 @@ Independently reproduced on 3,946 isolates:
 
 Status:
 - `LABEL_DRIFT_REPRODUCED = YES`
-- `MODEL_METRIC_REPLAY_REPRODUCED = NO`
+- `HICKS_MODEL_METRIC_REPLAY_REPRODUCED = NO`
+
+### Experiment 001B — independent fixed-prediction metric sensitivity
+
+A separate deterministic mechanism-feature classifier on 3,799 overlapping isolates produced five-fold out-of-fold EUCAST-trained predictions. Scoring the same prediction vector against EUCAST labels yielded bACC 62.47%; scoring it against CLSI labels yielded 56.41%, a change of −6.05 percentage points. This is a measured fixed-prediction result using a different classifier and outer split design. It is not a Hicks SCM/RF reproduction. See `experiments/001_gonococcus_eucast_vs_clsi/independent_mechanism_replay.json`.
 
 ### Published model-performance evidence
 
@@ -113,17 +121,15 @@ Do **not** call the study non-replayable yet.
 
 A from-scratch reconstruction remains possible in principle because public sequence data and phenotype metadata exist.
 
-## Related assembly lead
+## Dataset-2 evidence chain and pilot (2026-09-29)
 
-`gradlab/mtrC-GWAS` links an assemblies archive, but:
-- it is a later related study
-- archive accessibility = UNVERIFIED
-- exact overlap with Hicks cohort = UNVERIFIED
-- assembly equivalence = UNVERIFIED
+- The Grad-authored Zenodo archive `10.5281/zenodo.2618836` passed its published file MD5. All 1,102 Hicks S7 dataset-2 runs map one-to-one to its 1,102 FASTA members through the recorded third-party accession mapping. S7 AZM non-susceptible counts also match the paper's S5 dataset-2 counts. See `experiments/001_gonococcus_eucast_vs_clsi/ZENODO_OVERLAP.md` and `zenodo_overlap.json`.
+- The Zenodo assemblies came from the 2016 source study's Velvet pipeline. Hicks describes SPAdes assembly. Accession overlap is verified; Hicks-equivalent assembly/31-mer features are **not** verified. Do not substitute Velvet features into a faithful reconstruction.
+- The official ENA filereport resolves all 1,102 dataset-2 paired runs: 2,204 compressed FASTQs totaling 344,835,597,770 reported bytes. The manifest and generation script are committed. See `RAW_READ_FEASIBILITY.md` and `ena_dataset2_manifest.tsv`.
+- One S7 dataset-2 run, `ERR1067709`, was downloaded and checksum-verified. A SPAdes 4.3.0 assembly completed in 16 min 26 sec to contigs output, with 161 MB final output directory. A documented pilot filter retained 135 contigs and yielded 2,095,091 direct distinct forward 31-mers. SPAdes 3.13.0 failed in this runtime; the exact Hicks SPAdes version remains unidentified. This pilot does **not** produce a DSK/SEER matrix, model predictions, or bACC. See `RAW_READ_PILOT.md`.
+- The related later `gradlab/mtrC-GWAS` SharePoint archive remains unverified for accessibility, contents, and equivalence; it is separate from the checked Zenodo archive.
 
-Do not substitute it into a Hicks reconstruction without checking provenance and accession overlap.
-
-A Grad-authored Zenodo gonococcal assembly archive from March 2019 is also a possible constituent-data lead, but overlap/equivalence remain UNVERIFIED.
+**Resource decision:** full 1,102-run reconstruction is not yet authorized by feasibility evidence. The single run demonstrates bounded assembly, but runtime variation, aggregate feature union, DSK/SEER behavior, and Kover/ranger memory and compute remain unmeasured. Do not download the entire dataset on a one-isolate extrapolation.
 
 ## Active task — Experiment 001 only
 
@@ -169,11 +175,11 @@ KILL:
 
 https://github.com/Dis287/amr-validation-replay
 
-Latest verified provenance commit before this state file:
-`127454ee10435ed52f562398d387c194e7250d45`
+Latest checked Experiment 001 pilot commit before this state update:
+`d22974aa3bd6f36fc6a392f0c0441784962d8cdb`
 
 ## Resume instruction
 
 Continue only from this line:
 
-> Recover the original Hicks 2019 outer partitions/predictions/models if possible; otherwise perform the smallest faithful reconstruction necessary to independently recompute EUCAST-vs-CLSI balanced accuracy. Commit only Experiment 001 evidence. No new architecture, dashboard, or scope expansion.
+> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. If unavailable, validate DSK/SEER 31-mer generation on the checksum-verified SPAdes pilot, sample resource variation, and decide whether a full dataset-2 method reconstruction is feasible. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
