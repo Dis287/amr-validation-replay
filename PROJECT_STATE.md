@@ -138,7 +138,7 @@ Original SEER 1.1.3 `combineKmers --min_samples 2` exited zero but emitted 875,8
 
 A source-identified corrected upstream SEER implementation at commit `a6bd405754726467a93f39820fb4719457395ae7` was compiled without source edits and run on the **same** DSK ASCII files and sample list. It emitted exactly 875,897 rows, matching the independent shared set with zero missing/extra features or sample/abundance errors. **Corrected two-isolate feature-combine integrity gate = PASS.** The historical 1.1.3 failure remains documented. See `CORRECTED_SEER_RETEST.md`. This pass is limited to two isolates and is not proof of Hicks's exact SEER version or full-cohort replay.
 
-Next: resolve assembly/QC treatment (especially ERR1082197 raw N50 7,802 bp) and measure resource variation on a deterministic panel before full reconstruction.
+Next: resolve assembly/QC treatment before the deterministic resource panel. Current ERR1082197 SPAdes 4.3.0 N50 is 7,802 bp on raw contigs but 48,515 bp after the declared length/coverage filter; the historical Hicks N50 order, QUAST/SPAdes versions, coverage interpretation and dataset-2 cutoff are unknown. See `ASSEMBLY_QC_RECONSTRUCTION.md`. QC reconstruction remains OPEN; no resource panel or full-cohort reconstruction has been started.
 
 ### Source-identified SEER correction
 
@@ -158,9 +158,8 @@ The second isolate's low SPAdes-4.3.0 N50 does not invalidate its use for this b
 software-integrity retest. It does block using that isolate as evidence about cohort
 feature/resource behavior until the assembly-QC discrepancy is resolved. Hicks reports
 removing assemblies with N50 below two dataset standard deviations; because
-`ERR1082197` is present in the paper's S7 dataset-2 record, its published inclusion
-is evidence that the original Hicks processing retained it, but this does not by itself
-prove our SPAdes-4.3.0 reconstruction is equivalent. Treat the low N50 as a reconstruction
+`ERR1082197` is present in the paper's S7 dataset-2 record, S7 records its dataset-2 membership, but no original N50 or exclusion list was recovered;
+this alone does not establish that our SPAdes-4.3.0 reconstruction is equivalent. Treat the low N50 as a reconstruction
 divergence signal, not as proof that the published isolate was ineligible.
 
 **Resource decision:** full 1,102-run reconstruction is not yet authorized by feasibility evidence. The single run demonstrates bounded assembly, but runtime variation, aggregate feature union, DSK/SEER behavior, and Kover/ranger memory and compute remain unmeasured. Do not download the entire dataset on a one-isolate extrapolation.
