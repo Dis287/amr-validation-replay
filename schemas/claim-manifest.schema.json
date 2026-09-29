@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AMR Validation Claim Manifest",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "claim",
+    "dependencies"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string"
+    },
+    "claim": {
+      "type": "object",
+      "required": [
+        "statement",
+        "metric"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "reported_value": {}
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "organism": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "antimicrobial": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ast_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "measurement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "breakpoint_authority": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "breakpoint_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "population": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dataset": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evaluation_procedure": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
