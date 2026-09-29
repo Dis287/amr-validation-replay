@@ -128,6 +128,7 @@ A from-scratch reconstruction remains possible in principle because public seque
 - The official ENA filereport resolves all 1,102 dataset-2 paired runs: 2,204 compressed FASTQs totaling 344,835,597,770 reported bytes. The manifest and generation script are committed. See `RAW_READ_FEASIBILITY.md` and `ena_dataset2_manifest.tsv`.
 - One S7 dataset-2 run, `ERR1067709`, was downloaded and checksum-verified. A SPAdes 4.3.0 assembly completed in 16 min 26 sec to contigs output, with 161 MB final output directory. A documented pilot filter retained 135 contigs and yielded 2,095,091 direct distinct forward 31-mers. SPAdes 3.13.0 failed in this runtime; the exact Hicks SPAdes version remains unidentified. This pilot does **not** produce a DSK/SEER matrix, model predictions, or bACC. See `RAW_READ_PILOT.md`.
 - The related later `gradlab/mtrC-GWAS` SharePoint archive remains unverified for accessibility, contents, and equivalence; it is separate from the checked Zenodo archive.
+- Primary DSK and SEER documentation confirms reverse-complement canonicalization and SEER `combineKmers --min_samples 2`. The pilot's direct forward 31-mer number cannot stand in for DSK output; a single isolate cannot test the shared-feature matrix. A second distinct dataset-2 isolate is required for the minimum combine pilot. See `KMER_RECONSTRUCTION_GATE.md`.
 
 **Resource decision:** full 1,102-run reconstruction is not yet authorized by feasibility evidence. The single run demonstrates bounded assembly, but runtime variation, aggregate feature union, DSK/SEER behavior, and Kover/ranger memory and compute remain unmeasured. Do not download the entire dataset on a one-isolate extrapolation.
 
@@ -182,4 +183,4 @@ Latest checked Experiment 001 pilot commit before this state update:
 
 Continue only from this line:
 
-> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. If unavailable, validate DSK/SEER 31-mer generation on the checksum-verified SPAdes pilot, sample resource variation, and decide whether a full dataset-2 method reconstruction is feasible. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
+> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. If unavailable, re-stage the checksum-verified SPAdes pilot and a second dataset-2 isolate, validate DSK 31-mer counting and SEER two-isolate combine, then sample resource variation, and decide whether a full dataset-2 method reconstruction is feasible. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
