@@ -71,3 +71,15 @@ filtering, 31-mer processing, nested tuning, matched outer partitions, and
 per-isolate prediction files. Record all departures from the paper before
 calling the result a reconstruction. Do not label the original result
 `NON_REPLAYABLE` solely because a code search returns no hits.
+
+## Candidate assembly source (not yet validated)
+
+The Grad Lab `mtrC-GWAS` README links a SharePoint archive described as
+“Assemblies available.” That is a later, related study sharing many isolate
+accessions with this experiment, **not** a Hicks 2019 model artifact. The
+archive's accessibility, contents, assembly procedure, and accession overlap
+have not been checked. It may reduce the need to assemble all SRA reads, but
+cannot be substituted into a paper-specific reproduction without provenance
+and equivalence checks.
+
+https://github.com/gradlab/mtrC-GWAS/blob/master/README.md
