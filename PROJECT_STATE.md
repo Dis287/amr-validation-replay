@@ -221,6 +221,15 @@ next step. Even a future PASS would leave the original n=8 gate failed and would
 not authorize corrected-SEER n=8, the 1,102-run reconstruction, or model
 training.
 
+The dedicated execution harness is now **FROZEN / NOT EXECUTED**. It consists
+of the manual-only workflow
+`.github/workflows/max-isolate-resource-resolution-v1.yml`, the single-attempt
+runner `run_max_isolate_resource_resolution_v1.py`, and the machine-readable
+`max_isolate_execution_harness_audit.json`. Committing these files does not
+authorize or start the experiment. The failed n=8 workflow and failure record,
+and both frozen protocol files, remain unchanged. A separate explicit gate must
+read back and accept the committed harness before any manual dispatch.
+
 ## Active task — Experiment 001 only
 
 **Objective:** independently recompute balanced accuracy under EUCAST vs CLSI with the Hicks model/evaluation logic as faithfully as possible.

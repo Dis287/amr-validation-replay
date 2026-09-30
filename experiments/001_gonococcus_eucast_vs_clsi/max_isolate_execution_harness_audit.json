@@ -1,0 +1,209 @@
+{
+  "schema": "amr-max-isolate-execution-harness-audit-v1",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1",
+  "audit_scope": "execution-harness construction only; no scientific execution",
+  "authoritative_parent": "f84eed9eed20678fe653d66a56550cecb5d45637",
+  "status_after_commit": "FROZEN_NOT_EXECUTED",
+  "implementation_files": {
+    "workflow": ".github/workflows/max-isolate-resource-resolution-v1.yml",
+    "runner": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py"
+  },
+  "immutable_inputs": {
+    "experiments/001_gonococcus_eucast_vs_clsi/MAX_ISOLATE_RESOURCE_RESOLUTION_V1.md": "f89571d25fd7a4f9c23675c93b818032ffe114e8e9699e116290649da0c8eebd",
+    "experiments/001_gonococcus_eucast_vs_clsi/max_isolate_resource_resolution_v1.json": "48b346e2bfa4eefbbd2db9553fb348b977c17c718e473d434a78e523b3b74f8a",
+    "experiments/001_gonococcus_eucast_vs_clsi/resource_panel_n8_failure.json": "9eb3d5debc56d250b3807c7f3ced0e2ea1d21e193a3fd57f6bd6eacae424f516",
+    ".github/workflows/experiment001-n8.yml": "0dc37a81f35af557e9a5bd61214373b8010115a32d625cd719b0928695c5b6f8"
+  },
+  "summary_checks": {
+    "old_n8_workflow_unchanged": true,
+    "old_n8_failure_record_unchanged": true,
+    "protocol_json_unchanged": true,
+    "protocol_markdown_unchanged": true,
+    "no_seer_call": true,
+    "no_full_cohort_logic": true,
+    "no_model_training": true,
+    "no_other_isolate": true,
+    "no_larger_runner_class": true,
+    "no_changed_spades_options": true,
+    "no_hidden_timeout_fallback": true,
+    "no_retry_path": true,
+    "workflow_manual_only": true,
+    "execution_trigger_check": "on.workflow_dispatch only; no push, schedule, pull_request, or workflow_run trigger",
+    "retry_check": "single job, no matrix, no retry action; GITHUB_RUN_ATTEMPT must equal 1 and prior workflow-dispatch runs cause preflight stop",
+    "artifact_retention_check": "all upload actions use if: always(), retention-days: 30, and upload outcomes are enforced",
+    "forbidden_action_check": "no SEER, cohort loop, model training, other isolate, larger runner, or automatic trigger"
+  },
+  "requirements": [
+    {
+      "protocol_requirement": "distinct experiment and target isolate",
+      "frozen_value": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1 / ERR223688",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "EXPERIMENT_ID; TARGET",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "exact ENA input identities, byte sizes, and MD5 values",
+      "frozen_value": "ERR223688_1.fastq.gz=529561823/7cec28e9c5123b8a4ec8dee92efe71c6; ERR223688_2.fastq.gz=548974863/a7f04fcc8cddc16b3d54f267d551528c",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "protocol target_isolate.inputs; input_records exact comparison",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SPAdes archive identity",
+      "frozen_value": "4.3.0 / e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "TOOLS.spades",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SPAdes scientific command",
+      "frozen_value": "default paired mode; -t 2 -m 8",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "commands.spades",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SPAdes wall/RSS/stage-disk/sample/termination bounds",
+      "frozen_value": "5400 s; 10485760 KiB; 8589934592 bytes; 0.5 s; SIGTERM+10 s+SIGKILL",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "bounded_stage(spades); terminate_group; cgroup_oom_kill_count; filesystem_enospc_evidence",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "runner and whole-job envelope",
+      "frozen_value": "ubuntu-24.04 x64; <=4 CPU; <=16 GiB RAM; <=14 GiB filesystem; >=12884901888 free bytes; 9000 s",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v1.yml; experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "jobs.max-isolate-resource-resolution-v1.runs-on/timeout-minutes; preflight.requirements; remaining(...,9000,...)",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "filter rule",
+      "frozen_value": "length>=200 AND SPAdes header coverage>=10",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "filter_contigs",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "QUAST archive, command, and wall bound",
+      "frozen_value": "5.2.0 / ccd911...e0db; frozen command; 300 s",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "TOOLS.quast; commands.quast; bounded_stage(quast)",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "DSK archive, command, and wall bound",
+      "frozen_value": "2.3.3 / 626a46...b0f6; k=31; abundance-min=1; max-memory=8000; 900 s",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "TOOLS.dsk; commands.dsk; bounded_stage(dsk)",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "dsk2ascii command and wall bound",
+      "frozen_value": "dsk2ascii -file kmers.h5 -out kmers.txt; 300 s",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "commands.dsk2ascii; bounded_stage(dsk2ascii)",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "independent canonical oracle",
+      "frozen_value": "A<C<T<G; reverse-complement canonicalization; exact set and abundance; 900 s",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "RANK; COMPLEMENT; canonical; independent_counts; verify_dsk; bounded_stage(independent_oracle)",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "preflight before biological input download",
+      "frozen_value": "record image/version/arch/CPU/RAM/filesystem/commit/protocol hashes/tool hashes; stop on violation",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "tool_records; preflight; violations; target_isolate.inputs loop occurs only after passed preflight",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "exact failure taxonomy and explicit infrastructural preflight separation",
+      "frozen_value": "ten frozen FAIL_* states; INFRASTRUCTURE_PREFLIGHT_FAILURE only for harness/preflight",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py; .github/workflows/max-isolate-resource-resolution-v1.yml",
+      "implementation_line_or_key": "FAILURES; INFRA_FAILURE; classify_stage; provisional outcome",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "every path writes outcome and attempts durable upload",
+      "frozen_value": "outcome.json always; artifact upload always",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v1.yml; experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "Initialize mandatory provisional outcome; run_experiment finally; all package/upload/finalize steps if: always()",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "mandatory evidence and digest ledger",
+      "frozen_value": "stage JSON/logs, SPAdes diagnostics, recursive SHA-256 manifest, primary outputs, archive SHA/file-count/compressed/uncompressed sizes",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "bounded_stage; recursive_manifest; copy_existing list; package_evidence",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "raw FASTQ exclusion with retained identities",
+      "frozen_value": "raw FASTQs not uploaded; URL/bytes/MD5 survive",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "input_integrity.json; package_evidence archives evidence directory only",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "30-day always-upload retention and upload acceptance",
+      "frozen_value": "if: always(); retention-days: 30; upload success required",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v1.yml",
+      "implementation_line_or_key": "Package/Upload/Finalize/Final upload/Enforce steps",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no retry or parameter mutation",
+      "frozen_value": "no automatic/silent/matrix/manual second attempt",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v1.yml; experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py",
+      "implementation_line_or_key": "single non-matrix job; prior_dispatch_guard; GITHUB_RUN_ATTEMPT==1; no retry loop",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "manual-only trigger",
+      "frozen_value": "workflow_dispatch only",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v1.yml",
+      "implementation_line_or_key": "on.workflow_dispatch",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "post-success authorization boundary",
+      "frozen_value": "original n8 remains failed; no SEER n8, full cohort, or training",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/run_max_isolate_resource_resolution_v1.py; .github/workflows/max-isolate-resource-resolution-v1.yml",
+      "implementation_line_or_key": "outcome_template and provisional outcome authorization fields",
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "static_checks": {
+    "python_compile": "PASS",
+    "synthetic_filter_oracle_timeout_tests": "PASS",
+    "yaml_parse": "PASS",
+    "json_parse": "PASS",
+    "manual_trigger_text_check": "PASS",
+    "immutable_sha256_recheck": "PASS",
+    "biological_input_downloaded": false,
+    "scientific_tools_invoked": false,
+    "workflow_triggered": false
+  }
+}
