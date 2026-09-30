@@ -1,0 +1,427 @@
+{
+  "schema": "amr-resource-panel-n8-failure-v1",
+  "recorded_at_utc": "2026-09-30",
+  "experiment": "001_gonococcus_eucast_vs_clsi",
+  "status": "FAIL",
+  "reason": "maximum_rank_spades_timeout",
+  "authoritative_preceding_checkpoint": "641b66604c5a484c2e9a20300a192b9068bfd74c",
+  "execution": {
+    "workflow_run_id": 36665031444,
+    "workflow_run_url": "https://github.com/Dis287/amr-validation-replay/actions/runs/36665031444",
+    "workflow_head_sha": "4a6e83c89a40ddb6dc82dbcaf9cea226549c1db3",
+    "runner_commit": "28b3595a3eaf13388081d00dcd62fcebd023a8ac",
+    "verifier_commit": "b3607d790935548d74c9d533b8b355a2184b3e45",
+    "state_commit_before_result": "d1e2c1ee5e21d9e3a66f210f1b9de0d5880f58d6"
+  },
+  "acceptance": {
+    "required_isolates": [
+      "min",
+      "p10",
+      "p25",
+      "median",
+      "p75",
+      "p90",
+      "p99",
+      "max"
+    ],
+    "surviving_isolate_artifacts": 7,
+    "independently_audited_isolate_passes": 7,
+    "all_eight_passed": false,
+    "corrected_seer_n8_ran": false,
+    "independent_n8_oracle_ran": false
+  },
+  "independently_audited_isolates": [
+    {
+      "label": "min",
+      "accession": "ERR1067833",
+      "artifact": {
+        "id": 11075707766,
+        "size_bytes": 18024326,
+        "sha256": "3426ac816f2f061e1a6aec835923f1af5c793b5f26d2dcadc2e497a2ed8be7c0"
+      },
+      "inputs": [
+        {
+          "bytes": 35204390,
+          "md5": "b2e9cf0b59ad5f339c32a1c7cbe8dd9b"
+        },
+        {
+          "bytes": 35451915,
+          "md5": "4ff4e92056137f16f49ff7bf45cac20c"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 299.528,
+        "peak_rss_kib": 1279840,
+        "peak_stage_disk_bytes": 581808411
+      },
+      "filter": {
+        "contigs": 139,
+        "bases": 2130491,
+        "n50_bp": 47601,
+        "min_length_bp": 206,
+        "min_header_coverage": 42.043941
+      },
+      "dsk": {
+        "canonical_31mers": 2103513,
+        "physical_rows": 2103513,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 71519738,
+        "ascii_sha256": "1b60a3c86547f95055e3d51e138c6f7d6b2329967f3851ebe7112df309276a44"
+      },
+      "filtered_fasta_sha256": "d11fa38dd04596375d2f5a159657e42b4ecb503695d628b926f832ef59aa4b1a"
+    },
+    {
+      "label": "p10",
+      "accession": "ERR1067740",
+      "artifact": {
+        "id": 11076277598,
+        "size_bytes": 18000305,
+        "sha256": "d505fd7c2e2fd09ab9e4fc9378912ed2d81503231a8c0af33a50d733c2dc7306"
+      },
+      "inputs": [
+        {
+          "bytes": 87872847,
+          "md5": "4571426afa06e4645477a2f78c9a15b6"
+        },
+        {
+          "bytes": 89268361,
+          "md5": "55e8622fcc0cfa531b1abddaddf89d63"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 653.872,
+        "peak_rss_kib": 1523880,
+        "peak_stage_disk_bytes": 1431877181
+      },
+      "filter": {
+        "contigs": 132,
+        "bases": 2127668,
+        "n50_bp": 48335,
+        "min_length_bp": 200,
+        "min_header_coverage": 78.693878
+      },
+      "dsk": {
+        "canonical_31mers": 2100606,
+        "physical_rows": 2100606,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 71420896,
+        "ascii_sha256": "4ad0b03e3d184f5d694d43f5f43d7bfc7478eb655018e0bcefe58c6070f5eab2"
+      },
+      "filtered_fasta_sha256": "6d22902f2e39d6cbcc8d4e336de7a1149ce5f7c820c3c9d723c327c1ef4220c2"
+    },
+    {
+      "label": "p25",
+      "accession": "ERR1067765",
+      "artifact": {
+        "id": 11076500162,
+        "size_bytes": 18009548,
+        "sha256": "c30614c6e71cfd9ff580e76ac1b33d04e14e1cf85d7e087aa8589b31b303c04d"
+      },
+      "inputs": [
+        {
+          "bytes": 113016971,
+          "md5": "6ace1e2116e0c9404db1c07d007c59d7"
+        },
+        {
+          "bytes": 113900948,
+          "md5": "7b5a5076a5d6d2b636e5f347b797379f"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 1074.414,
+        "peak_rss_kib": 1762324,
+        "peak_stage_disk_bytes": 1836688542
+      },
+      "filter": {
+        "contigs": 127,
+        "bases": 2127568,
+        "n50_bp": 48784,
+        "min_length_bp": 206,
+        "min_header_coverage": 66.289116
+      },
+      "dsk": {
+        "canonical_31mers": 2101892,
+        "physical_rows": 2101892,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 71464617,
+        "ascii_sha256": "9489718a0b3990b0c59146861148f9898a96128fce09202cb6fb5b1e12c687e3"
+      },
+      "filtered_fasta_sha256": "4c38f70a5cc3f9c33ff4a42a0cd3956a576722f1ffaca62eaee195a741693ec7"
+    },
+    {
+      "label": "median",
+      "accession": "ERR855281",
+      "artifact": {
+        "id": 11075718734,
+        "size_bytes": 17923497,
+        "sha256": "cb0cdc57c610f0e12f2d4d0c28bf48de22cf6cbafa89c0320a238cf6b98b51c7"
+      },
+      "inputs": [
+        {
+          "bytes": 159832392,
+          "md5": "4d94a6c4e9bf48574b1268494f079a5c"
+        },
+        {
+          "bytes": 165310988,
+          "md5": "48937b9dceeb433a3757b0903f0d0936"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 666.621,
+        "peak_rss_kib": 1279508,
+        "peak_stage_disk_bytes": 1401847618
+      },
+      "filter": {
+        "contigs": 149,
+        "bases": 2116377,
+        "n50_bp": 39039,
+        "min_length_bp": 200,
+        "min_header_coverage": 63.294737
+      },
+      "dsk": {
+        "canonical_31mers": 2092013,
+        "physical_rows": 2092013,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 71128704,
+        "ascii_sha256": "dee3cf91f0bba7fb5667a5818aa6992fe904209e26ddc73a77b8fc505f48355c"
+      },
+      "filtered_fasta_sha256": "a74eb50ddba37ee649c32c74f7ecd93aad4327527cb75dc539d6cf295b50374d"
+    },
+    {
+      "label": "p75",
+      "accession": "ERR855022",
+      "artifact": {
+        "id": 11076109913,
+        "size_bytes": 17500986,
+        "sha256": "35267e5f57faa7c2d9512fa2f0d8244681650942ff5a34c1f59125f392f70261"
+      },
+      "inputs": [
+        {
+          "bytes": 174914715,
+          "md5": "5dd2d5e869875046cab33a515ba1af8b"
+        },
+        {
+          "bytes": 180309252,
+          "md5": "09992162f84607c77ce4ea5e4de72fc3"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 847.386,
+        "peak_rss_kib": 1279612,
+        "peak_stage_disk_bytes": 1516533857
+      },
+      "filter": {
+        "contigs": 145,
+        "bases": 2067227,
+        "n50_bp": 40649,
+        "min_length_bp": 209,
+        "min_header_coverage": 80.357143
+      },
+      "dsk": {
+        "canonical_31mers": 2045008,
+        "physical_rows": 2045008,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 69530491,
+        "ascii_sha256": "518d08abb3127485e555e46c73dc71c16a14e218c267ea99d197d89bcca79a9b"
+      },
+      "filtered_fasta_sha256": "ca0e573792e4abfb0efc22fc676cf60303de45a018b62362745b4647da28c77f"
+    },
+    {
+      "label": "p90",
+      "accession": "ERR854935",
+      "artifact": {
+        "id": 11076448396,
+        "size_bytes": 17941627,
+        "sha256": "cbd45c04b29c01b6584d8640af3a7b6b4c4cdc3deba33f4a60839dc4b01b9a43"
+      },
+      "inputs": [
+        {
+          "bytes": 192013858,
+          "md5": "8455b4df44da542a1de5b31d9676eb73"
+        },
+        {
+          "bytes": 197548971,
+          "md5": "43b24bac47caef467cce9fec0f67345b"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 846.077,
+        "peak_rss_kib": 1704780,
+        "peak_stage_disk_bytes": 1613270878
+      },
+      "filter": {
+        "contigs": 147,
+        "bases": 2117367,
+        "n50_bp": 40410,
+        "min_length_bp": 210,
+        "min_header_coverage": 87.384956
+      },
+      "dsk": {
+        "canonical_31mers": 2094204,
+        "physical_rows": 2094204,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 71203186,
+        "ascii_sha256": "d6b821a29508df203a057620830004b3eab96eeea3b90ba495830fb2d1bd9175"
+      },
+      "filtered_fasta_sha256": "8664421aaa9e7b739baa826add2eaf20f1559f06471b9c7286b5741a11041751"
+    },
+    {
+      "label": "p99",
+      "accession": "ERR223664",
+      "artifact": {
+        "id": 11076768772,
+        "size_bytes": 17965241,
+        "sha256": "d05c48185d8916a7446f2a5b081b1237a8aa1b03179b1d7261357541a68595f7"
+      },
+      "inputs": [
+        {
+          "bytes": 377899592,
+          "md5": "59ecbe0c66b5ad93ead9577308724bce"
+        },
+        {
+          "bytes": 393134325,
+          "md5": "668fb209d9ef01b1897c1105e09ef7ba"
+        }
+      ],
+      "spades": {
+        "timeout_seconds": 2700,
+        "timed_out": false,
+        "exit_code": 0,
+        "wall_seconds": 2365.749,
+        "peak_rss_kib": 2097024,
+        "peak_stage_disk_bytes": 2429652499
+      },
+      "filter": {
+        "contigs": 154,
+        "bases": 2120487,
+        "n50_bp": 40201,
+        "min_length_bp": 209,
+        "min_header_coverage": 127.87689
+      },
+      "dsk": {
+        "canonical_31mers": 2096522,
+        "physical_rows": 2096522,
+        "duplicate_rows": 0,
+        "missing": 0,
+        "extra": 0,
+        "abundance_mismatches": 0,
+        "ascii_bytes": 71281996,
+        "ascii_sha256": "d3a57a04d3a3093e86e8af73dd966598112cde6790eceb166d547140886fdb0d"
+      },
+      "filtered_fasta_sha256": "4554581dbdd6ed424f216906216b1660ae04d279ad0529c50c2dcf367769e74b"
+    }
+  ],
+  "failed_isolate": {
+    "label": "max",
+    "accession": "ERR223688",
+    "job_id": 109727760374,
+    "job_url": "https://github.com/Dis287/amr-validation-replay/actions/runs/36665031444/job/109727760374",
+    "expected_inputs": [
+      {
+        "bytes": 529561823,
+        "md5": "7cec28e9c5123b8a4ec8dee92efe71c6"
+      },
+      {
+        "bytes": 548974863,
+        "md5": "a7f04fcc8cddc16b3d54f267d551528c"
+      }
+    ],
+    "input_integrity_record": {
+      "direct_actual_values_retained": false,
+      "control_flow_evidence": "The committed runner reached SPAdes only after size and MD5 equality checks; the job log does not print or artifact the actual values."
+    },
+    "spades": {
+      "schema": "amr-resource-stage-v1",
+      "name": "ERR223688_spades",
+      "command": [
+        "SPAdes-4.3.0-Linux/bin/spades.py",
+        "-1",
+        "ERR223688_1.fastq.gz",
+        "-2",
+        "ERR223688_2.fastq.gz",
+        "-o",
+        "spades",
+        "-t",
+        "2",
+        "-m",
+        "8"
+      ],
+      "started_at_utc": "2026-09-30T04:06:16.1029727Z",
+      "evidence_emitted_at_utc": "2026-09-30T04:51:18.5633715Z",
+      "timeout_seconds": 2700,
+      "timed_out": true,
+      "exit_code": -15,
+      "wall_seconds": 2702.424,
+      "sample_interval_seconds": 0.5,
+      "sampled_peak_process_tree_rss_kib": 2518544,
+      "sampled_peak_watch_dir_bytes": 3415816271,
+      "final_watch_dir_bytes": 1538680619,
+      "log_sha256": "e542d9fbd467ee5e654c0f1687dadaf0bd641dff881afb54992900bacc2b30ff"
+    },
+    "surviving_evidence": "GitHub Actions job log",
+    "uploaded_artifact": null,
+    "absent_outputs": [
+      "completed assembly",
+      "declared filter/QC output",
+      "DSK 31-mer output",
+      "independent canonical-k-mer verification"
+    ]
+  },
+  "corrected_seer_n8": {
+    "job_id": 109744943462,
+    "status": "skipped",
+    "reason": "isolate-max failed",
+    "combined_output_hash": null,
+    "independent_oracle": null
+  },
+  "decision": {
+    "n8_gate_pass": false,
+    "n8_correctness_not_established": true,
+    "resource_feasibility_for_1102_not_established": true,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "next_scientific_progression": "STOP at failed declared n=8 gate; do not change ceilings or reconstruct missing maximum outputs."
+  },
+  "audit_notes": [
+    "All seven retained ZIP SHA-256 values matched GitHub artifact digests.",
+    "For each retained isolate, retained log SHA-256 values, filtered FASTA metrics, DSK ASCII hashes and byte counts were checked.",
+    "An independent A<C<T<G DSK canonical reverse-complement oracle reproduced every retained DSK row and abundance exactly.",
+    "Sub-second DSK stages can finish between 0.5-second samples; zero sampled temporary-disk peaks are not interpreted as zero total DSK storage."
+  ]
+}

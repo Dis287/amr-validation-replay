@@ -64,3 +64,25 @@ The n=4 nested resource/correctness gate passes. It proves the declared pipeline
 It does **not** establish resource behavior at n=8 or n=1,102, whole-cohort assembly/QC, the historical Hicks feature matrix, or SCM/RF balanced accuracy. Continue only with the predeclared p75, p90, p99, and maximum ranks, then run and independently verify the n=8 corrected-SEER output. Do not begin the full cohort.
 
 Machine-readable evidence and input/tool hashes are in `resource_panel_n4.json`; the earlier n=2 checkpoint remains preserved in `resource_panel_n2.json`. Sub-second DSK stages can complete between 0.5-second samples, so their sampled RSS values are lower bounds; no DSK peak-memory conclusion is drawn from those samples.
+
+## Durable n=8 attempt — terminal result (2026-09-30)
+
+Status: **FAIL at the predeclared maximum-rank SPAdes ceiling**. This does not alter the accepted n=4 PASS above and does not authorize corrected-SEER n=8, the 1,102-run reconstruction, or model training.
+
+GitHub Actions run `36665031444` used workflow/head `4a6e83c89a40ddb6dc82dbcaf9cea226549c1db3`. Seven ranks (minimum, p10, p25, median, p75, p90, p99) produced retained artifacts. Their GitHub ZIP digests matched, retained stage-log hashes matched, filtered FASTA metrics were independently reproduced, and an independent DSK canonical oracle returned zero missing, extra, duplicate, or abundance-mismatched rows for every retained isolate.
+
+The maximum rank `ERR223688` failed in bounded SPAdes 4.3.0 with unchanged `-t 2 -m 8` settings:
+
+- SPAdes start: 2026-09-30 04:06:16 UTC
+- declared ceiling: 2,700 s
+- `timed_out`: true
+- exit: -15
+- measured wall: 2,702.424 s
+- sampled peak process-tree RSS: 2,518,544 KiB
+- sampled peak watched stage disk: 3,415,816,271 bytes
+- final watched directory: 1,538,680,619 bytes
+- stage-log SHA-256: `e542d9fbd467ee5e654c0f1687dadaf0bd641dff881afb54992900bacc2b30ff`
+
+The workflow uploads isolate evidence only after a successful isolate gate. Therefore no maximum artifact, completed assembly, filter/QC result, DSK output, or independent maximum-isolate k-mer verification survives. The downstream corrected-SEER n=8 job was skipped. A successful n=8 result is not claimed.
+
+Machine-readable terminal evidence: `resource_panel_n8_failure.json`.
