@@ -1,0 +1,167 @@
+name: Experiment 001 n8 resource gate
+
+on:
+  push:
+    paths:
+      - ".github/workflows/experiment001-n8.yml"
+      - "experiments/001_gonococcus_eucast_vs_clsi/run_resource_panel_isolate.py"
+      - "experiments/001_gonococcus_eucast_vs_clsi/verify_n8_features.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: experiment001-n8-resource-gate
+  cancel-in-progress: false
+
+jobs:
+  isolate:
+    name: isolate-${{ matrix.label }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        label: [min, p10, p25, median, p75, p90, p99, max]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install runtime dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl libboost-program-options-dev libgzstream-dev zlib1g-dev
+
+      - name: Fetch pinned tools and verify archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .panel/tools
+          cd .panel/tools
+          curl -fL --retry 5 --retry-all-errors -o spades.tgz https://github.com/ablab/spades/releases/download/v4.3.0/SPAdes-4.3.0-Linux.tar.gz
+          echo "e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034  spades.tgz" | sha256sum -c -
+          tar -xzf spades.tgz
+          curl -fL --retry 5 --retry-all-errors -o dsk.tgz https://github.com/GATB/dsk/releases/download/v2.3.3/dsk-v2.3.3-bin-Linux.tar.gz
+          echo "626a4663f70323a80834c013f1d9dcb4a3b3a73a1c9ab5da95a013783d81b0f6  dsk.tgz" | sha256sum -c -
+          tar -xzf dsk.tgz
+          curl -fL --retry 5 --retry-all-errors -o quast.tgz https://github.com/ablab/quast/releases/download/quast_5.2.0/quast-5.2.0.tar.gz
+          echo "ccd911087cfa254ad4b8eadac4f95d4685e44c3996f5516b8e0ce6f7cfa7e0db  quast.tgz" | sha256sum -c -
+          tar -xzf quast.tgz
+          rm -f spades.tgz dsk.tgz quast.tgz
+
+      - name: Run bounded isolate gate
+        run: |
+          mkdir -p .panel/work
+          python experiments/001_gonococcus_eucast_vs_clsi/run_resource_panel_isolate.py \
+            --label "${{ matrix.label }}" --work .panel/work --tools .panel/tools
+
+      - name: Upload verified isolate evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment001-n8-${{ matrix.label }}
+          path: |
+            .panel/work/*/filtered.fasta
+            .panel/work/*/kmers.txt
+            .panel/work/*/isolate_result.json
+            .panel/work/*/spades.log
+            .panel/work/*/quast.log
+            .panel/work/*/dsk.log
+            .panel/work/*/dsk2ascii.log
+          if-no-files-found: error
+          retention-days: 14
+
+  combine:
+    name: corrected-SEER-n8
+    needs: isolate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git g++ libboost-program-options-dev libgzstream-dev zlib1g-dev
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: experiment001-n8-*
+          path: .panel/artifacts
+
+      - name: Compile source-identified corrected SEER
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone https://github.com/johnlees/seer.git .panel/seer
+          cd .panel/seer
+          git checkout --detach a6bd405754726467a93f39820fb4719457395ae7
+          test "$(git rev-parse HEAD)" = "a6bd405754726467a93f39820fb4719457395ae7"
+          test "$(git hash-object src/combineKmers.cpp)" = "54cb1acb01abf3285e6255f4e6f8480f2a27b4a3"
+          g++ -O3 -std=c++11 -Isrc -o ../combineKmers-a6bd405 \
+            src/combineInit.cpp src/combineCmdLine.cpp src/combineKmers.cpp \
+            -lgzstream -lz -lboost_program_options
+
+      - name: Build fixed n8 sample list
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib
+          labels=["min","p10","p25","median","p75","p90","p99","max"]
+          rows=json.loads(pathlib.Path("experiments/001_gonococcus_eucast_vs_clsi/resource_panel_selection.json").read_text())
+          by={r["label"]:r for r in rows}
+          out=[]
+          for label in labels:
+              run=by[label]["run_accession"]
+              hits=list(pathlib.Path(".panel/artifacts").glob(f"experiment001-n8-{label}/**/kmers.txt"))
+              if len(hits)!=1: raise SystemExit(f"{label}: expected one kmers.txt, found {len(hits)}")
+              out.append(f"{run}\t{hits[0].resolve()}")
+          pathlib.Path(".panel/n8_samples.tsv").write_text("\n".join(out)+"\n")
+          PY
+
+      - name: Run corrected SEER n8 under existing ceiling
+        run: |
+          mkdir -p .panel/combine
+          python experiments/001_gonococcus_eucast_vs_clsi/bounded_stage.py \
+            --name panel8_combine_corrected --cwd "$PWD" --watch-dir .panel/combine \
+            --evidence .panel/combine/combine.json --timeout 900 -- \
+            .panel/combineKmers-a6bd405 -r .panel/n8_samples.tsv \
+            -o .panel/combine/panel8_combined --min_samples 2
+
+      - name: Independently verify every n8 feature and tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' > .panel/input_args.txt
+          import json, pathlib
+          labels=["min","p10","p25","median","p75","p90","p99","max"]
+          rows=json.loads(pathlib.Path("experiments/001_gonococcus_eucast_vs_clsi/resource_panel_selection.json").read_text())
+          by={r["label"]:r for r in rows}
+          for label in labels:
+              run=by[label]["run_accession"]
+              p=next(pathlib.Path(".panel/artifacts").glob(f"experiment001-n8-{label}/**/kmers.txt"))
+              print(f"{run}={p.resolve()}")
+          PY
+          mapfile -t INPUTS < .panel/input_args.txt
+          python experiments/001_gonococcus_eucast_vs_clsi/verify_n8_features.py \
+            --inputs "${INPUTS[@]}" \
+            --combined .panel/combine/panel8_combined.gz \
+            --out .panel/combine/verification_n8.json
+
+      - name: Assemble non-committing evidence bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp experiments/001_gonococcus_eucast_vs_clsi/resource_panel_selection.json .panel/combine/
+          sha256sum .panel/combine/panel8_combined.gz > .panel/combine/panel8_combined.sha256
+          sha256sum .panel/combine/verification_n8.json > .panel/combine/verification_n8.sha256
+
+      - name: Upload n8 evidence for independent acceptance
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment001-n8-final-evidence
+          path: .panel/combine/
+          if-no-files-found: error
+          retention-days: 30
