@@ -1,0 +1,229 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-protocol-v1",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1",
+  "date_frozen": "2026-09-30",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_failed_gate": {
+    "commit": "9627020e44157c717b4fad2589ed47830958efd0",
+    "workflow_run_id": 36665031444,
+    "status": "FAILED_UNVERIFIED",
+    "must_not_be_reinterpreted": true
+  },
+  "ceiling_intent_audit": {
+    "commit": "4c7cb7e710ec1d221c9d84ef54b1116e5ec0033b",
+    "old_ceiling_seconds": 2700,
+    "classification": "UNKNOWN"
+  },
+  "purpose": "Determine whether ERR223688 can complete the unchanged declared reconstruction pipeline inside a separately prospectively defined containment envelope.",
+  "separation": {
+    "is_n8_rerun": false,
+    "is_n8_retry": false,
+    "changes_old_gate": false,
+    "execution_authorized_by_protocol_commit": false,
+    "execution_requires_separate_explicit_step": true
+  },
+  "target_isolate": {
+    "label": "max",
+    "rank_zero_based": 1101,
+    "cohort_size": 1102,
+    "run_accession": "ERR223688",
+    "library_layout": "PAIRED",
+    "total_compressed_bytes": 1078536686,
+    "inputs": [
+      {
+        "name": "ERR223688_1.fastq.gz",
+        "ena_url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223688/ERR223688_1.fastq.gz",
+        "expected_bytes": 529561823,
+        "expected_md5": "7cec28e9c5123b8a4ec8dee92efe71c6"
+      },
+      {
+        "name": "ERR223688_2.fastq.gz",
+        "ena_url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223688/ERR223688_2.fastq.gz",
+        "expected_bytes": 548974863,
+        "expected_md5": "a7f04fcc8cddc16b3d54f267d551528c"
+      }
+    ]
+  },
+  "scientific_invariants": {
+    "spades": {
+      "version": "4.3.0",
+      "archive_sha256": "e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034",
+      "mode": "default paired-read assembly",
+      "threads": 2,
+      "memory_parameter_gb": 8,
+      "fixed_arguments": ["-t", "2", "-m", "8"],
+      "command_template": ["spades.py","-1","ERR223688_1.fastq.gz","-2","ERR223688_2.fastq.gz","-o","spades","-t","2","-m","8"]
+    },
+    "filter": {
+      "minimum_contig_length_bp": 200,
+      "minimum_spades_header_coverage": 10,
+      "logic": "length>=200 AND SPAdes header _cov_>=10"
+    },
+    "quast": {
+      "version": "5.2.0",
+      "arguments": ["--min-contig", "200"],
+      "command_template": ["quast.py","--min-contig","200","--no-plots","--no-html","--no-icarus","-t","2","-l","raw,filtered","-o","quast","spades/contigs.fasta","filtered.fasta"],
+      "archive_sha256": "ccd911087cfa254ad4b8eadac4f95d4685e44c3996f5516b8e0ce6f7cfa7e0db"
+    },
+    "dsk": {
+      "version": "2.3.3",
+      "kmer_size": 31,
+      "abundance_minimum": 1,
+      "max_memory_mb": 8000,
+      "command_template": ["dsk","-file","filtered.fasta","-kmer-size","31","-abundance-min","1","-out","kmers","-out-tmp","dsk_tmp","-max-memory","8000"],
+      "dsk2ascii_command_template": ["dsk2ascii","-file","kmers.h5","-out","kmers.txt"],
+      "archive_sha256": "626a4663f70323a80834c013f1d9dcb4a3b3a73a1c9ab5da95a013783d81b0f6"
+    },
+    "independent_oracle": {
+      "canonical_order": "A<C<T<G",
+      "reverse_complement_canonicalization": true,
+      "requires_exact_set_and_abundance_equality": true
+    },
+    "later_combine_revision": "a6bd405754726467a93f39820fb4719457395ae7",
+    "combine_in_this_experiment": false
+  },
+  "surviving_resource_curve": [
+    {"rank":"min","run_accession":"ERR1067833","compressed_input_bytes":70656305,"spades_wall_seconds":299.528,"peak_rss_kib":1279840,"peak_watched_disk_bytes":581808411},
+    {"rank":"p10","run_accession":"ERR1067740","compressed_input_bytes":177141208,"spades_wall_seconds":653.872,"peak_rss_kib":1523880,"peak_watched_disk_bytes":1431877181},
+    {"rank":"p25","run_accession":"ERR1067765","compressed_input_bytes":226917919,"spades_wall_seconds":1074.414,"peak_rss_kib":1762324,"peak_watched_disk_bytes":1836688542},
+    {"rank":"median","run_accession":"ERR855281","compressed_input_bytes":325143380,"spades_wall_seconds":666.621,"peak_rss_kib":1279508,"peak_watched_disk_bytes":1401847618},
+    {"rank":"p75","run_accession":"ERR855022","compressed_input_bytes":355223967,"spades_wall_seconds":847.386,"peak_rss_kib":1279612,"peak_watched_disk_bytes":1516533857},
+    {"rank":"p90","run_accession":"ERR854935","compressed_input_bytes":389562829,"spades_wall_seconds":846.077,"peak_rss_kib":1704780,"peak_watched_disk_bytes":1613270878},
+    {"rank":"p99","run_accession":"ERR223664","compressed_input_bytes":771033917,"spades_wall_seconds":2365.749,"peak_rss_kib":2097024,"peak_watched_disk_bytes":2429652499}
+  ],
+  "censored_maximum_observation": {
+    "wall_seconds": 2702.424,
+    "old_timeout_seconds": 2700,
+    "timed_out": true,
+    "exit_code": -15,
+    "sampled_peak_rss_kib": 2518544,
+    "sampled_peak_watched_disk_bytes": 3415816271,
+    "completed": false
+  },
+  "scaling_analysis": {
+    "facts": {
+      "successful_wall_seconds_min": 299.528,
+      "successful_wall_seconds_max": 2365.749,
+      "successful_wall_fold_range": 7.8982565904,
+      "pearson_input_wall": 0.9208810213,
+      "spearman_input_wall": 0.75,
+      "seven_point_ols_r_squared_descriptive_only": 0.8480218554,
+      "first_six_ols_r_squared": 0.3854232655,
+      "first_six_prediction_at_p99_seconds": 1416.3649291123,
+      "p99_observed_minus_first_six_prediction_seconds": 949.3840708877,
+      "runtime_nonmonotone_pairs": [
+        {"smaller":"p25","larger":"median","smaller_seconds":1074.414,"larger_seconds":666.621},
+        {"smaller":"p75","larger":"p90","smaller_seconds":847.386,"larger_seconds":846.077}
+      ],
+      "p99_to_max_input_difference_bytes": 307502769,
+      "maximum_to_p99_input_ratio": 1.3988187319,
+      "p99_margin_below_old_ceiling_seconds": 334.251,
+      "naive_proportional_reference_seconds_not_prediction": 3309.2540160822
+    },
+    "inferences": [
+      "Compressed input size is informative but insufficient as a completion-runtime predictor for these seven isolates.",
+      "A finite additional observation window can be justified without asserting expected completion time.",
+      "A 5400-second containment limit supplies one additional 2700-second interval beyond the established censor point."
+    ],
+    "unknowns": [
+      "Whether ERR223688 will finish inside 5400 seconds.",
+      "Remaining runtime after the old censor point.",
+      "Completed assembly, QC, DSK output and canonical 31-mer count.",
+      "Which internal SPAdes stage would have completed next.",
+      "Whole-cohort feasibility and historical Hicks feature equivalence."
+    ]
+  },
+  "execution_environment": {
+    "provider": "GitHub Actions",
+    "repository_visibility": "public",
+    "runner_label": "ubuntu-24.04",
+    "architecture": "x64",
+    "maximum_compute_class": {"cpu_vcpus":4,"ram_gb":16,"ssd_gb":14},
+    "spades_cpu_threads": 2,
+    "must_record_at_preflight": ["ImageOS","ImageVersion","runner_name","cpu_model","cpu_count","total_ram","filesystem_capacity","filesystem_free_bytes","repository_commit","protocol_file_hashes","tool_hashes"],
+    "official_sources": [
+      "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "https://docs.github.com/en/actions/reference/limits"
+    ]
+  },
+  "execution_envelope": {
+    "minimum_free_disk_before_download_bytes": 12884901888,
+    "sample_interval_seconds": 0.5,
+    "sampled_process_tree_rss_kill_ceiling_kib": 10485760,
+    "watched_spades_stage_disk_kill_ceiling_bytes": 8589934592,
+    "spades_wall_ceiling_seconds": 5400,
+    "quast_wall_ceiling_seconds": 300,
+    "dsk_wall_ceiling_seconds": 900,
+    "dsk2ascii_wall_ceiling_seconds": 300,
+    "independent_oracle_wall_ceiling_seconds": 900,
+    "whole_job_ceiling_seconds": 9000,
+    "termination": {"first_signal":"SIGTERM","grace_seconds":10,"final_signal":"SIGKILL"},
+    "rationale": {
+      "wall": "One additional 2700-second observation interval beyond the established censor point; not a runtime prediction.",
+      "rss": "10 GiB is 4.163 times the censored sampled peak and leaves nominal headroom within the 16 GB runner; it is a containment cap, not predicted need.",
+      "stage_disk": "8 GiB is 2.515 times the censored sampled stage peak and reserves nominal runner disk for reads, tools, evidence and packaging.",
+      "compute_class": "No larger runner than the standard public ubuntu-24.04 class is permitted; SPAdes remains restricted to two threads and -m 8."
+    }
+  },
+  "artifact_retention_policy": {
+    "upload_condition": "always",
+    "retention_days": 30,
+    "upload_success_required": true,
+    "always_required": [
+      "outcome.json",
+      "input_integrity.json",
+      "environment_preflight.json",
+      "bounded_stage_json_and_logs",
+      "spades_text_logs_params_warnings_pipeline_state",
+      "recursive_path_size_sha256_manifest",
+      "all_existing_primary_scientific_outputs",
+      "artifact_archive_digest_and_size_ledger"
+    ],
+    "primary_scientific_outputs": ["contigs.fasta","scaffolds.fasta","assembly_graph_and_paths","filtered.fasta","filter_metrics.json","quast_outputs","dsk_hdf5","dsk_ascii","independent_verification.json"],
+    "excluded_but_identity_retained": ["raw_fastq_files","replaceable_downloaded_tool_archives","nonprimary_temporary_spades_binary_scratch"],
+    "exclusion_rule": "Excluded files must retain exact source identity and hashes or a recursive manifest entry as applicable.",
+    "post_audit_commit_required": true
+  },
+  "outcome_rules": {
+    "checksum_mismatch": "FAIL_INPUT_INTEGRITY",
+    "spades_timeout": "FAIL_SPADES_TIMEOUT",
+    "oom_or_rss_breach": "FAIL_MEMORY_ENVELOPE",
+    "disk_breach_or_exhaustion": "FAIL_STORAGE_ENVELOPE",
+    "spades_nonzero_other": "FAIL_SPADES_NONZERO",
+    "spades_missing_or_empty_contigs": "FAIL_SPADES_OUTPUT",
+    "filter_or_quast_failure": "FAIL_QC_STAGE",
+    "dsk_or_dsk2ascii_failure": "FAIL_DSK_STAGE",
+    "dsk_equality_failure": "FAIL_DSK_EQUALITY",
+    "required_evidence_missing": "FAIL_EVIDENCE_RETENTION"
+  },
+  "retry_policy": {
+    "silent_retry": false,
+    "automatic_retry": false,
+    "manual_second_attempt_inside_experiment": false,
+    "parameter_change_after_start": false
+  },
+  "success_criteria": [
+    "Exact input bytes and MD5 values match.",
+    "SPAdes exits 0 within every prospective resource bound.",
+    "A nonempty completed assembly survives durably.",
+    "Filter FASTA and metrics plus QUAST output survive durably.",
+    "DSK HDF5 and ASCII survive durably.",
+    "Independent canonical verification has missing=0, extra=0, duplicate_rows=0 and abundance_mismatches=0.",
+    "All required logs, hashes, measurements, manifests and artifact digests survive durably.",
+    "Independent audit accepts the evidence."
+  ],
+  "failure_criteria": [
+    "Any timeout, OOM, RSS cap breach, disk cap breach or disk exhaustion.",
+    "Any nonzero SPAdes exit, checksum mismatch, missing required output or failed DSK equality.",
+    "Any missing required durable evidence or failed artifact upload."
+  ],
+  "post_success_authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "only_possible_next_gate": "A separately named prospectively frozen n8 combine protocol using all eight durable isolate outputs, corrected SEER a6bd405754726467a93f39820fb4719457395ae7 and an exact independent oracle."
+  },
+  "forbidden_downstream_actions": ["reinterpret_original_n8_as_pass","corrected_seer_n8_without_new_protocol","full_cohort_execution","model_training","dashboard","product_expansion","other_organism","BioLlama"],
+  "result": null
+}

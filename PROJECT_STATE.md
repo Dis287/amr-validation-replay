@@ -198,6 +198,29 @@ in a future commit. See
 `experiments/001_gonococcus_eucast_vs_clsi/CEILING_INTENT_DETERMINATION.md` and
 `ceiling_intent_determination.json`.
 
+## Prospective maximum-isolate resource resolution
+
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V1` is now **FROZEN / NOT EXECUTED**. This is
+a separately named prospective infrastructure experiment for `ERR223688`; it
+does not alter or retry the failed n=8 gate. The protocol preserves the exact
+ENA inputs and hashes, SPAdes 4.3.0 default paired-read assembly with `-t 2 -m
+8`, the declared filter/QUAST/DSK procedures, and exact independent canonical
+31-mer verification.
+
+The seven surviving resource points are nonmonotone in runtime versus compressed
+input size, so no linear completion prediction is accepted. The new 5,400-second
+SPAdes limit is a containment decision providing one additional 2,700-second
+observation interval beyond the old censor point, not an estimate of required
+runtime. The compute class, operational RSS/disk caps, no-retry law, explicit
+failure taxonomy, and always-retain evidence bundle are frozen in
+`experiments/001_gonococcus_eucast_vs_clsi/MAX_ISOLATE_RESOURCE_RESOLUTION_V1.md`
+and `max_isolate_resource_resolution_v1.json`.
+
+This protocol commit does **not** authorize execution. Execution is a separate
+next step. Even a future PASS would leave the original n=8 gate failed and would
+not authorize corrected-SEER n=8, the 1,102-run reconstruction, or model
+training.
+
 ## Active task — Experiment 001 only
 
 **Objective:** independently recompute balanced accuracy under EUCAST vs CLSI with the Hicks model/evaluation logic as faithfully as possible.

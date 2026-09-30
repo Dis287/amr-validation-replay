@@ -103,3 +103,21 @@ The n=8 failure remains unchanged. Do not rerun `ERR223688`, change the old
 ceiling, run corrected-SEER n=8, authorize the full cohort, or begin model
 training. See `CEILING_INTENT_DETERMINATION.md` and
 `ceiling_intent_determination.json`.
+
+## Separately named prospective max-isolate protocol (2026-09-30)
+
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V1` is **FROZEN / NOT EXECUTED**. It is a new
+infrastructure experiment, not a reinterpretation or retry of the failed n=8
+gate. It preserves `ERR223688`, both input hashes, SPAdes 4.3.0 with `-t 2 -m
+8`, the filter/QUAST/DSK procedures, and exact independent DSK verification.
+
+The prospective SPAdes wall containment limit is 5,400 seconds: one additional
+2,700-second observation interval beyond the old censor point. This is not a
+prediction that the isolate will finish. Compute, RSS, disk, outcome handling,
+retention, and no-retry rules are frozen in
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V1.md` and
+`max_isolate_resource_resolution_v1.json`.
+
+Protocol commit alone does not authorize execution. The original n=8 failure,
+corrected-SEER n=8 prohibition, full-cohort prohibition, and model-training
+prohibition remain unchanged.
