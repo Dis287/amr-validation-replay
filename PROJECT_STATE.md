@@ -164,6 +164,23 @@ divergence signal, not as proof that the published isolate was ineligible.
 
 **Resource decision:** full 1,102-run reconstruction is not yet authorized by feasibility evidence. The single run demonstrates bounded assembly, but runtime variation, aggregate feature union, DSK/SEER behavior, and Kover/ranger memory and compute remain unmeasured. Do not download the entire dataset on a one-isolate extrapolation.
 
+## Durable n=8 execution state (2026-09-30)
+
+The transient workspace path is no longer authorized for the n=8 gate because a prior p99 run was terminated by the execution environment before the declared 2,700-second SPAdes ceiling and its transient evidence was lost. Vanished p75/p90/p99 outputs are VOID and are not reconstructed from memory.
+
+A durable GitHub Actions execution envelope is committed at:
+- per-isolate runner: `28b3595a3eaf13388081d00dcd62fcebd023a8ac`
+- independent n=8 verifier: `b3607d790935548d74c9d533b8b355a2184b3e45`
+- workflow: `4a6e83c89a40ddb6dc82dbcaf9cea226549c1db3`
+
+Workflow run: `36665031444`.
+
+Current acceptance law:
+- `641b66604c5a484c2e9a20300a192b9068bfd74c` (n=4) remains the last accepted scientific checkpoint.
+- n=8 is **UNVERIFIED** until all eight isolate jobs finish, artifacts are durably retained, corrected-SEER n=8 completes, and the independent verifier returns zero missing/extra/duplicate/tag/abundance errors.
+- The workflow does not auto-commit scientific results. It uploads evidence for independent acceptance.
+- Full 1,102-run reconstruction and model training remain **UNAUTHORIZED**.
+
 ## Active task — Experiment 001 only
 
 **Objective:** independently recompute balanced accuracy under EUCAST vs CLSI with the Hicks model/evaluation logic as faithfully as possible.
