@@ -86,3 +86,20 @@ The maximum rank `ERR223688` failed in bounded SPAdes 4.3.0 with unchanged `-t 2
 The workflow uploads isolate evidence only after a successful isolate gate. Therefore no maximum artifact, completed assembly, filter/QC result, DSK output, or independent maximum-isolate k-mer verification survives. The downstream corrected-SEER n=8 job was skipped. A successful n=8 result is not claimed.
 
 Machine-readable terminal evidence: `resource_panel_n8_failure.json`.
+
+## Ceiling-intent determination (2026-09-30)
+
+Classification: **UNKNOWN**.
+
+Committed history proves that the 2,700-second SPAdes ceiling was fixed and
+enforced, but it does not prove whether the value was a resource-feasibility
+acceptance threshold or only an operational safety bound. The first relevant
+committed occurrence is `e6628e6f82787afd2d34d7d5a092ca933eb376ef`, where the
+ceiling, bounded runner, and already measured n=2 results enter together without
+a value-selection rationale. Later commits preserve and enforce the value but do
+not resolve its intent.
+
+The n=8 failure remains unchanged. Do not rerun `ERR223688`, change the old
+ceiling, run corrected-SEER n=8, authorize the full cohort, or begin model
+training. See `CEILING_INTENT_DETERMINATION.md` and
+`ceiling_intent_determination.json`.

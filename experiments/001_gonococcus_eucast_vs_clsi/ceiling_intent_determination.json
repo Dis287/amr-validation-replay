@@ -1,0 +1,68 @@
+{
+  "schema": "amr-ceiling-intent-determination-v1",
+  "date": "2026-09-30",
+  "repository_head_examined": "9627020e44157c717b4fad2589ed47830958efd0",
+  "subject": {
+    "stage": "SPAdes",
+    "ceiling_seconds": 2700,
+    "failed_run": "36665031444",
+    "failed_isolate": "ERR223688"
+  },
+  "allowed_classifications": [
+    "VERIFIED_FEASIBILITY_THRESHOLD",
+    "VERIFIED_SAFETY_BOUND",
+    "UNKNOWN"
+  ],
+  "classification": "UNKNOWN",
+  "evidence": [
+    {
+      "commit": "265b1f8ac9c232a9daac999c6e73bbea5651f4de",
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/FEATURE_GENERATION_GATE.md",
+      "finding": "Requires resource curves and a clear safety margin but contains no 2700-second ceiling and no feasibility-versus-safety classification."
+    },
+    {
+      "commit": "e6628e6f82787afd2d34d7d5a092ca933eb376ef",
+      "paths": [
+        "experiments/001_gonococcus_eucast_vs_clsi/RESOURCE_PANEL_CHECKPOINT.md",
+        "experiments/001_gonococcus_eucast_vs_clsi/bounded_stage.py",
+        "experiments/001_gonococcus_eucast_vs_clsi/resource_panel_n2.json"
+      ],
+      "finding": "First relevant committed occurrence of 2700; enforcement and n=2 results are committed together, without a value-selection rationale or intent classification."
+    },
+    {
+      "commit": "641b66604c5a484c2e9a20300a192b9068bfd74c",
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/RESOURCE_PANEL_CHECKPOINT.md",
+      "finding": "Preserves the ceiling through n=4 but does not state its original intent."
+    },
+    {
+      "commit": "28b3595a3eaf13388081d00dcd62fcebd023a8ac",
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/run_resource_panel_isolate.py",
+      "finding": "Hard-codes timeout enforcement at 2700 seconds without rationale."
+    },
+    {
+      "commit": "4a6e83c89a40ddb6dc82dbcaf9cea226549c1db3",
+      "path": ".github/workflows/experiment001-n8.yml",
+      "finding": "Runs the bounded n=8 gate with the unchanged runner but does not classify the stage ceiling's intent."
+    },
+    {
+      "commit": "9627020e44157c717b4fad2589ed47830958efd0",
+      "paths": [
+        "PROJECT_STATE.md",
+        "experiments/001_gonococcus_eucast_vs_clsi/RESOURCE_PANEL_CHECKPOINT.md",
+        "experiments/001_gonococcus_eucast_vs_clsi/resource_panel_n8_failure.json"
+      ],
+      "finding": "Establishes failure under the enforced ceiling, not the reason the ceiling value was selected."
+    }
+  ],
+  "reason": "Committed evidence proves a fixed enforced gate condition but does not distinguish a resource-feasibility acceptance threshold from an operational safety bound.",
+  "decisions": {
+    "n8_status": "FAILED_UNVERIFIED",
+    "rerun_err223688_authorized": false,
+    "change_old_ceiling_authorized": false,
+    "replacement_experiment_authorized": false,
+    "corrected_seer_n8_authorized": false,
+    "full_cohort_authorized": false,
+    "model_training_authorized": false,
+    "next_requirement": "Freeze a separately named prospective protocol in a future commit before any rerun."
+  }
+}

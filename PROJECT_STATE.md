@@ -186,6 +186,18 @@ Acceptance law:
 - Full 1,102-run reconstruction and model training remain **UNAUTHORIZED**.
 - Exact machine-readable failure evidence is in `experiments/001_gonococcus_eucast_vs_clsi/resource_panel_n8_failure.json`.
 
+Ceiling-intent audit: **UNKNOWN**. Repository history proves that the 2,700-second
+SPAdes ceiling was fixed and enforced, but it does not prove whether that value
+was a resource-feasibility acceptance threshold or an operational safety bound.
+The first relevant committed occurrence is
+`e6628e6f82787afd2d34d7d5a092ca933eb376ef`, which commits the ceiling,
+bounded runner, and already measured n=2 results together without a
+value-selection rationale. No max-isolate rerun or replacement experiment is
+authorized until a separately named prospective protocol is explicitly frozen
+in a future commit. See
+`experiments/001_gonococcus_eucast_vs_clsi/CEILING_INTENT_DETERMINATION.md` and
+`ceiling_intent_determination.json`.
+
 ## Active task — Experiment 001 only
 
 **Objective:** independently recompute balanced accuracy under EUCAST vs CLSI with the Hicks model/evaluation logic as faithfully as possible.
