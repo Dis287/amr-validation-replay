@@ -1,0 +1,105 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-failure-audit-v2",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V2",
+  "workflow_run": {
+    "id": 38600205769,
+    "event": "workflow_dispatch",
+    "head_sha": "4bea3506388d5b48b579caf3aae7aed374420f69",
+    "run_number": 1,
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-10-14T16:41:23Z",
+    "updated_at": "2026-10-14T17:42:16Z"
+  },
+  "outcome": {
+    "status": "FAIL",
+    "classification": "FAIL_DSK_STAGE",
+    "first_failing_stage": "dsk",
+    "candidate_pass": false,
+    "no_retry_occurred": true,
+    "harness_wall_seconds": 3632.390405
+  },
+  "passed_stages": {
+    "preflight": true,
+    "input_integrity": true,
+    "spades": true,
+    "filter": true,
+    "quast": true
+  },
+  "spades": {
+    "exit_code": 0,
+    "wall_seconds": 2934.196472,
+    "wall_ceiling_seconds": 5400,
+    "peak_process_tree_rss_kib": 2517740,
+    "rss_ceiling_kib": 10485760,
+    "peak_watched_disk_bytes": 3413998978,
+    "disk_ceiling_bytes": 8589934592,
+    "peak_working_set_bytes": 5551425952,
+    "working_set_ceiling_bytes": 15032385536,
+    "kernel_oom_evidence": false,
+    "filesystem_enospc_evidence": false,
+    "termination": null,
+    "trigger": null
+  },
+  "filter_and_quast": {
+    "input_contigs": 431,
+    "retained_contigs": 163,
+    "filtered_fasta_bytes": 2128920,
+    "filtered_fasta_sha256": "ee1a643a185d5dcc0e926c9c42da79e67054e340967afb082b36eb55e299dbc5",
+    "filtered_n50_bp": 40334,
+    "quast_exit_code": 0
+  },
+  "dsk": {
+    "exit_code": 1,
+    "wall_seconds": 0.534487,
+    "trigger": null,
+    "kernel_oom_evidence": false,
+    "filesystem_enospc_evidence": false,
+    "log_error": "cannot open .../work/dsk_tmp/trashme_2738_superK_partitions/superKparts.0 No such file or directory",
+    "harness_created_declared_temp_directory": false,
+    "dsk_ascii_exists": false,
+    "independent_oracle_ran": false,
+    "surviving_hdf5_accepted": false
+  },
+  "root_cause": {
+    "classification": "HARNESS_PREPARATION_DEFECT",
+    "established": "The V2 harness supplied a dsk_tmp path without creating that directory; DSK immediately failed while opening a child path.",
+    "comparison": "run_resource_panel_isolate.py explicitly creates dsk_tmp before invoking DSK.",
+    "not_established": [
+      "DSK computational failure on ERR223688",
+      "DSK timeout",
+      "OOM",
+      "disk exhaustion",
+      "biological or QC failure",
+      "canonical 31-mer correctness"
+    ]
+  },
+  "artifacts": {
+    "full_evidence": {
+      "id": 11916757769,
+      "size_in_bytes": 4104494,
+      "zip_sha256": "9450403b08412cab70dc18a6b3716d896c9ea40faca14d9fc122e1a03a1130df",
+      "internal_tar_sha256": "d6940d435f1cdbdcbe553040ae4c70c6db145783e8786e704ece148aaec0206d",
+      "internal_tar_file_count": 42,
+      "upload_succeeded": true,
+      "expires_at": "2026-11-13T17:42:10Z"
+    },
+    "final_outcome": {
+      "id": 11916947708,
+      "size_in_bytes": 1732,
+      "zip_sha256": "b5a6fb33502a7aafcdd6ae8c05ed501f470d287b9dbbd2cf6a0f63006520141e",
+      "upload_succeeded": true,
+      "expires_at": "2026-11-13T17:42:12Z"
+    },
+    "retained_primary_file_count": 31,
+    "retained_primary_manifest_mismatches": 0
+  },
+  "authorization_boundary": {
+    "v2_must_not_be_rerun_or_reclassified": true,
+    "original_n8_gate_remains_failed": true,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false
+  }
+}

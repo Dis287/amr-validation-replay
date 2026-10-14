@@ -251,6 +251,26 @@ corrected-SEER n=8, full-cohort execution and model training remain
 unauthorized. Only the V2 workflow may be dispatched after this commit is read
 back and accepted.
 
+V2 was dispatched once as GitHub Actions run `38600205769` from commit
+`4bea3506388d5b48b579caf3aae7aed374420f69` and is now terminal
+`FAIL_DSK_STAGE`. Exact FASTQ integrity passed. SPAdes completed with exit zero
+in 2,934.196472 seconds inside the 5,400-second ceiling, with no recorded OOM,
+disk exhaustion, timeout, or envelope breach. Filtering and QUAST completed;
+filtered N50 was 40,334 bp. DSK then exited `1` after 0.534487 seconds because
+the harness supplied `work/dsk_tmp` to `-out-tmp` without creating that
+directory. No DSK ASCII output or independent-oracle result exists, so the
+surviving HDF5 is not accepted. V2 must not be rerun or reclassified. See
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V2_FAILURE.md` and
+`max_isolate_resource_resolution_v2_failure.json`.
+
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V3` is **FROZEN / NOT EXECUTED**. It is a
+separately named prospective end-to-end experiment. It preserves every V2/V1
+scientific identity, command and resource limit. Its sole harness correction is
+to create the already-declared `work/dsk_tmp` directory immediately before DSK.
+The workflow is manual-only and single-attempt; committing it does not execute
+it. Even a future V3 pass leaves the original n=8, V1, and V2 records failed and
+authorizes only freezing a separate corrected-SEER n=8 combine protocol.
+
 ## Active task — Experiment 001 only
 
 **Objective:** independently recompute balanced accuracy under EUCAST vs CLSI with the Hicks model/evaluation logic as faithfully as possible.

@@ -1,0 +1,56 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-protocol-v3",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V3",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_harness_failure": {
+    "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V2",
+    "workflow_run_id": 38600205769,
+    "head_sha": "4bea3506388d5b48b579caf3aae7aed374420f69",
+    "classification": "FAIL_DSK_STAGE",
+    "root_cause": "declared dsk_tmp directory was not created before DSK",
+    "must_not_be_rerun_or_reclassified": true
+  },
+  "inherits_protocol": {
+    "v1_markdown": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1.md",
+    "v1_markdown_sha256": "f89571d25fd7a4f9c23675c93b818032ffe114e8e9699e116290649da0c8eebd",
+    "v1_json": "max_isolate_resource_resolution_v1.json",
+    "v1_json_sha256": "48b346e2bfa4eefbbd2db9553fb348b977c17c718e473d434a78e523b3b74f8a",
+    "v2_markdown": "MAX_ISOLATE_RESOURCE_RESOLUTION_V2.md",
+    "v2_markdown_sha256": "cfb1e692b794cc9e0f5742e7120d39586d3edabb242c15fcbc195cca07cd6009",
+    "v2_json": "max_isolate_resource_resolution_v2.json",
+    "v2_json_sha256": "f9f13e0945fe113752c84bbfaca78559a9b44db3fc729929b169c50870044252",
+    "scientific_changes": [],
+    "resource_limit_changes": []
+  },
+  "target_isolate": "ERR223688",
+  "sole_harness_correction": {
+    "operation": "create work/dsk_tmp before DSK invocation",
+    "dsk_command_changed": false,
+    "out_tmp_value_changed": false,
+    "scientific_parameter_changed": false,
+    "resource_parameter_changed": false
+  },
+  "retry_policy": {
+    "workflow_dispatch_only": true,
+    "single_attempt": true,
+    "automatic_retry": false,
+    "silent_retry": false,
+    "parameter_mutation_after_start": false,
+    "reuse_v2_partial_hdf5": false
+  },
+  "artifact_retention": {
+    "condition": "always",
+    "days": 30,
+    "upload_success_required": true,
+    "same_required_evidence_as_v2": true
+  },
+  "authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "v1_remains_failed": true,
+    "v2_remains_failed": true,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "only_possible_post_pass_step": "freeze a separate corrected-SEER n8 combine protocol"
+  }
+}

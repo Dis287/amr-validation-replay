@@ -1,0 +1,79 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-v3-harness-audit-v1",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V3",
+  "status": "STATIC_AUDIT_PASS_NOT_EXECUTED",
+  "parent_commit": "4bea3506388d5b48b579caf3aae7aed374420f69",
+  "requirements": [
+    {
+      "protocol_requirement": "separate prospective identity",
+      "frozen_value": "MAX_ISOLATE_RESOURCE_RESOLUTION_V3",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v3.yml; run_max_isolate_resource_resolution_v3.py",
+      "implementation_line_or_key": "workflow name/job/concurrency; EXPERIMENT_ID; V3 single-attempt guard",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "same target, inputs, scientific tools, commands and resource limits",
+      "frozen_value": "inherit V2 and V1 without scientific or resource changes",
+      "implementation_file": "run_max_isolate_resource_resolution_v3.py",
+      "implementation_line_or_key": "TARGET; TOOLS; protocol hashes; commands; bounded_stage calls",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "sole correction creates declared DSK temporary directory",
+      "frozen_value": "create work/dsk_tmp immediately before unchanged DSK command",
+      "implementation_file": "run_max_isolate_resource_resolution_v3.py",
+      "implementation_line_or_key": "dsk_tmp path; dsk_tmp.mkdir(parents=True, exist_ok=False); commands.dsk -out-tmp",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "manual-only, one attempt, no retry",
+      "frozen_value": "workflow_dispatch only; attempt=1; prior V3 run list empty",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v3.yml; run_max_isolate_resource_resolution_v3.py",
+      "implementation_line_or_key": "on.workflow_dispatch; prior_dispatch_guard V3 workflow",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "durable evidence on every terminal path",
+      "frozen_value": "if: always(); 30 days; upload outcomes enforced",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v3.yml",
+      "implementation_line_or_key": "package/upload/finalize/final upload/enforce steps",
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "global_checks": {
+    "execution_trigger_check": "workflow_dispatch only",
+    "retry_check": "no matrix, rerun action, continue-on-error on scientific step, or hidden fallback",
+    "artifact_retention_check": "both upload actions are always() with retention-days 30; upload results are enforced",
+    "forbidden_action_check": "no SEER, cohort loop, model training, other isolate, larger runner, or V2 partial-output reuse",
+    "v1_workflow_unchanged_sha256": "3f11f8f4769961cce8ba3c8c8a7ac63093ee151173de6b8c10f538c5e4788121",
+    "v2_workflow_unchanged_sha256": "6ae617b75f635cd2fa1ead5bcf8f70e96291ef6149270e9f622f0bb18cd47390",
+    "v2_runner_unchanged_sha256": "08bcee6401d5288ba7970733a1fcfb3d61abc03b3bbd31a371b40396a0ae8f5c",
+    "old_n8_workflow_unchanged_sha256": "0dc37a81f35af557e9a5bd61214373b8010115a32d625cd719b0928695c5b6f8",
+    "old_n8_failure_record_unchanged_sha256": "9eb3d5debc56d250b3807c7f3ced0e2ea1d21e193a3fd57f6bd6eacae424f516",
+    "v3_protocol_markdown_sha256": "ac16533ac65ac993f185a2a43b5f377611aa78a11af131079d0ac2afebc761dc",
+    "v3_protocol_json_sha256": "8fcc8be234fdac62d1b129ee0324edcbd4b14d667769c39f9cb000ec7bf66e9a",
+    "v3_workflow_sha256": "851b201094b5a5d2585f5fbfb0eed68de33c2199736dd1c04ff264215d052eb5",
+    "v3_runner_sha256": "1f976bdeb4e8477b4825488c3bc2939b089f8d11fd6c6af5518fd732306813a8",
+    "no_seer_call": true,
+    "no_full_cohort_logic": true,
+    "no_model_training": true,
+    "target_isolate_only": "ERR223688",
+    "workflow_manual_only": true,
+    "experiment_executed": false
+  },
+  "static_checks": {
+    "python_compile": "PASS",
+    "synthetic_self_test": "PASS",
+    "json_parse": "PASS",
+    "yaml_parse": "PASS",
+    "v2_to_v3_semantic_diff": "PASS_IDENTITY_PROTOCOL_BINDING_AND_DSK_TMP_CREATION_ONLY",
+    "actionlint": "UNAVAILABLE",
+    "biological_input_downloaded": false,
+    "scientific_tool_invoked": false
+  }
+}
