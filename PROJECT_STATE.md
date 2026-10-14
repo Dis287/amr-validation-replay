@@ -198,14 +198,28 @@ in a future commit. See
 `experiments/001_gonococcus_eucast_vs_clsi/CEILING_INTENT_DETERMINATION.md` and
 `ceiling_intent_determination.json`.
 
-## Prospective maximum-isolate resource resolution
+## Maximum-isolate resource resolution
 
-`MAX_ISOLATE_RESOURCE_RESOLUTION_V1` is now **FROZEN / NOT EXECUTED**. This is
-a separately named prospective infrastructure experiment for `ERR223688`; it
-does not alter or retry the failed n=8 gate. The protocol preserves the exact
-ENA inputs and hashes, SPAdes 4.3.0 default paired-read assembly with `-t 2 -m
-8`, the declared filter/QUAST/DSK procedures, and exact independent canonical
-31-mer verification.
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V1` is a terminal
+`INFRASTRUCTURE_PREFLIGHT_FAILURE`. GitHub Actions run `38591577348` executed
+once from `64b3f06d5eeb9a89a3f69f0abfc2c3ed42dc6d84`. Both uploaded artifact ZIPs
+and the internal evidence TAR were independently hash-verified. The requested
+standard `ubuntu-24.04` x64 runner passed CPU, RAM, architecture, tool-hash and
+single-attempt checks and had 90,323,972,096 free bytes, but the harness
+rejected its 154,894,188,544-byte mounted filesystem total against a 14 GiB
+comparison. No biological input was downloaded and no scientific stage ran.
+V1 must not be rerun or reclassified. See
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V1_FAILURE.md` and
+`max_isolate_resource_resolution_v1_failure.json`.
+
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V2` is **FROZEN / NOT EXECUTED**. It is a
+separately named prospective experiment, not a V1 retry. It inherits every V1
+scientific identity, parameter and scientific/resource ceiling. Its sole
+infrastructure correction is to stop treating total mounted backing capacity
+as experiment consumption. It still records filesystem total/free bytes,
+requires at least 12,884,901,888 free bytes before biological download, caps
+the complete experiment working root at 15,032,385,536 bytes, and independently
+caps the SPAdes output directory at 8,589,934,592 bytes.
 
 The seven surviving resource points are nonmonotone in runtime versus compressed
 input size, so no linear completion prediction is accepted. The new 5,400-second
@@ -221,14 +235,11 @@ next step. Even a future PASS would leave the original n=8 gate failed and would
 not authorize corrected-SEER n=8, the 1,102-run reconstruction, or model
 training.
 
-The dedicated execution harness is now **FROZEN / NOT EXECUTED**. It consists
-of the manual-only workflow
-`.github/workflows/max-isolate-resource-resolution-v1.yml`, the single-attempt
-runner `run_max_isolate_resource_resolution_v1.py`, and the machine-readable
-`max_isolate_execution_harness_audit.json`. Committing these files does not
-authorize or start the experiment. The failed n=8 workflow and failure record,
-and both frozen protocol files, remain unchanged. A separate explicit gate must
-read back and accept the committed harness before any manual dispatch.
+The V2 execution harness is manual-only and single-attempt. Committing it does
+not execute the experiment. The original n=8 gate and V1 remain failed;
+corrected-SEER n=8, full-cohort execution and model training remain
+unauthorized. Only the V2 workflow may be dispatched after this commit is read
+back and accepted.
 
 ## Active task — Experiment 001 only
 

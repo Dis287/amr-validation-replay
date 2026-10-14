@@ -1,0 +1,67 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-failure-audit-v1",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1",
+  "workflow_run": {
+    "id": 38591577348,
+    "event": "workflow_dispatch",
+    "head_sha": "64b3f06d5eeb9a89a3f69f0abfc2c3ed42dc6d84",
+    "run_number": 1,
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "failure"
+  },
+  "outcome": {
+    "status": "FAIL",
+    "classification": "INFRASTRUCTURE_PREFLIGHT_FAILURE",
+    "first_failing_stage": "preflight",
+    "violations": ["filesystem_total"],
+    "candidate_pass": false,
+    "no_retry_occurred": true
+  },
+  "environment": {
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261004.327.1",
+    "architecture": "x86_64",
+    "cpu_count": 4,
+    "total_ram_kib": 16373452,
+    "filesystem_total_bytes": 154894188544,
+    "filesystem_free_bytes": 90323972096
+  },
+  "execution_reached": {
+    "input_download": false,
+    "spades": false,
+    "quast": false,
+    "dsk": false,
+    "independent_oracle": false
+  },
+  "artifacts": {
+    "full_evidence": {
+      "id": 11906849923,
+      "zip_sha256": "7d3a1739723a28e3e6cf880bc20bf70878c43d12948278031993ba3234b3fac3",
+      "internal_tar_sha256": "731923277524723da3a55eaa637b9d51e53133ccac964021212e9aa2a92bac42",
+      "upload_succeeded": true
+    },
+    "final_outcome": {
+      "id": 11908360225,
+      "zip_sha256": "29cd33dbfb8790a7d14e72d117af29f8e02fec07d10da4c469cbb35a61389b35",
+      "upload_succeeded": true
+    }
+  },
+  "interpretation": {
+    "established": "The V1 harness compared mounted-filesystem total capacity with 14 GiB and stopped before biological input download.",
+    "not_established": [
+      "ERR223688 input integrity",
+      "SPAdes completion or failure",
+      "assembly QC",
+      "DSK correctness",
+      "maximum-isolate resource feasibility"
+    ],
+    "v1_must_not_be_rerun_or_reclassified": true
+  },
+  "authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false
+  }
+}

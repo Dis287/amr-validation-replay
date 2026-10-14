@@ -1,0 +1,116 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-v2-harness-audit-v1",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V2",
+  "status": "STATIC_AUDIT_PASS_NOT_EXECUTED",
+  "parent_commit": "64b3f06d5eeb9a89a3f69f0abfc2c3ed42dc6d84",
+  "requirements": [
+    {
+      "protocol_requirement": "separate prospective identity",
+      "frozen_value": "MAX_ISOLATE_RESOURCE_RESOLUTION_V2",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v2.yml; run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "workflow name/job/concurrency and EXPERIMENT_ID",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "same target, inputs, tool versions and scientific commands",
+      "frozen_value": "inherit V1 without scientific changes",
+      "implementation_file": "run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "TARGET; TOOLS; protocol hashes; commands",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "standard public ubuntu-24.04 x64, <=4 CPU, <=16 GiB RAM",
+      "frozen_value": "ubuntu-24.04/x64/4/16777216 KiB",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v2.yml; run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "runs-on; preflight runner_image/architecture/cpu_count/total_ram",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "record filesystem total/free but do not reject total backing capacity",
+      "frozen_value": "record both; no filesystem_total violation",
+      "implementation_file": "run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "preflight filesystem_total_bytes/filesystem_free_bytes; violations",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "pre-download free-space minimum",
+      "frozen_value": "12884901888 bytes",
+      "implementation_file": "run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "minimum_free_bytes/filesystem_free",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "complete experiment working-root cap",
+      "frozen_value": "15032385536 bytes sampled during every bounded scientific stage",
+      "implementation_file": "run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "working_set_path/working_set_ceiling_bytes/working_set_ceiling",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "independent SPAdes output cap",
+      "frozen_value": "8589934592 bytes",
+      "implementation_file": "run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "spades bounded_stage disk_path/disk_ceiling_bytes",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "unchanged wall/RSS/sampling/termination bounds",
+      "frozen_value": "5400/300/900/300/900/9000 s; 10485760 KiB; 0.5 s; TERM+10+KILL",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v2.yml; run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "timeout-minutes; remaining; bounded_stage; terminate_group",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "manual-only, one attempt, no retry",
+      "frozen_value": "workflow_dispatch only; attempt=1; prior V2 run list empty",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v2.yml; run_max_isolate_resource_resolution_v2.py",
+      "implementation_line_or_key": "on.workflow_dispatch; prior_dispatch_guard V2 workflow",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "durable evidence on every terminal path",
+      "frozen_value": "if: always(); 30 days; upload outcomes enforced",
+      "implementation_file": ".github/workflows/max-isolate-resource-resolution-v2.yml",
+      "implementation_line_or_key": "package/upload/finalize/final upload/enforce steps",
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "global_checks": {
+    "execution_trigger_check": "workflow_dispatch only",
+    "retry_check": "no matrix, rerun action, continue-on-error on scientific step, or hidden fallback",
+    "artifact_retention_check": "both upload actions are always() with retention-days 30; upload results are enforced",
+    "forbidden_action_check": "no SEER, cohort loop, model training, other isolate or larger runner",
+    "v1_workflow_unchanged_sha256": "3f11f8f4769961cce8ba3c8c8a7ac63093ee151173de6b8c10f538c5e4788121",
+    "old_n8_workflow_unchanged_sha256": "0dc37a81f35af557e9a5bd61214373b8010115a32d625cd719b0928695c5b6f8",
+    "old_n8_failure_record_unchanged_sha256": "9eb3d5debc56d250b3807c7f3ced0e2ea1d21e193a3fd57f6bd6eacae424f516",
+    "v1_protocol_markdown_unchanged_sha256": "f89571d25fd7a4f9c23675c93b818032ffe114e8e9699e116290649da0c8eebd",
+    "v1_protocol_json_unchanged_sha256": "48b346e2bfa4eefbbd2db9553fb348b977c17c718e473d434a78e523b3b74f8a",
+    "v2_workflow_sha256": "6ae617b75f635cd2fa1ead5bcf8f70e96291ef6149270e9f622f0bb18cd47390",
+    "v2_runner_sha256": "08bcee6401d5288ba7970733a1fcfb3d61abc03b3bbd31a371b40396a0ae8f5c",
+    "no_seer_call": true,
+    "no_full_cohort_logic": true,
+    "no_model_training": true,
+    "target_isolate_only": "ERR223688",
+    "workflow_manual_only": true,
+    "experiment_executed": false
+  },
+  "static_checks": {
+    "python_compile": "PASS",
+    "synthetic_self_test": "PASS",
+    "json_parse": "PASS",
+    "yaml_parse": "PASS",
+    "actionlint": "UNAVAILABLE",
+    "biological_input_downloaded": false,
+    "scientific_tool_invoked": false
+  }
+}

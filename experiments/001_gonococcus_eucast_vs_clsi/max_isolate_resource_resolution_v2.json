@@ -1,0 +1,71 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-protocol-v2",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V2",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_infrastructure_failure": {
+    "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1",
+    "workflow_run_id": 38591577348,
+    "head_sha": "64b3f06d5eeb9a89a3f69f0abfc2c3ed42dc6d84",
+    "classification": "INFRASTRUCTURE_PREFLIGHT_FAILURE",
+    "must_not_be_rerun_or_reclassified": true
+  },
+  "inherits_scientific_protocol": {
+    "markdown": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1.md",
+    "markdown_sha256": "f89571d25fd7a4f9c23675c93b818032ffe114e8e9699e116290649da0c8eebd",
+    "json": "max_isolate_resource_resolution_v1.json",
+    "json_sha256": "48b346e2bfa4eefbbd2db9553fb348b977c17c718e473d434a78e523b3b74f8a",
+    "scientific_changes": []
+  },
+  "target_isolate": "ERR223688",
+  "sole_infrastructure_correction": {
+    "removed_invalid_check": "mounted filesystem total capacity <= 14 GiB",
+    "reason": "Total mounted capacity is not experiment disk consumption and rejected the explicitly requested standard ubuntu-24.04 runner.",
+    "filesystem_total_and_free_still_recorded": true
+  },
+  "compute_class": {
+    "provider": "GitHub Actions",
+    "repository_visibility": "public",
+    "runner_label": "ubuntu-24.04",
+    "architecture": "x64",
+    "maximum_cpu_count": 4,
+    "maximum_total_ram_kib": 16777216
+  },
+  "storage_envelope": {
+    "minimum_free_disk_before_biological_download_bytes": 12884901888,
+    "maximum_complete_experiment_working_root_bytes": 15032385536,
+    "maximum_watched_spades_output_bytes": 8589934592,
+    "sample_interval_seconds": 0.5,
+    "breach_classification": "FAIL_STORAGE_ENVELOPE"
+  },
+  "unchanged_execution_limits": {
+    "spades_wall_seconds": 5400,
+    "sampled_process_tree_rss_kib": 10485760,
+    "quast_wall_seconds": 300,
+    "dsk_wall_seconds": 900,
+    "dsk2ascii_wall_seconds": 300,
+    "independent_oracle_wall_seconds": 900,
+    "whole_job_wall_seconds": 9000,
+    "termination": {"first_signal":"SIGTERM","grace_seconds":10,"final_signal":"SIGKILL"}
+  },
+  "retry_policy": {
+    "workflow_dispatch_only": true,
+    "single_attempt": true,
+    "automatic_retry": false,
+    "silent_retry": false,
+    "parameter_mutation_after_start": false
+  },
+  "artifact_retention": {
+    "condition": "always",
+    "days": 30,
+    "upload_success_required": true,
+    "same_required_evidence_as_v1": true
+  },
+  "authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "v1_remains_failed": true,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "only_possible_post_pass_step": "freeze a separate corrected-SEER n8 combine protocol"
+  }
+}
