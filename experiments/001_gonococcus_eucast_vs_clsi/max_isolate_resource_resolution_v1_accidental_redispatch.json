@@ -1,0 +1,86 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-accidental-redispatch-audit-v1",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V1",
+  "record_type": "ACCIDENTAL_PROHIBITED_REDISPATCH",
+  "workflow_run": {
+    "id": 38594673384,
+    "event": "workflow_dispatch",
+    "head_sha": "70aab41f28cc98cd8298db271ca2f697233b4d3c",
+    "run_number": 2,
+    "run_attempt": 1,
+    "created_at": "2026-10-14T16:02:44Z",
+    "updated_at": "2026-10-14T16:03:08Z",
+    "status": "completed",
+    "conclusion": "failure"
+  },
+  "preflight": {
+    "passed": false,
+    "violations": [
+      "filesystem_total",
+      "single_attempt_guard"
+    ],
+    "single_attempt_guard": {
+      "passed": false,
+      "current_run_id": 38594673384,
+      "prior_run_ids": [
+        38591577348
+      ]
+    }
+  },
+  "outcome": {
+    "status": "FAIL",
+    "classification": "INFRASTRUCTURE_PREFLIGHT_FAILURE",
+    "first_failing_stage": "preflight",
+    "candidate_pass": false,
+    "commands": [],
+    "no_retry_occurred": true
+  },
+  "execution_reached": {
+    "input_download": false,
+    "input_integrity": false,
+    "spades": false,
+    "quast": false,
+    "dsk": false,
+    "independent_oracle": false
+  },
+  "input_integrity_record": {
+    "status": "NOT_REACHED",
+    "inputs": []
+  },
+  "artifacts": {
+    "full_evidence": {
+      "id": 11909836329,
+      "size_in_bytes": 91568,
+      "zip_sha256": "5656f1eb6a7194416bb13f767b4655869dde08089e15c578fc4576091d6a3078",
+      "internal_tar_sha256": "6dbd9d3e448a92cb3907f08b902a4ee368765d80395b591a538dc5af19908962",
+      "upload_succeeded": true,
+      "expires_at": "2026-11-13T16:03:02Z"
+    },
+    "final_outcome": {
+      "id": 11909201743,
+      "size_in_bytes": 1206,
+      "zip_sha256": "bf70ff87bc1a95ee0affa04f0ee1dd3a056d4aa64a75e5ba6bbd5e4c156c6d17",
+      "upload_succeeded": true,
+      "expires_at": "2026-11-13T16:03:03Z"
+    }
+  },
+  "interpretation": {
+    "established": "The V1 single-attempt guard detected the prior V1 run and stopped before biological input download or scientific execution.",
+    "not_established": [
+      "ERR223688 input integrity",
+      "SPAdes completion or failure",
+      "assembly QC",
+      "DSK correctness",
+      "maximum-isolate resource feasibility"
+    ],
+    "original_v1_result_changed": false,
+    "v1_must_not_be_dispatched_again": true
+  },
+  "authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "v2_run_count_at_audit": 0,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false
+  }
+}

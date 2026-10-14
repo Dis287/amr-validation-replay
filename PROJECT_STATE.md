@@ -212,6 +212,16 @@ V1 must not be rerun or reclassified. See
 `MAX_ISOLATE_RESOURCE_RESOLUTION_V1_FAILURE.md` and
 `max_isolate_resource_resolution_v1_failure.json`.
 
+An accidental second V1 dispatch, GitHub Actions run `38594673384`, was stopped
+at preflight by V1's single-attempt guard after detecting prior run
+`38591577348`. Its durable records show `input_integrity = NOT_REACHED`, an
+empty biological-input list, and an empty scientific-command ledger. Both
+artifact ZIP hashes and the internal evidence TAR hash were independently
+verified. This dispatch produced no scientific evidence, does not alter V1's
+terminal result, and must not be repeated. See
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V1_ACCIDENTAL_REDISPATCH.md` and
+`max_isolate_resource_resolution_v1_accidental_redispatch.json`.
+
 `MAX_ISOLATE_RESOURCE_RESOLUTION_V2` is **FROZEN / NOT EXECUTED**. It is a
 separately named prospective experiment, not a V1 retry. It inherits every V1
 scientific identity, parameter and scientific/resource ceiling. Its sole
