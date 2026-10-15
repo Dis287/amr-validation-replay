@@ -138,7 +138,7 @@ Original SEER 1.1.3 `combineKmers --min_samples 2` exited zero but emitted 875,8
 
 A source-identified corrected upstream SEER implementation at commit `a6bd405754726467a93f39820fb4719457395ae7` was compiled without source edits and run on the **same** DSK ASCII files and sample list. It emitted exactly 875,897 rows, matching the independent shared set with zero missing/extra features or sample/abundance errors. **Corrected two-isolate feature-combine integrity gate = PASS.** The historical 1.1.3 failure remains documented. See `CORRECTED_SEER_RETEST.md`. This pass is limited to two isolates and is not proof of Hicks's exact SEER version or full-cohort replay.
 
-A declared current QC/resource protocol is now in use while historical Hicks QC remains unresolved. The deterministic minimum, p10, p25, and median ranks passed SPAdes, filtered-assembly/QUAST, exact independent DSK checks, and corrected-SEER verification. At n=4, the independent truth contained 2,093,979 canonical 31-mers present in at least two isolates; corrected SEER emitted exactly 2,093,979 unique rows with zero missing, extra, duplicate, tag, or abundance errors. See `RESOURCE_PANEL_CHECKPOINT.md`, `resource_panel_n2.json`, and `resource_panel_n4.json`. This is a PASS at n=4 only. Next: execute only the predeclared p75, p90, p99, and maximum ranks and verify the corrected-SEER n=8 output. Full-cohort reconstruction and model training remain unauthorized.
+A declared QC/resource protocol is in use while historical Hicks QC remains unresolved. The deterministic minimum, p10, p25, and median ranks passed SPAdes, filtered-assembly/QUAST, exact independent DSK checks, and corrected-SEER verification. At n=4, the independent truth contained 2,093,979 canonical 31-mers present in at least two isolates; corrected SEER emitted exactly 2,093,979 unique rows with zero missing, extra, duplicate, tag, or abundance errors. See `RESOURCE_PANEL_CHECKPOINT.md`, `resource_panel_n2.json`, and `resource_panel_n4.json`. This remains the last passing combined-feature checkpoint. The later original n=8 gate failed, and corrected-SEER n=8 has not run. Full-cohort reconstruction and model training remain unauthorized.
 
 ### Source-identified SEER correction
 
@@ -222,14 +222,11 @@ terminal result, and must not be repeated. See
 `MAX_ISOLATE_RESOURCE_RESOLUTION_V1_ACCIDENTAL_REDISPATCH.md` and
 `max_isolate_resource_resolution_v1_accidental_redispatch.json`.
 
-`MAX_ISOLATE_RESOURCE_RESOLUTION_V2` is **FROZEN / NOT EXECUTED**. It is a
-separately named prospective experiment, not a V1 retry. It inherits every V1
-scientific identity, parameter and scientific/resource ceiling. Its sole
-infrastructure correction is to stop treating total mounted backing capacity
-as experiment consumption. It still records filesystem total/free bytes,
-requires at least 12,884,901,888 free bytes before biological download, caps
-the complete experiment working root at 15,032,385,536 bytes, and independently
-caps the SPAdes output directory at 8,589,934,592 bytes.
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V2` was frozen as a separately named
+prospective experiment, not a V1 retry. It inherited every V1 scientific
+identity, parameter and scientific/resource ceiling. Its sole infrastructure
+correction was to stop treating total mounted backing capacity as experiment
+consumption. Its terminal execution result is recorded below.
 
 The seven surviving resource points are nonmonotone in runtime versus compressed
 input size, so no linear completion prediction is accepted. The new 5,400-second
@@ -240,16 +237,9 @@ failure taxonomy, and always-retain evidence bundle are frozen in
 `experiments/001_gonococcus_eucast_vs_clsi/MAX_ISOLATE_RESOURCE_RESOLUTION_V1.md`
 and `max_isolate_resource_resolution_v1.json`.
 
-This protocol commit does **not** authorize execution. Execution is a separate
-next step. Even a future PASS would leave the original n=8 gate failed and would
-not authorize corrected-SEER n=8, the 1,102-run reconstruction, or model
-training.
-
-The V2 execution harness is manual-only and single-attempt. Committing it does
-not execute the experiment. The original n=8 gate and V1 remain failed;
-corrected-SEER n=8, full-cohort execution and model training remain
-unauthorized. Only the V2 workflow may be dispatched after this commit is read
-back and accepted.
+The V2 protocol and harness commits did not themselves execute the experiment.
+The harness was manual-only and single-attempt. Its one terminal execution is
+recorded below; no second V2 dispatch is authorized.
 
 V2 was dispatched once as GitHub Actions run `38600205769` from commit
 `4bea3506388d5b48b579caf3aae7aed374420f69` and is now terminal
@@ -263,13 +253,28 @@ surviving HDF5 is not accepted. V2 must not be rerun or reclassified. See
 `MAX_ISOLATE_RESOURCE_RESOLUTION_V2_FAILURE.md` and
 `max_isolate_resource_resolution_v2_failure.json`.
 
-`MAX_ISOLATE_RESOURCE_RESOLUTION_V3` is **FROZEN / NOT EXECUTED**. It is a
-separately named prospective end-to-end experiment. It preserves every V2/V1
-scientific identity, command and resource limit. Its sole harness correction is
-to create the already-declared `work/dsk_tmp` directory immediately before DSK.
-The workflow is manual-only and single-attempt; committing it does not execute
-it. Even a future V3 pass leaves the original n=8, V1, and V2 records failed and
-authorizes only freezing a separate corrected-SEER n=8 combine protocol.
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V3` is
+**PASS_INDEPENDENTLY_AUDITED**. GitHub Actions run `38680749205` executed once
+from frozen commit `0cd6f51e6fa567b9cb00c05f8a6b5a8d048b76cd`. Both exact FASTQ
+identities passed. SPAdes 4.3.0 completed with unchanged `-t 2 -m 8` in
+2,920.074492 seconds inside the prospective 5,400-second limit. Filtering and
+QUAST completed; filtered N50 was 40,334 bp. DSK 2.3.3 and DSK2ASCII completed
+after the prospectively declared `work/dsk_tmp` preparation.
+
+The independent A<C<T<G reverse-complement oracle found 2,098,204 expected and
+2,098,204 observed canonical 31-mers, with zero missing, extra, duplicate, or
+abundance-mismatched rows. Both GitHub artifact ZIP digests, the internal TAR
+digest/ledger, all stage records, and all 32 retained primary file paths, sizes,
+and SHA-256 values were independently audited. See
+`MAX_ISOLATE_RESOURCE_RESOLUTION_V3_RESULT.md` and
+`max_isolate_resource_resolution_v3_result.json`.
+
+This V3 pass does not change the terminal failures of the original n=8 gate,
+V1, or V2. It does not establish corrected-SEER n=8 correctness, full-cohort
+feasibility, or Hicks model replay. The only authorized next action is to design
+and freeze a separate prospective corrected-SEER n=8 combine protocol.
+Corrected-SEER n=8 execution, the 1,102-run reconstruction, and model training
+remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -321,4 +326,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Search for original Hicks-specific partitions, predictions, models, assemblies, or feature matrices. The corrected upstream SEER two-isolate combine passed exact independent feature and tag checks; the old 1.1.3 binary failed. Resolve cohort assembly/QC, then run the deterministic resource-variation panel before deciding on full dataset-2 reconstruction. Keep Hicks-specific versions, partitions, and metric replay unverified. Preserve separate paper-style and fixed-prediction estimands. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
+> Preserve the failed original n=8, V1, and V2 records. V3 independently passed the maximum-isolate SPAdes/filter-QC/DSK equality gate. Next, design and freeze—but do not yet execute—a separate prospective corrected-SEER n=8 combine protocol using the eight durable isolate outputs. Keep full-cohort reconstruction, model training, Hicks-specific versions/partitions, and metric replay unverified and unauthorized. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.

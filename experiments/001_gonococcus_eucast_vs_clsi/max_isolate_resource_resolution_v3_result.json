@@ -1,0 +1,124 @@
+{
+  "schema": "amr-max-isolate-resource-resolution-result-v3",
+  "experiment_id": "MAX_ISOLATE_RESOURCE_RESOLUTION_V3",
+  "status": "PASS_INDEPENDENTLY_AUDITED",
+  "workflow_run": {
+    "id": 38680749205,
+    "run_number": 1,
+    "run_attempt": 1,
+    "event": "workflow_dispatch",
+    "head_sha": "0cd6f51e6fa567b9cb00c05f8a6b5a8d048b76cd",
+    "started_at_utc": "2026-10-15T04:18:09Z",
+    "completed_at_utc": "2026-10-15T05:21:56Z",
+    "conclusion": "success"
+  },
+  "durable_artifacts": {
+    "complete_evidence": {
+      "artifact_id": 11950830857,
+      "size_bytes": 35661650,
+      "sha256": "f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+      "expires_at_utc": "2026-11-14T05:21:49Z"
+    },
+    "final_outcome": {
+      "artifact_id": 11950771061,
+      "size_bytes": 1923,
+      "sha256": "7ae30a74ab4e563361b36d1d6bf5a81bfb5affbd9eda1dfe03892c0b9b64ba22",
+      "expires_at_utc": "2026-11-14T05:21:51Z"
+    },
+    "internal_evidence_archive": {
+      "size_bytes": 35664515,
+      "sha256": "9415eade3e0ce172e6443f09a285b8dff08d23eda107958123ccb2fc65ceeaa0",
+      "file_count": 48,
+      "uncompressed_size_bytes": 121922002
+    },
+    "retained_primary_files": {
+      "count": 32,
+      "all_paths_sizes_and_sha256_match_recursive_manifest": true
+    }
+  },
+  "input_integrity": {
+    "exact": true,
+    "inputs": [
+      {
+        "name": "ERR223688_1.fastq.gz",
+        "bytes": 529561823,
+        "md5": "7cec28e9c5123b8a4ec8dee92efe71c6"
+      },
+      {
+        "name": "ERR223688_2.fastq.gz",
+        "bytes": 548974863,
+        "md5": "a7f04fcc8cddc16b3d54f267d551528c"
+      }
+    ]
+  },
+  "spades": {
+    "version": "4.3.0",
+    "threads": 2,
+    "memory_parameter_gib": 8,
+    "exit_code": 0,
+    "wall_seconds": 2920.074492,
+    "wall_ceiling_seconds": 5400,
+    "peak_process_tree_rss_kib": 2519092,
+    "rss_ceiling_kib": 10485760,
+    "peak_watched_stage_disk_bytes": 3415372552,
+    "stage_disk_ceiling_bytes": 8589934592,
+    "peak_complete_working_root_bytes": 5552577271,
+    "complete_working_root_ceiling_bytes": 15032385536,
+    "timed_out": false,
+    "oom_evidence": false,
+    "enospc_evidence": false
+  },
+  "filter_and_qc": {
+    "input_contigs": 431,
+    "retained_contigs": 163,
+    "minimum_length_bp": 200,
+    "minimum_spades_header_coverage": 10,
+    "filtered_fasta_bytes": 2128920,
+    "filtered_fasta_sha256": "ee1a643a185d5dcc0e926c9c42da79e67054e340967afb082b36eb55e299dbc5",
+    "quast_version": "5.2.0",
+    "quast_exit_code": 0,
+    "filtered_n50_bp": 40334
+  },
+  "dsk": {
+    "version": "2.3.3",
+    "kmer_size": 31,
+    "abundance_min": 1,
+    "max_memory": 8000,
+    "exit_code": 0,
+    "wall_seconds": 0.528476,
+    "temporary_directory_created_before_invocation": true,
+    "hdf5_sha256": "64458e787a19672fa708350f3eb4bee7bc5bb205d196373686c66d4e67ce0c4e",
+    "ascii_sha256": "cc33735372a337f45c1cb07681739bb14adaf14ae4142fcad1e9326e3b42695b"
+  },
+  "independent_canonical_oracle": {
+    "canonical_order": "A<C<T<G",
+    "reverse_complement_canonicalization": true,
+    "expected_feature_count": 2098204,
+    "observed_feature_count": 2098204,
+    "missing": 0,
+    "extra": 0,
+    "duplicate_rows": 0,
+    "abundance_mismatches": 0,
+    "exact": true
+  },
+  "audit": {
+    "artifact_zip_digests_verified": true,
+    "internal_archive_ledger_verified": true,
+    "stage_records_verified": true,
+    "retained_primary_files_verified_against_recursive_manifest": true,
+    "final_outcome_matches_evidence_outcome": true,
+    "full_evidence_upload_succeeded": true,
+    "final_outcome_artifact_survived": true,
+    "no_retry_occurred": true
+  },
+  "authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "v1_remains_failed": true,
+    "v2_remains_failed": true,
+    "corrected_seer_n8_correctness_established": false,
+    "corrected_seer_n8_execution_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "next_authorized_action": "design and freeze a separate prospective corrected-SEER n8 combine protocol"
+  }
+}
