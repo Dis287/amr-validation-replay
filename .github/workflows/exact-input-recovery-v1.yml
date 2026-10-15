@@ -1,0 +1,374 @@
+name: N8_DSK_EXACT_INPUT_RECOVERY_V1
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: n8-dsk-exact-input-recovery-v1-single-attempt
+  cancel-in-progress: false
+
+env:
+  HARNESS: experiments/001_gonococcus_eucast_vs_clsi/exact_input_recovery_v1.py
+  RELEASE_TAG: experiment001-n8-exact-inputs-v1
+
+jobs:
+  phase-a:
+    name: phase-a-exact-copy-query
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Initialize mandatory Phase A outcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/exact-input-recovery-v1/phase_a"
+          printf '%s\n' '{"experiment_id":"N8_DSK_EXACT_INPUT_RECOVERY_V1","state":"INCOMPLETE","biological_computation_performed":false}' \
+            > "${RUNNER_TEMP}/exact-input-recovery-v1/phase_a/outcome.json"
+
+      - name: Check out frozen harness commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Query only frozen historical artifact identities
+        id: prepare
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 "${HARNESS}" prepare --root "${RUNNER_TEMP}/exact-input-recovery-v1"
+
+      - name: Finalize Phase A evidence
+        if: always()
+        run: |
+          python3 "${HARNESS}" finalize-phase-a --root "${RUNNER_TEMP}/exact-input-recovery-v1"
+
+      - name: Upload immutable Phase A manifest and any exact copies
+        if: always()
+        id: phase_a_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: exact-input-recovery-v1-phase-a
+          path: ${{ runner.temp }}/exact-input-recovery-v1/phase_a/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Record Phase A artifact receipt
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-phase-a-upload-receipt.json"
+          scientific = json.loads((pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1/phase_a/outcome.json").read_text())
+          upload = "${{ steps.phase_a_upload.outcome }}"
+          path.write_text(json.dumps({
+              "artifact_id": "${{ steps.phase_a_upload.outputs.artifact-id }}",
+              "artifact_url": "${{ steps.phase_a_upload.outputs.artifact-url }}",
+              "artifact_digest": "${{ steps.phase_a_upload.outputs.artifact-digest }}",
+              "upload_outcome": upload,
+              "pre_upload_state": scientific.get("state"),
+              "effective_terminal_state": scientific.get("state") if upload == "success" else "FAIL_EVIDENCE_RETENTION",
+          }, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload Phase A retention receipt
+        if: always()
+        id: phase_a_receipt_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: exact-input-recovery-v1-phase-a-upload-receipt
+          path: ${{ runner.temp }}/exact-input-recovery-v1-phase-a-upload-receipt.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce Phase A and retention result
+        if: always()
+        env:
+          PREPARE_OUTCOME: ${{ steps.prepare.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.phase_a_upload.outcome }}
+          RECEIPT_UPLOAD_OUTCOME: ${{ steps.phase_a_receipt_upload.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1/phase_a/outcome.json"
+          row = json.loads(path.read_text())
+          ok = (os.environ["PREPARE_OUTCOME"] == "success" and
+                os.environ["UPLOAD_OUTCOME"] == "success" and
+                os.environ["RECEIPT_UPLOAD_OUTCOME"] == "success" and
+                row.get("state") == "PHASE_A_COMPLETE" and
+                row.get("biological_computation_performed") is False)
+          print(json.dumps({"phase_a": row, "accepted": ok}, indent=2, sort_keys=True))
+          raise SystemExit(0 if ok else 1)
+          PY
+
+  isolate:
+    name: exact-input-${{ matrix.rank }}
+    needs: phase-a
+    runs-on: ubuntu-24.04
+    timeout-minutes: 85
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        rank: [min, p10, p25, median, p75, p90, p99]
+    steps:
+      - name: Initialize mandatory isolate outcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/exact-input-recovery-v1-${{ matrix.rank }}/evidence"
+          printf '%s\n' '{"experiment_id":"N8_DSK_EXACT_INPUT_RECOVERY_V1","rank":"${{ matrix.rank }}","state":"INCOMPLETE","one_attempt":true}' \
+            > "${RUNNER_TEMP}/exact-input-recovery-v1-${{ matrix.rank }}/evidence/outcome.json"
+
+      - name: Check out frozen harness commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Download frozen Phase A decision
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: exact-input-recovery-v1-phase-a
+          path: ${{ runner.temp }}/exact-input-recovery-v1-phase-a
+
+      - name: Execute exactly one frozen isolate path
+        id: isolate_run
+        shell: bash
+        run: |
+          timeout --signal=TERM --kill-after=2s 4500s \
+            python3 "${HARNESS}" isolate \
+              --rank "${{ matrix.rank }}" \
+              --root "${RUNNER_TEMP}/exact-input-recovery-v1-${{ matrix.rank }}" \
+              --phase-a "${RUNNER_TEMP}/exact-input-recovery-v1-phase-a"
+
+      - name: Finalize and ledger all surviving isolate evidence
+        if: always()
+        run: |
+          python3 "${HARNESS}" finalize-isolate \
+            --rank "${{ matrix.rank }}" \
+            --root "${RUNNER_TEMP}/exact-input-recovery-v1-${{ matrix.rank }}"
+
+      - name: Upload complete isolate evidence
+        if: always()
+        id: isolate_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: exact-input-recovery-v1-${{ matrix.rank }}
+          path: ${{ runner.temp }}/exact-input-recovery-v1-${{ matrix.rank }}/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Record isolate artifact receipt
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-${{ matrix.rank }}-upload-receipt.json"
+          scientific = json.loads((pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-${{ matrix.rank }}/evidence/outcome.json").read_text())
+          upload = "${{ steps.isolate_upload.outcome }}"
+          path.write_text(json.dumps({
+              "rank": "${{ matrix.rank }}",
+              "artifact_id": "${{ steps.isolate_upload.outputs.artifact-id }}",
+              "artifact_url": "${{ steps.isolate_upload.outputs.artifact-url }}",
+              "artifact_digest": "${{ steps.isolate_upload.outputs.artifact-digest }}",
+              "upload_outcome": upload,
+              "pre_upload_state": scientific.get("state"),
+              "effective_terminal_state": scientific.get("state") if upload == "success" else "FAIL_EVIDENCE_RETENTION",
+          }, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload isolate retention receipt
+        if: always()
+        id: isolate_receipt_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: exact-input-recovery-v1-${{ matrix.rank }}-upload-receipt
+          path: ${{ runner.temp }}/exact-input-recovery-v1-${{ matrix.rank }}-upload-receipt.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce isolate and retention result
+        if: always()
+        env:
+          RUN_OUTCOME: ${{ steps.isolate_run.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.isolate_upload.outcome }}
+          RECEIPT_UPLOAD_OUTCOME: ${{ steps.isolate_receipt_upload.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-${{ matrix.rank }}/evidence/outcome.json"
+          row = json.loads(path.read_text())
+          ok = (os.environ["RUN_OUTCOME"] == "success" and
+                os.environ["UPLOAD_OUTCOME"] == "success" and
+                os.environ["RECEIPT_UPLOAD_OUTCOME"] == "success" and
+                row.get("state") in ("RECOVERED_EXACT", "REGENERATED_EXACT") and
+                row.get("no_retry_occurred") is True)
+          print(json.dumps({"isolate": row, "accepted": ok}, indent=2, sort_keys=True))
+          raise SystemExit(0 if ok else 1)
+          PY
+
+  final-audit-and-release:
+    name: independent-seven-file-audit-and-release-readback
+    if: always()
+    needs: isolate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - name: Initialize mandatory final outcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/exact-input-recovery-v1-final"
+          printf '%s\n' '{"experiment_id":"N8_DSK_EXACT_INPUT_RECOVERY_V1","state":"INCOMPLETE"}' \
+            > "${RUNNER_TEMP}/exact-input-recovery-v1-final/outcome.json"
+
+      - name: Check out frozen harness commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Download every surviving isolate evidence artifact
+        id: download_isolates
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: exact-input-recovery-v1-*
+          path: ${{ runner.temp }}/exact-input-recovery-v1-artifacts
+
+      - name: Independently audit exact seven-file set and build release asset
+        id: independent_audit
+        if: steps.download_isolates.outcome == 'success'
+        run: |
+          python3 "${HARNESS}" audit \
+            --source "${RUNNER_TEMP}/exact-input-recovery-v1-artifacts" \
+            --output "${RUNNER_TEMP}/exact-input-recovery-v1-final"
+
+      - name: Create immutable versioned release asset only after exact audit
+        id: release_create
+        if: steps.independent_audit.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ASSET="${RUNNER_TEMP}/exact-input-recovery-v1-final/experiment001-n8-exact-inputs-v1.tar.gz"
+          gh release create "${RELEASE_TAG}" "${ASSET}#Exact seven-input DSK bundle" \
+            --repo "${GITHUB_REPOSITORY}" --target "${GITHUB_SHA}" \
+            --title "Experiment 001 exact n8 DSK inputs v1" \
+            --notes "Frozen output of N8_DSK_EXACT_INPUT_RECOVERY_V1; no corrected-SEER execution."
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}" \
+            > "${RUNNER_TEMP}/exact-input-recovery-v1-final/release_api.json"
+
+      - name: Download release asset to a fresh path
+        id: release_download
+        if: steps.release_create.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/exact-input-recovery-v1-readback-download"
+          gh release download "${RELEASE_TAG}" --repo "${GITHUB_REPOSITORY}" \
+            --pattern experiment001-n8-exact-inputs-v1.tar.gz \
+            --dir "${RUNNER_TEMP}/exact-input-recovery-v1-readback-download"
+
+      - name: Verify release digest and every extracted DSK identity
+        id: release_readback
+        if: steps.release_download.outcome == 'success'
+        run: |
+          set -euo pipefail
+          ASSET_ID="$(python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ['RUNNER_TEMP']) / 'exact-input-recovery-v1-final/release_api.json'
+          payload = json.loads(path.read_text())
+          hits = [row for row in payload['assets'] if row['name'] == 'experiment001-n8-exact-inputs-v1.tar.gz']
+          if len(hits) != 1: raise SystemExit(f'expected one release asset, found {len(hits)}')
+          print(hits[0]['id'])
+          PY
+          )"
+          python3 "${HARNESS}" audit-release \
+            --archive "${RUNNER_TEMP}/exact-input-recovery-v1-readback-download/experiment001-n8-exact-inputs-v1.tar.gz" \
+            --ledger "${RUNNER_TEMP}/exact-input-recovery-v1-final/bundle_ledger.json" \
+            --asset-api "${RUNNER_TEMP}/exact-input-recovery-v1-final/release_api.json" \
+            --asset-id "${ASSET_ID}" \
+            --output "${RUNNER_TEMP}/exact-input-recovery-v1-final"
+
+      - name: Finalize terminal outcome and recursive ledger
+        if: always()
+        run: |
+          python3 "${HARNESS}" finalize-final \
+            --root "${RUNNER_TEMP}/exact-input-recovery-v1-final"
+
+      - name: Upload final audit and release-readback evidence
+        if: always()
+        id: final_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: exact-input-recovery-v1-final-audit
+          path: ${{ runner.temp }}/exact-input-recovery-v1-final/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Record final audit artifact receipt
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-final-upload-receipt.json"
+          scientific = json.loads((pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-final/outcome.json").read_text())
+          upload = "${{ steps.final_upload.outcome }}"
+          path.write_text(json.dumps({
+              "artifact_id": "${{ steps.final_upload.outputs.artifact-id }}",
+              "artifact_url": "${{ steps.final_upload.outputs.artifact-url }}",
+              "artifact_digest": "${{ steps.final_upload.outputs.artifact-digest }}",
+              "upload_outcome": upload,
+              "pre_upload_state": scientific.get("state"),
+              "effective_terminal_state": scientific.get("state") if upload == "success" else "FAIL_EVIDENCE_RETENTION",
+          }, indent=2, sort_keys=True) + "\n")
+          PY
+
+      - name: Upload final retention receipt
+        if: always()
+        id: final_receipt_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: exact-input-recovery-v1-final-upload-receipt
+          path: ${{ runner.temp }}/exact-input-recovery-v1-final-upload-receipt.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce exact audit, durable read-back, and evidence retention
+        if: always()
+        env:
+          NEEDS_RESULT: ${{ needs.isolate.result }}
+          DOWNLOAD_OUTCOME: ${{ steps.download_isolates.outcome }}
+          AUDIT_OUTCOME: ${{ steps.independent_audit.outcome }}
+          RELEASE_CREATE_OUTCOME: ${{ steps.release_create.outcome }}
+          RELEASE_DOWNLOAD_OUTCOME: ${{ steps.release_download.outcome }}
+          RELEASE_READBACK_OUTCOME: ${{ steps.release_readback.outcome }}
+          FINAL_UPLOAD_OUTCOME: ${{ steps.final_upload.outcome }}
+          FINAL_RECEIPT_UPLOAD_OUTCOME: ${{ steps.final_receipt_upload.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ["RUNNER_TEMP"]) / "exact-input-recovery-v1-final/outcome.json"
+          row = json.loads(path.read_text())
+          checks = {name: os.environ[name] for name in (
+              "NEEDS_RESULT", "DOWNLOAD_OUTCOME", "AUDIT_OUTCOME", "RELEASE_CREATE_OUTCOME",
+              "RELEASE_DOWNLOAD_OUTCOME", "RELEASE_READBACK_OUTCOME", "FINAL_UPLOAD_OUTCOME")}
+          checks["FINAL_RECEIPT_UPLOAD_OUTCOME"] = os.environ["FINAL_RECEIPT_UPLOAD_OUTCOME"]
+          ok = (row.get("state") == "PASS" and row.get("release_readback", {}).get("contents_exact") is True and
+                all(value == "success" for value in checks.values()))
+          print(json.dumps({"outcome": row, "workflow_checks": checks, "accepted": ok}, indent=2, sort_keys=True))
+          raise SystemExit(0 if ok else 1)
+          PY

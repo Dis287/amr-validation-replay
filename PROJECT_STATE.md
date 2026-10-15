@@ -301,6 +301,21 @@ authorized by the protocol commit. The only authorized next action is to build
 and statically audit a dedicated manual-only recovery harness. Corrected-SEER
 n=8, full-cohort reconstruction, and model training remain unauthorized.
 
+The dedicated `N8_DSK_EXACT_INPUT_RECOVERY_V1` execution harness is now
+**FROZEN / NOT EXECUTED** in this commit. Its separately named workflow is
+manual-only. Phase A freezes the missing subset before any biological download;
+Phase B permits exactly one unchanged bounded path per missing isolate; final
+acceptance requires all seven frozen byte-count/SHA-256 identities, independent
+audit, a versioned Release asset, and a fresh release download/read-back audit.
+The harness static audit used only local synthetic fixtures. It did not query
+historical artifacts, read candidate copies, download FASTQs, run SPAdes/QUAST/
+DSK, create a release, or dispatch a workflow.
+
+Execution remains unauthorized in this commit. The next permitted step is an
+independent read-back of the committed harness and audit, followed by a separate
+explicit execution authorization decision. Corrected-SEER n=8, full-cohort
+reconstruction, and model training remain unauthorized.
+
 ## Active task — Experiment 001 only
 
 **Objective:** independently recompute balanced accuracy under EUCAST vs CLSI with the Hicks model/evaluation logic as faithfully as possible.
