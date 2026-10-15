@@ -1,0 +1,98 @@
+{
+  "schema": "amr-n8-dsk-exact-input-recovery-protocol-v1",
+  "experiment_id": "N8_DSK_EXACT_INPUT_RECOVERY_V1",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_blockage_commit": "babd3e65400149b70f17fdf404f78ddd30994946",
+  "source_failed_gate": {"run_id":36665031444,"head_sha":"4a6e83c89a40ddb6dc82dbcaf9cea226549c1db3","artifact_inventory_count_at_2026_10_15":0},
+  "historical_environment": {
+    "runner_label": "ubuntu-24.04",
+    "runner_version": "2.337.0",
+    "six_isolates_image_version": "20260920.314.1",
+    "median_image_version": "20260927.320.1",
+    "single_exact_historical_image_for_all_seven": false,
+    "future_environment_equivalence": "UNVERIFIED"
+  },
+  "targets": [
+    {"rank":"min","isolate":"ERR1067833","historical_job_id":109727760212,"historical_artifact_id":11075707766,"fastqs":[{"name":"ERR1067833_1.fastq.gz","bytes":35204390,"md5":"b2e9cf0b59ad5f339c32a1c7cbe8dd9b"},{"name":"ERR1067833_2.fastq.gz","bytes":35451915,"md5":"4ff4e92056137f16f49ff7bf45cac20c"}],"expected_filtered_fasta_sha256":"d11fa38dd04596375d2f5a159657e42b4ecb503695d628b926f832ef59aa4b1a","expected_dsk_rows":2103513,"expected_dsk_ascii_bytes":71519738,"expected_dsk_ascii_sha256":"1b60a3c86547f95055e3d51e138c6f7d6b2329967f3851ebe7112df309276a44"},
+    {"rank":"p10","isolate":"ERR1067740","historical_job_id":109727760293,"historical_artifact_id":11076277598,"fastqs":[{"name":"ERR1067740_1.fastq.gz","bytes":87872847,"md5":"4571426afa06e4645477a2f78c9a15b6"},{"name":"ERR1067740_2.fastq.gz","bytes":89268361,"md5":"55e8622fcc0cfa531b1abddaddf89d63"}],"expected_filtered_fasta_sha256":"6d22902f2e39d6cbcc8d4e336de7a1149ce5f7c820c3c9d723c327c1ef4220c2","expected_dsk_rows":2100606,"expected_dsk_ascii_bytes":71420896,"expected_dsk_ascii_sha256":"4ad0b03e3d184f5d694d43f5f43d7bfc7478eb655018e0bcefe58c6070f5eab2"},
+    {"rank":"p25","isolate":"ERR1067765","historical_job_id":109727760189,"historical_artifact_id":11076500162,"fastqs":[{"name":"ERR1067765_1.fastq.gz","bytes":113016971,"md5":"6ace1e2116e0c9404db1c07d007c59d7"},{"name":"ERR1067765_2.fastq.gz","bytes":113900948,"md5":"7b5a5076a5d6d2b636e5f347b797379f"}],"expected_filtered_fasta_sha256":"4c38f70a5cc3f9c33ff4a42a0cd3956a576722f1ffaca62eaee195a741693ec7","expected_dsk_rows":2101892,"expected_dsk_ascii_bytes":71464617,"expected_dsk_ascii_sha256":"9489718a0b3990b0c59146861148f9898a96128fce09202cb6fb5b1e12c687e3"},
+    {"rank":"median","isolate":"ERR855281","historical_job_id":109727759999,"historical_artifact_id":11075718734,"fastqs":[{"name":"ERR855281_1.fastq.gz","bytes":159832392,"md5":"4d94a6c4e9bf48574b1268494f079a5c"},{"name":"ERR855281_2.fastq.gz","bytes":165310988,"md5":"48937b9dceeb433a3757b0903f0d0936"}],"expected_filtered_fasta_sha256":"a74eb50ddba37ee649c32c74f7ecd93aad4327527cb75dc539d6cf295b50374d","expected_dsk_rows":2092013,"expected_dsk_ascii_bytes":71128704,"expected_dsk_ascii_sha256":"dee3cf91f0bba7fb5667a5818aa6992fe904209e26ddc73a77b8fc505f48355c"},
+    {"rank":"p75","isolate":"ERR855022","historical_job_id":109727760270,"historical_artifact_id":11076109913,"fastqs":[{"name":"ERR855022_1.fastq.gz","bytes":174914715,"md5":"5dd2d5e869875046cab33a515ba1af8b"},{"name":"ERR855022_2.fastq.gz","bytes":180309252,"md5":"09992162f84607c77ce4ea5e4de72fc3"}],"expected_filtered_fasta_sha256":"ca0e573792e4abfb0efc22fc676cf60303de45a018b62362745b4647da28c77f","expected_dsk_rows":2045008,"expected_dsk_ascii_bytes":69530491,"expected_dsk_ascii_sha256":"518d08abb3127485e555e46c73dc71c16a14e218c267ea99d197d89bcca79a9b"},
+    {"rank":"p90","isolate":"ERR854935","historical_job_id":109727760263,"historical_artifact_id":11076448396,"fastqs":[{"name":"ERR854935_1.fastq.gz","bytes":192013858,"md5":"8455b4df44da542a1de5b31d9676eb73"},{"name":"ERR854935_2.fastq.gz","bytes":197548971,"md5":"43b24bac47caef467cce9fec0f67345b"}],"expected_filtered_fasta_sha256":"8664421aaa9e7b739baa826add2eaf20f1559f06471b9c7286b5741a11041751","expected_dsk_rows":2094204,"expected_dsk_ascii_bytes":71203186,"expected_dsk_ascii_sha256":"d6b821a29508df203a057620830004b3eab96eeea3b90ba495830fb2d1bd9175"},
+    {"rank":"p99","isolate":"ERR223664","historical_job_id":109727760281,"historical_artifact_id":11076768772,"fastqs":[{"name":"ERR223664_1.fastq.gz","bytes":377899592,"md5":"59ecbe0c66b5ad93ead9577308724bce"},{"name":"ERR223664_2.fastq.gz","bytes":393134325,"md5":"668fb209d9ef01b1897c1105e09ef7ba"}],"expected_filtered_fasta_sha256":"4554581dbdd6ed424f216906216b1660ae04d279ad0529c50c2dcf367769e74b","expected_dsk_rows":2096522,"expected_dsk_ascii_bytes":71281996,"expected_dsk_ascii_sha256":"d3a57a04d3a3093e86e8af73dd966598112cde6790eceb166d547140886fdb0d"}
+  ],
+  "expected_total_dsk_ascii_bytes": 497549628,
+  "phase_a_exact_copy_recovery": {
+    "biological_computation_allowed": false,
+    "candidate_sources": "only explicitly supplied prior exports or storage locations",
+    "checks": ["source recorded","exact bytes","exact SHA-256","exact physical row count","valid two-field DSK ASCII","31-base A/C/G/T k-mer","integer abundance","zero duplicate rows"],
+    "exact_state": "RECOVERED_EXACT",
+    "mismatch_state": "REJECTED_CANDIDATE_MISMATCH",
+    "phase_b_subset_frozen_before_fastq_download": true
+  },
+  "phase_b_regeneration": {
+    "runner": "public standard ubuntu-24.04 x64",
+    "larger_runner_allowed": false,
+    "max_parallel_isolates": 4,
+    "whole_job_wall_seconds_per_isolate": 4500,
+    "sample_interval_seconds": 0.5,
+    "termination": {"first":"SIGTERM","grace_seconds":2,"then":"SIGKILL"},
+    "one_attempt_per_missing_isolate": true,
+    "automatic_scientific_retry": false,
+    "tools": {
+      "spades":{"version":"4.3.0","archive_sha256":"e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034"},
+      "quast":{"version":"5.2.0","archive_sha256":"ccd911087cfa254ad4b8eadac4f95d4685e44c3996f5516b8e0ce6f7cfa7e0db"},
+      "dsk":{"version":"2.3.3","archive_sha256":"626a4663f70323a80834c013f1d9dcb4a3b3a73a1c9ab5da95a013783d81b0f6"}
+    },
+    "support_sha256": {
+      "run_resource_panel_isolate.py":"1af9392259bb7e132c52f7c9c22eca76d5a7b64e874e8a3a739fe66ad9087f4e",
+      "filter_contigs.py":"2cb8e2e46e494737de52a2a31a9e6078e95ad09dcff780c46d77e89e27b47e16",
+      "bounded_stage.py":"4bfe89eeb03c144bbfe5030b16fa216afb695315a4e9ea7571f9da162228fd6b",
+      "resource_panel_selection.json":"af7efa9e53c129788844dea0f77af6f1152840467e1d649059fa25407f4bb1a5"
+    },
+    "historical_support_git_blobs_at_4a6e83c89a40ddb6dc82dbcaf9cea226549c1db3": {
+      "run_resource_panel_isolate.py":"cca9f407e9cd22747c49a9bf1a58053446b45fdf",
+      "filter_contigs.py":"7ae22271537d4762fe48a909e286ed721bc99412",
+      "bounded_stage.py":"0f400782385b47cf169ce24bb949d97abe477b78",
+      "resource_panel_selection.json":"b0eb3ccda38fcaae206dc21937400a7c4d6cbbe7",
+      ".github/workflows/experiment001-n8.yml":"e233c395f1a997cb01d937644655acddd597e353"
+    },
+    "spades":{"mode":"default paired-read","threads":2,"memory_parameter_gib":8,"wall_seconds":2700},
+    "filter":{"minimum_length_bp":200,"minimum_spades_header_coverage":10},
+    "quast":{"minimum_contig_bp":200,"threads":2,"wall_seconds":300,"flags":["--no-plots","--no-html","--no-icarus"]},
+    "dsk":{"kmer_size":31,"abundance_min":1,"max_memory":8000,"wall_seconds":900},
+    "dsk2ascii":{"wall_seconds":300},
+    "oracle":{"canonical_order":"A<C<T<G","reverse_complement":true,"required_missing":0,"required_extra":0,"required_duplicates":0,"required_abundance_mismatches":0},
+    "seer_allowed": false
+  },
+  "terminal_states": ["PASS","FAIL_INPUT_INTEGRITY","FAIL_TOOL_INTEGRITY","FAIL_SPADES_TIMEOUT","FAIL_SPADES_NONZERO","FAIL_SPADES_OUTPUT","FAIL_QC_STAGE","FAIL_DSK_STAGE","FAIL_DSK_EQUALITY","FAIL_EXPECTED_IDENTITY_MISMATCH","FAIL_EVIDENCE_RETENTION","FAIL_PREFLIGHT_INFRASTRUCTURE"],
+  "pass_rule": {
+    "all_seven_exact": true,
+    "allowed_per_isolate_states": ["RECOVERED_EXACT","REGENERATED_EXACT"],
+    "exact_dsk_bytes_and_sha256_required": true,
+    "independent_audit_required": true,
+    "semantic_equality_without_byte_identity_is_pass": false
+  },
+  "evidence_retention": {
+    "actions_upload_if_always": true,
+    "actions_retention_days": 90,
+    "pass_release_tag": "experiment001-n8-exact-inputs-v1",
+    "release_asset_required_for_pass": true,
+    "release_readback_and_digest_audit_required": true,
+    "actions_artifact_alone_sufficient_for_pass": false
+  },
+  "authorization": {
+    "protocol_frozen": true,
+    "harness_authorized_in_this_step": false,
+    "recovery_query_authorized_in_this_step": false,
+    "candidate_file_read_authorized_in_this_step": false,
+    "fastq_download_authorized_in_this_step": false,
+    "regeneration_authorized_in_this_step": false,
+    "workflow_dispatch_authorized_in_this_step": false,
+    "release_creation_authorized_in_this_step": false,
+    "corrected_seer_n8_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "next_authorized_action": "build and statically audit a dedicated manual-only exact-input recovery harness; do not execute it"
+  }
+}
