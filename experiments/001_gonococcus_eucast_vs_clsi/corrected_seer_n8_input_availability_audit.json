@@ -1,0 +1,51 @@
+{
+  "schema": "amr-corrected-seer-n8-input-availability-audit-v1",
+  "audit_date_utc": "2026-10-15",
+  "status": "BLOCKED_SEVEN_INPUT_ARTIFACTS_UNAVAILABLE",
+  "target_experiment": "CORRECTED_SEER_N8_COMBINE_V1",
+  "source_run": {
+    "id": 36665031444,
+    "artifact_inventory_count": 0
+  },
+  "unavailable_inputs": [
+    {"rank":"min","isolate":"ERR1067833","artifact_id":11075707766,"artifact_recorded_bytes":18024326,"artifact_recorded_sha256":"3426ac816f2f061e1a6aec835923f1af5c793b5f26d2dcadc2e497a2ed8be7c0","dsk_ascii_bytes":71519738,"dsk_ascii_sha256":"1b60a3c86547f95055e3d51e138c6f7d6b2329967f3851ebe7112df309276a44","retrieval":"HTTP_404"},
+    {"rank":"p10","isolate":"ERR1067740","artifact_id":11076277598,"artifact_recorded_bytes":18000305,"artifact_recorded_sha256":"d505fd7c2e2fd09ab9e4fc9378912ed2d81503231a8c0af33a50d733c2dc7306","dsk_ascii_bytes":71420896,"dsk_ascii_sha256":"4ad0b03e3d184f5d694d43f5f43d7bfc7478eb655018e0bcefe58c6070f5eab2","retrieval":"HTTP_404"},
+    {"rank":"p25","isolate":"ERR1067765","artifact_id":11076500162,"artifact_recorded_bytes":18009548,"artifact_recorded_sha256":"c30614c6e71cfd9ff580e76ac1b33d04e14e1cf85d7e087aa8589b31b303c04d","dsk_ascii_bytes":71464617,"dsk_ascii_sha256":"9489718a0b3990b0c59146861148f9898a96128fce09202cb6fb5b1e12c687e3","retrieval":"HTTP_404"},
+    {"rank":"median","isolate":"ERR855281","artifact_id":11075718734,"artifact_recorded_bytes":17923497,"artifact_recorded_sha256":"cb0cdc57c610f0e12f2d4d0c28bf48de22cf6cbafa89c0320a238cf6b98b51c7","dsk_ascii_bytes":71128704,"dsk_ascii_sha256":"dee3cf91f0bba7fb5667a5818aa6992fe904209e26ddc73a77b8fc505f48355c","retrieval":"HTTP_404"},
+    {"rank":"p75","isolate":"ERR855022","artifact_id":11076109913,"artifact_recorded_bytes":17500986,"artifact_recorded_sha256":"35267e5f57faa7c2d9512fa2f0d8244681650942ff5a34c1f59125f392f70261","dsk_ascii_bytes":69530491,"dsk_ascii_sha256":"518d08abb3127485e555e46c73dc71c16a14e218c267ea99d197d89bcca79a9b","retrieval":"HTTP_404"},
+    {"rank":"p90","isolate":"ERR854935","artifact_id":11076448396,"artifact_recorded_bytes":17941627,"artifact_recorded_sha256":"cbd45c04b29c01b6584d8640af3a7b6b4c4cdc3deba33f4a60839dc4b01b9a43","dsk_ascii_bytes":71203186,"dsk_ascii_sha256":"d6b821a29508df203a057620830004b3eab96eeea3b90ba495830fb2d1bd9175","retrieval":"HTTP_404"},
+    {"rank":"p99","isolate":"ERR223664","artifact_id":11076768772,"artifact_recorded_bytes":17965241,"artifact_recorded_sha256":"d05c48185d8916a7446f2a5b081b1237a8aa1b03179b1d7261357541a68595f7","dsk_ascii_bytes":71281996,"dsk_ascii_sha256":"d3a57a04d3a3093e86e8af73dd966598112cde6790eceb166d547140886fdb0d","retrieval":"HTTP_404"}
+  ],
+  "unavailable_dsk_ascii_total_bytes": 497549628,
+  "available_maximum_input": {
+    "rank": "max",
+    "isolate": "ERR223688",
+    "artifact_id": 11950830857,
+    "artifact_expired": false,
+    "artifact_bytes": 35661650,
+    "artifact_sha256": "f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+    "dsk_ascii_bytes": 71339203,
+    "dsk_ascii_sha256": "cc33735372a337f45c1cb07681739bb14adaf14ae4142fcad1e9326e3b42695b",
+    "canonical_31mers": 2098204
+  },
+  "facts": {
+    "seven_identity_records_survive_in_committed_json": true,
+    "seven_file_contents_available_from_recorded_artifacts": false,
+    "maximum_file_content_available": true,
+    "corrected_seer_n8_ran": false
+  },
+  "unknowns": [
+    "whether exact copies survive outside GitHub Actions artifacts",
+    "whether prospective regeneration would reproduce exact byte order and SHA-256",
+    "cause of artifact absence"
+  ],
+  "decision": {
+    "input_gate_g1_pass": false,
+    "combine_protocol_frozen": false,
+    "combine_harness_authorized": false,
+    "combine_execution_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "next_authorized_action": "freeze a separate exact-input recovery protocol; do not execute recovery in the same step"
+  }
+}

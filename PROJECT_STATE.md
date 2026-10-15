@@ -271,10 +271,22 @@ and SHA-256 values were independently audited. See
 
 This V3 pass does not change the terminal failures of the original n=8 gate,
 V1, or V2. It does not establish corrected-SEER n=8 correctness, full-cohort
-feasibility, or Hicks model replay. The only authorized next action is to design
-and freeze a separate prospective corrected-SEER n=8 combine protocol.
-Corrected-SEER n=8 execution, the 1,102-run reconstruction, and model training
-remain unauthorized.
+feasibility, or Hicks model replay.
+
+A prospective corrected-SEER n=8 combine protocol cannot yet be frozen as an
+executable experiment. On 2026-10-15, GitHub returned zero artifacts for run
+`36665031444`, and direct retrieval of all seven recorded passing-isolate
+artifact IDs returned HTTP 404. Their committed identities and prior audit
+results survive, but their DSK ASCII byte streams do not survive in the queried
+artifact store. The V3 maximum-rank artifact remains available. See
+`CORRECTED_SEER_N8_INPUT_AVAILABILITY_AUDIT.md` and
+`corrected_seer_n8_input_availability_audit.json`.
+
+Corrected-SEER n=8 remains blocked and unexecuted. The only authorized next
+action is to freeze a separate exact-input recovery protocol. It must search for
+exact copies first and accept only exact byte-count/SHA-256 matches; any later
+regeneration must be prospective and must match the recorded identities before
+combine use. Full-cohort reconstruction and model training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -326,4 +338,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve the failed original n=8, V1, and V2 records. V3 independently passed the maximum-isolate SPAdes/filter-QC/DSK equality gate. Next, design and freeze—but do not yet execute—a separate prospective corrected-SEER n=8 combine protocol using the eight durable isolate outputs. Keep full-cohort reconstruction, model training, Hicks-specific versions/partitions, and metric replay unverified and unauthorized. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
+> Preserve the failed original n=8, V1, and V2 records and the independently audited V3 pass. Corrected-SEER n=8 is blocked because the seven earlier DSK ASCII artifacts are no longer retrievable from their recorded GitHub artifact IDs; only their committed identities survive. Next, freeze—but do not execute—a separate exact-input recovery protocol. Require exact byte-count and SHA-256 equality before any n=8 combine protocol or harness is authorized. Keep full-cohort reconstruction, model training, Hicks-specific versions/partitions, and metric replay unverified and unauthorized. Commit only Experiment 001 evidence. No architecture, dashboard, or scope expansion.
