@@ -380,32 +380,27 @@ The bound was not lowered. See `N8_DSK_UNIFIED_RELEASE_V1_FAILURE.md` and
 
 V1 must not be rerun or reclassified.
 
-`N8_DSK_UNIFIED_RELEASE_V2` is now **FROZEN / NOT EXECUTED**. It preserves
-the exact eight inputs, sample list, deterministic package format, PASS rule,
-and terminal states from V1. Its only execution change is a standard
-`ubuntu-24.04` GitHub Actions runner with at least 12,884,901,888 free bytes
-and pinned official `actions/download-artifact` cross-run acquisition for
-maximum artifact `11950830857`. See `N8_DSK_UNIFIED_RELEASE_V2.md`,
-`n8_dsk_unified_release_v2.json`, and
-`n8_dsk_unified_release_v2_protocol_audit.json`.
+`N8_DSK_UNIFIED_RELEASE_V2` is **PASS**. Manual-only run
+`38967348167` executed exactly once from
+`8284c8e67b7fdac15745b72905e976ac58ba6ae5`. Preflight, the seven-input
+release, pinned official cross-run maximum-artifact acquisition, source
+metadata, internal TAR, all eight source/copy identities, exact sample list,
+deterministic packaging, release creation, fresh download, exact archive hash,
+all-eight readback, and evidence retention passed.
 
-The dedicated `N8_DSK_UNIFIED_RELEASE_V2` workflow and harness are now
-**FROZEN / NOT EXECUTED**. The workflow is manual-only, single-attempt,
-standard `ubuntu-24.04`, and pinned to official cross-run artifact download
-commit `d3f86a106a0bac45b974a628896c90dbdf5c8093`, source run
-`38680749205`, and maximum artifact name
-`max-isolate-resource-resolution-v3-evidence`. It verifies artifact metadata,
-internal TAR, all eight DSK files before and after copy, deterministic packaging,
-one-time release creation, fresh download, and exact readback.
+The durable release is `experiment001-n8-exact-inputs-v2`, targeted to the
+harness commit. Its sole asset is 141,491,724 bytes with SHA-256
+`4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6`.
+It contains 8 exact DSK files totaling 16,731,962 rows and 568,888,831 bytes,
+the exact 254-byte sample list, complete manifest, and source receipts. See
+`N8_DSK_UNIFIED_RELEASE_V2_RESULT.md` and
+`n8_dsk_unified_release_v2_result.json`.
 
-Static checks passed: Python compilation, YAML parse, deterministic archive
-self-test, complete synthetic eight-input stage, fresh readback, and a mutation
-control that was rejected. No workflow was dispatched and no release was
-created in this harness-freeze step. The next allowed action is independent
-remote read-back and a separate single execution decision. Only a
-read-back-verified unified release may authorize a new corrected-SEER n=8
-combine protocol. Full-cohort reconstruction and model training remain
-unauthorized.
+This PASS establishes one stable, read-back-verified n=8 input source only.
+It does not establish corrected-SEER n=8 correctness, full-cohort feasibility,
+or Hicks model replay. The next allowed action is a separately frozen
+corrected-SEER n=8 combine experiment using only this unified release.
+Full-cohort reconstruction and model training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -457,4 +452,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve all terminal failures. Unified-release V2 protocol and dedicated manual-only, single-attempt GitHub Actions harness are frozen but not executed. Next independently read back hashes, confirm zero V2 runs and absent release, then make the one-attempt execution decision. Do not authorize a corrected-SEER combine until the unified release is freshly downloaded and all eight identities pass.
+> Preserve all terminal failures and unified-release V2 PASS run `38967348167`. The exact eight-input release `experiment001-n8-exact-inputs-v2` is now the sole allowed n=8 input source. Next freeze a separately named corrected-SEER n=8 combine protocol that references this release asset and otherwise preserves the V2 combine scientific command, corrected source revision, resource ceilings, independent oracle, no-retry law, and downstream authorization boundary. Do not execute in the protocol-freeze commit.

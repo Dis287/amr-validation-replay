@@ -1,0 +1,76 @@
+{
+  "schema": "amr-n8-dsk-unified-release-result-v2",
+  "experiment_id": "N8_DSK_UNIFIED_RELEASE_V2",
+  "status": "PASS",
+  "workflow_run": {
+    "id": 38967348167,
+    "url": "https://github.com/Dis287/amr-validation-replay/actions/runs/38967348167",
+    "head_sha": "8284c8e67b7fdac15745b72905e976ac58ba6ae5",
+    "event": "workflow_dispatch",
+    "conclusion": "success",
+    "one_attempt": true,
+    "no_retry": true
+  },
+  "preflight": {
+    "runner_image": "ubuntu24",
+    "architecture": "x86_64",
+    "cpu_count": 4,
+    "memory_kib": 16373452,
+    "free_bytes": 92103516160,
+    "prior_run_ids": [],
+    "release_absent": true,
+    "passed": true
+  },
+  "sources": {
+    "seven_archive": {
+      "bytes": 120220273,
+      "sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+    },
+    "maximum_artifact": {
+      "id": 11950830857,
+      "digest": "sha256:f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+      "internal_tar_bytes": 35664515,
+      "internal_tar_sha256": "9415eade3e0ce172e6443f09a285b8dff08d23eda107958123ccb2fc65ceeaa0"
+    }
+  },
+  "inputs": {
+    "files": 8,
+    "total_rows": 16731962,
+    "total_bytes": 568888831,
+    "all_exact": true,
+    "malformed_rows": 0,
+    "duplicate_rows": 0,
+    "sample_list_bytes": 254,
+    "sample_list_sha256": "2efa6bddf14a4f6b8e26fca0a3eb7d62d408d37c9d563393402d7270f38241d8"
+  },
+  "release": {
+    "tag": "experiment001-n8-exact-inputs-v2",
+    "target_commit": "8284c8e67b7fdac15745b72905e976ac58ba6ae5",
+    "asset_id": 648632466,
+    "asset_name": "experiment001-n8-exact-inputs-v2.tar.gz",
+    "bytes": 141491724,
+    "sha256": "4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6",
+    "fresh_download": true,
+    "archive_exact": true,
+    "all_eight_exact": true,
+    "sample_list_exact": true,
+    "url": "https://github.com/Dis287/amr-validation-replay/releases/tag/experiment001-n8-exact-inputs-v2"
+  },
+  "artifacts": {
+    "evidence": {
+      "id": 12074948375,
+      "digest": "sha256:ce03cb8501d1a61ee39e2324beea2be5287504ba73e673317b795b8b2dd48b2f"
+    },
+    "receipt": {
+      "id": 12075098040,
+      "digest": "sha256:e4d08598d1f3bbeee47ded93bbafc6f9f9770fb670afa933850d62cebb029fa1"
+    }
+  },
+  "authorization": {
+    "corrected_seer_n8_combine_protocol_may_be_frozen": true,
+    "corrected_seer_n8_combine_execution_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "hicks_metric_replay_established": false
+  }
+}
