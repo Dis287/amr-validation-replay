@@ -305,43 +305,34 @@ every extracted DSK file again matched its frozen identity. See
 This PASS resolves only the exact-input availability gate. It does not rewrite
 the failed original n=8 gate, V1, or V2.
 
-`CORRECTED_SEER_N8_COMBINE_V1` is now **FROZEN / NOT EXECUTED**. Its exact
-input set is the seven release-verified recovery files plus the independently
-audited V3 maximum file: 8 files, 16,731,962 rows, and 568,888,831 bytes. Input
-order, rows, bytes, SHA-256 values, corrected SEER source revision and source
-blobs, sample-list bytes/hash, command, resource envelopes, termination,
-independent external-sort/k-way-merge oracle, terminal outcomes, retry law,
-PASS rule, and release read-back requirement are frozen in
-`CORRECTED_SEER_N8_COMBINE_V1.md` and
-`corrected_seer_n8_combine_v1.json`.
+`CORRECTED_SEER_N8_COMBINE_V1` is terminal after exactly one manual
+dispatch. Run `38962929988`, from
+`4b8813636a34da16e18eda208da9aed8ef2a19e9`, passed preflight and then
+failed before input acquisition because the harness attempted to open
+`$ROOT/sources/seven.tar.gz` without first creating `$ROOT/sources`.
+No biological input archive was written; exact input verification, SEER build,
+combine, and the independent oracle were not reached. No result release was
+created.
 
-No corrected-SEER n=8 execution occurred in the protocol-freeze commit, and its
-correctness is not established.
+The emitted V1 state `FAIL_INPUT_INTEGRITY` is preserved, but it is not
+evidence of a biological-input mismatch because no input was downloaded or
+checked. The independently audited cause is a pre-input harness filesystem
+initialization defect. Candidate, receipt, final-audit, final-receipt, and
+run-log archives survived and were hash-verified. See
+`CORRECTED_SEER_N8_COMBINE_V1_FAILURE.md` and
+`corrected_seer_n8_combine_v1_failure.json`.
 
-The dedicated `CORRECTED_SEER_N8_COMBINE_V1` execution harness is now
-**FROZEN / NOT EXECUTED**. Its workflow is manual-only and single-attempt. It
-implements exact acquisition and verification of all eight inputs, the frozen
-corrected-SEER source/build/command, bounded combine, a bounded independent
-external-sort/k-way-merge oracle, explicit terminal taxonomy, always-attempted
-evidence uploads, an all-eight-input result release, and fresh release
-read-back. Synthetic tests prove that the oracle accepts the exact positive
-fixture and rejects missing, extra, duplicate-row, duplicate-tag, unknown-tag,
-missing-tag, abundance, and extra-known-sample-tag defects.
+GitHub's earlier validation-only run `38962302292` remains separate: it
+contains zero jobs and zero artifacts and was caused by use of unavailable
+`runner.temp` in workflow-level `env`. It produced no scientific evidence.
 
-GitHub rejected the first harness commit
-`ba3a4bac8d390913cb581afd038bf497e0be4616` during workflow validation:
-run `38962302292` contains zero jobs and zero artifacts. The exact error was
-use of the unavailable `runner.temp` context at workflow-level `env`. This
-was an infrastructural validation failure, not a scientific run. The corrected
-harness derives the same root from `RUNNER_TEMP` inside each job before any
-checkout or scientific step; the failed validation record remains preserved.
-
-No biological input was acquired, no SEER source was downloaded or compiled,
-no combine or scientific oracle was run, no release was created, and no valid
-workflow was dispatched in the harness-freeze commits. The next allowed action
-is independent read-back of the frozen harness followed by a separate explicit
-execution authorization decision. Full-cohort reconstruction and model
-training remain unauthorized.
+V1 must not be rerun, reclassified, or overwritten. Corrected-SEER n=8
+correctness and resource use remain unestablished. The next allowed action is
+to freeze a separately named prospective V2 protocol that preserves all V1
+scientific inputs, identities, parameters, ceilings, oracle rules, and
+acceptance boundaries while correcting only the proven directory-initialization
+defect and adding a static acquisition-path test. Full-cohort reconstruction
+and model training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -393,4 +384,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve the failed original n=8, V1, and V2 records, the independently audited V3 and seven-file recovery passes, and the frozen `CORRECTED_SEER_N8_COMBINE_V1` protocol. Its dedicated manual-only harness is frozen but not executed. Next, independently read back the committed harness, verify its hashes and zero-run state, and make a separate execution-authorization decision. Do not reinterpret the original n=8 failure. Full-cohort reconstruction and model training remain unauthorized.
+> Preserve the failed original n=8 and maximum-isolate V1/V2 records, the independently audited maximum-isolate V3 and seven-file recovery passes, and terminal `CORRECTED_SEER_N8_COMBINE_V1` run `38962929988`. V1 stopped before input acquisition because of a proven harness directory-initialization defect; it must not be rerun or reclassified. Next freeze a separately named V2 protocol that preserves every scientific input, parameter, ceiling, oracle rule, and authorization boundary while correcting only that defect and adding a static acquisition-path test. Do not authorize full-cohort execution or model training.

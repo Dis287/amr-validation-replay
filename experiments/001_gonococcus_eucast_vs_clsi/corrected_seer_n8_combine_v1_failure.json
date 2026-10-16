@@ -1,0 +1,102 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-failure-audit-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V1",
+  "workflow_run": {
+    "id": 38962929988,
+    "url": "https://github.com/Dis287/amr-validation-replay/actions/runs/38962929988",
+    "event": "workflow_dispatch",
+    "head_sha": "4b8813636a34da16e18eda208da9aed8ef2a19e9",
+    "run_number": 1,
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "failure",
+    "jobs": {
+      "execute": 117182235235,
+      "independent_audit_release": 117182399052
+    }
+  },
+  "terminal_record": {
+    "emitted_state": "FAIL_INPUT_INTEGRITY",
+    "preflight_passed": true,
+    "one_attempt": true,
+    "no_retry_occurred": true,
+    "release_created": false
+  },
+  "audited_cause": {
+    "classification": "PRE_INPUT_HARNESS_FILESYSTEM_INITIALIZATION_DEFECT",
+    "fact": "The harness attempted to open $ROOT/sources/seven.tar.gz for writing before creating $ROOT/sources.",
+    "exception": "FileNotFoundError",
+    "missing_path": "/home/runner/work/_temp/corrected-seer-n8-combine-v1/sources/seven.tar.gz",
+    "input_archive_written": false,
+    "input_integrity_tested": false,
+    "emitted_state_preserved_not_reinterpreted": true
+  },
+  "execution_reached": {
+    "preflight": true,
+    "input_download_completed": false,
+    "exact_input_verification": false,
+    "seer_build": false,
+    "combine": false,
+    "independent_oracle": false
+  },
+  "preflight": {
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261012.334.1",
+    "architecture": "x86_64",
+    "cpu_count": 4,
+    "total_ram_kib": 16373448,
+    "filesystem_total_bytes": 154894188544,
+    "filesystem_free_bytes": 91770851328,
+    "repository_commit": "4b8813636a34da16e18eda208da9aed8ef2a19e9",
+    "all_checks_passed": true
+  },
+  "artifacts": {
+    "candidate": {
+      "id": 12073546984,
+      "zip_sha256": "3bd53881321e726661ddfa05de30386ff9b27336cfb2a2cde071ccef1f2cea24",
+      "upload_succeeded": true
+    },
+    "candidate_receipt": {
+      "id": 12073860886,
+      "zip_sha256": "fde0fe8ad4e8f21a2ea891602b9a98b44d47c670fd8192d0c4001d03b834de34",
+      "upload_succeeded": true
+    },
+    "final_audit": {
+      "id": 12073447510,
+      "zip_sha256": "cf21bf033c245a27c84ca68378135241cabef30f25e741964c692e46fc316a92",
+      "upload_succeeded": true
+    },
+    "final_receipt": {
+      "id": 12073387452,
+      "zip_sha256": "835af0cbb19de8138390fcbd4c87f4001ce0b158e93ede92415e2ef810f40562",
+      "upload_succeeded": true
+    },
+    "run_logs": {
+      "zip_sha256": "55be4b8eec116bfa82432cc97da3b828969ccb5dc61e2f8f8365c6187653cf15",
+      "bytes": 42940
+    }
+  },
+  "interpretation": {
+    "established": [
+      "V1 preflight passed.",
+      "V1 terminated before any biological input archive was written.",
+      "The direct cause was failure to create the sources directory before opening the destination file."
+    ],
+    "not_established": [
+      "biological input availability",
+      "biological input integrity",
+      "corrected SEER build integrity",
+      "corrected SEER n=8 feature correctness",
+      "n=8 combine resource use",
+      "full-cohort feasibility",
+      "Hicks model replay"
+    ],
+    "v1_must_not_be_rerun_or_reclassified": true
+  },
+  "authorization_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "corrected_seer_n8_correctness_established": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false
+  }
+}
