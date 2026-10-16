@@ -1,0 +1,271 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-v2-harness-audit-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V2",
+  "status": "HARNESS_FROZEN_NOT_EXECUTED",
+  "parent_protocol_commit": "5fd788bdf29f443be90e1eb4b2401d58664b0fba",
+  "requirements": [
+    {
+      "protocol_requirement": "experiment identity",
+      "frozen_value": "CORRECTED_SEER_N8_COMBINE_V2",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 1,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "manual-only trigger",
+      "frozen_value": "workflow_dispatch only",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 3,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "standard runner",
+      "frozen_value": "ubuntu-24.04",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 19,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "whole-job ceiling",
+      "frozen_value": "90 minutes / 5400 seconds",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 20,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "working tree before acquisition",
+      "frozen_value": [
+        "evidence",
+        "sources",
+        "tools/source",
+        "work/combined",
+        "inputs",
+        "oracle-work"
+      ],
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.py",
+      "implementation_line_or_key": 150,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "actual acquire calls preparation",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.py",
+      "implementation_line_or_key": 150,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "synthetic fresh-root acquisition test",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/test_corrected_seer_n8_acquire_v2.py",
+      "implementation_line_or_key": 115,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no biological network in static test",
+      "frozen_value": false,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/test_corrected_seer_n8_acquire_v2.py",
+      "implementation_line_or_key": 152,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SEER upstream revision",
+      "frozen_value": "a6bd405754726467a93f39820fb4719457395ae7",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.py",
+      "implementation_line_or_key": 25,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "combine wall ceiling",
+      "frozen_value": 900,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 50,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "oracle wall ceiling",
+      "frozen_value": 900,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 53,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "minimum samples",
+      "frozen_value": 2,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 52,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "sample list hash",
+      "frozen_value": "2efa6bddf14a4f6b8e26fca0a3eb7d62d408d37c9d563393402d7270f38241d8",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.py",
+      "implementation_line_or_key": 419,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "independent oracle",
+      "frozen_value": "external sort plus k-way merge",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v2.py",
+      "implementation_line_or_key": 66,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "RSS ceiling KiB",
+      "frozen_value": 12582912,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 50,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "working-root ceiling bytes",
+      "frozen_value": 10737418240,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 50,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "sample interval seconds",
+      "frozen_value": 0.5,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v2.py",
+      "implementation_line_or_key": 105,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "termination",
+      "frozen_value": "SIGTERM + 10 seconds + SIGKILL",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v2.py",
+      "implementation_line_or_key": 98,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "artifact retention days",
+      "frozen_value": 90,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 83,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "result release tag",
+      "frozen_value": "experiment001-corrected-seer-n8-v2",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 14,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no retry path",
+      "frozen_value": 1,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": 8,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no SEER model training",
+      "frozen_value": false,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": null,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no full cohort logic",
+      "frozen_value": false,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v2.yml",
+      "implementation_line_or_key": null,
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "protected_files": {
+    "v1_protocol_md": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/CORRECTED_SEER_N8_COMBINE_V1.md",
+      "expected_sha256": "a8848df0f6802d7b50c4d327127c443278dea2ad5dd64cd685123b3bc93fda2c",
+      "observed_sha256": "a8848df0f6802d7b50c4d327127c443278dea2ad5dd64cd685123b3bc93fda2c",
+      "exact_match": true
+    },
+    "v1_protocol_json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v1.json",
+      "expected_sha256": "cc70ec0dd72d5bdc86791648a297fd831995a82ec7207982df3f645e5ee2b688",
+      "observed_sha256": "cc70ec0dd72d5bdc86791648a297fd831995a82ec7207982df3f645e5ee2b688",
+      "exact_match": true
+    },
+    "v2_protocol_md": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/CORRECTED_SEER_N8_COMBINE_V2.md",
+      "expected_sha256": "0b4bcb4cb23d1548fc450b91684bc870b7a992966296ee1deebf5af0d30e9887",
+      "observed_sha256": "0b4bcb4cb23d1548fc450b91684bc870b7a992966296ee1deebf5af0d30e9887",
+      "exact_match": true
+    },
+    "v2_protocol_json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.json",
+      "expected_sha256": "9b0a3ddd7a804e0896c86a0b781548f977a048eb2df6c621f7482f0b4b98e97a",
+      "observed_sha256": "9b0a3ddd7a804e0896c86a0b781548f977a048eb2df6c621f7482f0b4b98e97a",
+      "exact_match": true
+    },
+    "v1_workflow": {
+      "path": ".github/workflows/corrected-seer-n8-combine-v1.yml",
+      "expected_sha256": "51f73e5af5d33f9d105c8fd6444e6c742d41dc974cb5ccf8a28c5d6b62870ea5",
+      "observed_sha256": "51f73e5af5d33f9d105c8fd6444e6c742d41dc974cb5ccf8a28c5d6b62870ea5",
+      "exact_match": true
+    }
+  },
+  "implementation_sha256": {
+    ".github/workflows/corrected-seer-n8-combine-v2.yml": "ae45956055a020b099068ed5838a1f1187d203a075b4f007f3572ceeb1e0c02f",
+    "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.py": "d59a0452d050b71fa87d6b071075d68ee79d161efbd70ef1c77b4bcfc022f71f",
+    "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v2.py": "3380f9553332d7a1995fc61c4d3d6d4aeb273dc3ddee724ec5c601abbf0dcfd0",
+    "experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v2.py": "f1b19c9ae79beb942d40d51832e38e813fbde300020efe24d75324e8b378e0bd",
+    "experiments/001_gonococcus_eucast_vs_clsi/test_corrected_seer_n8_acquire_v2.py": "944e6b6016a36dbe87375c51ac0d74d71cfa30dc6bde01a917163e5daede285a"
+  },
+  "execution_trigger_check": {
+    "manual_only": true
+  },
+  "retry_check": {
+    "one_attempt_guard": true,
+    "automatic_retry": false,
+    "matrix_retry": false
+  },
+  "artifact_retention_check": {
+    "if_always_paths": true,
+    "retention_days": 90,
+    "upload_enforced": true,
+    "fresh_release_readback": true
+  },
+  "forbidden_action_check": {
+    "v1_rerun": false,
+    "seer_model_training": false,
+    "full_cohort": false,
+    "other_isolate": false,
+    "larger_runner": false,
+    "protocol_change": false
+  },
+  "static_test_requirements": {
+    "python_compile": true,
+    "protocol_self_test": true,
+    "synthetic_fresh_root_acquisition": true,
+    "oracle_positive_and_nine_defect_cases": true,
+    "yaml_parse": true,
+    "biological_download": false,
+    "seer_download_compile_or_run": false,
+    "workflow_dispatch": false
+  },
+  "all_exact": true
+}
