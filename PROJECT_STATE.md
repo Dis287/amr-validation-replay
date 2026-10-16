@@ -327,12 +327,23 @@ contains zero jobs and zero artifacts and was caused by use of unavailable
 `runner.temp` in workflow-level `env`. It produced no scientific evidence.
 
 V1 must not be rerun, reclassified, or overwritten. Corrected-SEER n=8
-correctness and resource use remain unestablished. The next allowed action is
-to freeze a separately named prospective V2 protocol that preserves all V1
-scientific inputs, identities, parameters, ceilings, oracle rules, and
-acceptance boundaries while correcting only the proven directory-initialization
-defect and adding a static acquisition-path test. Full-cohort reconstruction
-and model training remain unauthorized.
+correctness and resource use remain unestablished.
+
+`CORRECTED_SEER_N8_COMBINE_V2` is now **FROZEN / NOT EXECUTED** as a
+separately named prospective experiment. Its inputs, input policy, corrected
+SEER source/build/command, sample list, execution envelope, oracle,
+terminal states, retry policy, and PASS rule are value-for-value identical to
+V1. Its only allowed infrastructure correction is creation of the full working
+directory tree before any acquisition destination is opened. The future harness
+must pass a synthetic fresh-root acquisition-path test before commit. See
+`CORRECTED_SEER_N8_COMBINE_V2.md`,
+`corrected_seer_n8_combine_v2.json`, and
+`corrected_seer_n8_combine_v2_protocol_audit.json`.
+
+This protocol-freeze step does not authorize or execute V2. The next allowed
+action is construction and static audit of a dedicated, manual-only,
+single-attempt V2 harness. Full-cohort reconstruction and model training remain
+unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -384,4 +395,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve the failed original n=8 and maximum-isolate V1/V2 records, the independently audited maximum-isolate V3 and seven-file recovery passes, and terminal `CORRECTED_SEER_N8_COMBINE_V1` run `38962929988`. V1 stopped before input acquisition because of a proven harness directory-initialization defect; it must not be rerun or reclassified. Next freeze a separately named V2 protocol that preserves every scientific input, parameter, ceiling, oracle rule, and authorization boundary while correcting only that defect and adding a static acquisition-path test. Do not authorize full-cohort execution or model training.
+> Preserve terminal `CORRECTED_SEER_N8_COMBINE_V1` run `38962929988` and all earlier failed/pass records. `CORRECTED_SEER_N8_COMBINE_V2` is frozen but not executed. Next build and statically audit only its dedicated manual-only, single-attempt harness. Preserve every scientific invariant; create the working directories before acquisition and require the synthetic fresh-root acquisition-path test. Do not execute V2 in the harness-freeze commit. Do not authorize full-cohort execution or model training.

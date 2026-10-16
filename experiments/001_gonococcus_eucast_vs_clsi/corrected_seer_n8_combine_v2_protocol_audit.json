@@ -1,0 +1,76 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-v2-protocol-audit-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V2",
+  "parent_terminal_experiment": "CORRECTED_SEER_N8_COMBINE_V1",
+  "parent_failure_run_id": 38962929988,
+  "parent_failure_record_commit": "7bfee06edc60bc3e490eb7a17ba414f62e2db784",
+  "protocol_files": {
+    "markdown": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/CORRECTED_SEER_N8_COMBINE_V2.md",
+      "sha256": "0b4bcb4cb23d1548fc450b91684bc870b7a992966296ee1deebf5af0d30e9887"
+    },
+    "json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2.json",
+      "sha256": "9b0a3ddd7a804e0896c86a0b781548f977a048eb2df6c621f7482f0b4b98e97a"
+    }
+  },
+  "v1_protected_files": {
+    "markdown_sha256": "a8848df0f6802d7b50c4d327127c443278dea2ad5dd64cd685123b3bc93fda2c",
+    "json_sha256": "cc70ec0dd72d5bdc86791648a297fd831995a82ec7207982df3f645e5ee2b688",
+    "failure_markdown_sha256": "bcfe34630a88466e91120708fc51d7b33c4df2e43e51f3289b15173fb0401547",
+    "failure_json_sha256": "31b3ee24c15efd7fe2b5114f59a26de89d78f9954eab91fee2d3b1bd3c947a7f"
+  },
+  "scientific_invariant_comparison": {
+    "inputs": {
+      "exact_match": true
+    },
+    "input_policy": {
+      "exact_match": true
+    },
+    "tool": {
+      "exact_match": true
+    },
+    "sample_list": {
+      "exact_match": true
+    },
+    "combine": {
+      "exact_match": true
+    },
+    "execution_envelope": {
+      "exact_match": true
+    },
+    "preflight_records": {
+      "exact_match": true
+    },
+    "oracle": {
+      "exact_match": true
+    },
+    "terminal_states": {
+      "exact_match": true
+    },
+    "retry_policy": {
+      "exact_match": true
+    },
+    "pass_rule": {
+      "exact_match": true
+    }
+  },
+  "allowed_differences": {
+    "experiment_identity": "V2",
+    "parent_terminal_record": "V1 run 38962929988",
+    "infrastructure_correction": "create working directories before acquisition destination open",
+    "required_static_test": "synthetic fresh-root acquisition-path test",
+    "release_tag": "experiment001-corrected-seer-n8-v2",
+    "release_asset": "experiment001-corrected-seer-n8-v2.tar.gz"
+  },
+  "checks": {
+    "all_scientific_invariants_exact": true,
+    "v1_terminal_preserved": true,
+    "protocol_status_frozen_not_executed": true,
+    "execution_authorized": false,
+    "workflow_dispatch_authorized": false,
+    "full_cohort_authorized": false,
+    "model_training_authorized": false,
+    "hicks_metric_replay_established": false
+  }
+}
