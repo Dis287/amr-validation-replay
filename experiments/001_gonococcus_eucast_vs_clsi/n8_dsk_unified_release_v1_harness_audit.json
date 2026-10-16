@@ -1,0 +1,39 @@
+{
+  "schema": "amr-n8-dsk-unified-release-harness-audit-v1",
+  "experiment_id": "N8_DSK_UNIFIED_RELEASE_V1",
+  "parent_protocol_commit": "97f0b079f00e24dc323ca198e0ba00e6c4473ec6",
+  "harness": {
+    "path": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v1.py",
+    "sha256": "1822c90c09de1e4ad78eb5f9cd4ac803d784065327bac4caab821313ab136000"
+  },
+  "checks": {
+    "protocol_md_hash_protected": true,
+    "protocol_json_hash_protected": true,
+    "all_eight_exact_before_copy": true,
+    "all_eight_exact_after_copy": true,
+    "sample_list_exact": true,
+    "deterministic_mtime": true,
+    "deterministic_uid_gid": true,
+    "sorted_paths": true,
+    "fresh_readback_all_eight": true,
+    "minimum_free_bytes_from_protocol": true,
+    "head_guard": true,
+    "no_release_creation_in_harness": true,
+    "no_biological_execution": true
+  },
+  "implementation_locations": {
+    "preflight": 125,
+    "source_and_input_verification": 137,
+    "deterministic_archive": 100,
+    "fresh_release_readback": 215,
+    "synthetic_determinism_test": 251
+  },
+  "static_results": {
+    "python_compile": true,
+    "deterministic_archive_test": true,
+    "synthetic_extract_readback": true,
+    "biological_download": false,
+    "release_creation": false
+  },
+  "all_exact": true
+}

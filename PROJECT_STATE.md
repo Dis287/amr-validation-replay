@@ -369,11 +369,19 @@ forbidden. See `N8_DSK_UNIFIED_RELEASE_V1.md`,
 `n8_dsk_unified_release_v1.json`, and
 `n8_dsk_unified_release_v1_protocol_audit.json`.
 
-This protocol-freeze step does not execute packaging or create the release. The
-next allowed action is a dedicated local harness and static audit. Only a
-read-back-verified unified release may authorize a new corrected-SEER n=8
-combine protocol. Full-cohort reconstruction and model training remain
-unauthorized.
+The dedicated local `N8_DSK_UNIFIED_RELEASE_V1` harness is now **FROZEN /
+NOT EXECUTED**. Static checks passed for protected protocol hashes, exact
+pre-copy and post-copy input verification, exact sample list, deterministic tar
+and gzip metadata, archive determinism, safe extraction, fresh-readback logic,
+repository-head guard, and the 3 GiB free-space preflight. The harness itself
+does not create a release; release creation remains a separately invoked,
+one-attempt action after preflight.
+
+No packaging or release creation occurred in this harness-freeze step. The next
+allowed action is independent remote read-back followed by the one permitted
+local preflight and execution decision. Only a read-back-verified unified
+release may authorize a new corrected-SEER n=8 combine protocol. Full-cohort
+reconstruction and model training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -425,4 +433,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve terminal corrected-SEER n=8 V1/V2 and all earlier evidence. `N8_DSK_UNIFIED_RELEASE_V1` is frozen but not executed. Next build and statically audit its dedicated local, one-attempt deterministic packaging/release harness; do not execute packaging in the harness commit. Do not authorize a new combine until the unified release is freshly downloaded and all eight identities pass. Do not authorize full-cohort execution or model training.
+> Preserve terminal corrected-SEER n=8 V1/V2 and all earlier evidence. The unified-release V1 protocol and dedicated local one-attempt harness are frozen but not executed. Next independently read back the harness, verify hashes and absent release, then run its preflight. If the frozen 3 GiB free-space minimum fails, record terminal infrastructure failure; do not lower it. Do not authorize a new combine until a unified release is freshly downloaded and all eight identities pass.
