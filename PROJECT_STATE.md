@@ -398,9 +398,23 @@ the exact 254-byte sample list, complete manifest, and source receipts. See
 
 This PASS establishes one stable, read-back-verified n=8 input source only.
 It does not establish corrected-SEER n=8 correctness, full-cohort feasibility,
-or Hicks model replay. The next allowed action is a separately frozen
-corrected-SEER n=8 combine experiment using only this unified release.
-Full-cohort reconstruction and model training remain unauthorized.
+or Hicks model replay.
+
+`CORRECTED_SEER_N8_COMBINE_V3` is now **FROZEN / NOT EXECUTED**. All eight
+scientific input identities, the corrected SEER source/build/command, sample
+order, resource ceilings, independent oracle, terminal taxonomy, no-retry law,
+PASS rule, and downstream authorization boundary are value-for-value inherited
+from V2. The sole acquisition source is unified release
+`experiment001-n8-exact-inputs-v2`, asset ID `648632466`, 141,491,724
+bytes, SHA-256
+`4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6`.
+See `CORRECTED_SEER_N8_COMBINE_V3.md`,
+`corrected_seer_n8_combine_v3.json`, and
+`corrected_seer_n8_combine_v3_protocol_audit.json`.
+
+No V3 execution occurred in this protocol-freeze commit. The next allowed
+action is a dedicated manual-only harness and static audit. Full-cohort
+reconstruction and model training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -452,4 +466,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve all terminal failures and unified-release V2 PASS run `38967348167`. The exact eight-input release `experiment001-n8-exact-inputs-v2` is now the sole allowed n=8 input source. Next freeze a separately named corrected-SEER n=8 combine protocol that references this release asset and otherwise preserves the V2 combine scientific command, corrected source revision, resource ceilings, independent oracle, no-retry law, and downstream authorization boundary. Do not execute in the protocol-freeze commit.
+> Preserve all terminal failures and unified-release V2 PASS run `38967348167`. `CORRECTED_SEER_N8_COMBINE_V3` is frozen but not executed and may use only `experiment001-n8-exact-inputs-v2`. Next build and statically audit its dedicated manual-only, single-attempt harness; do not execute in the harness commit. Preserve every scientific command, ceiling, oracle rule, and downstream prohibition.

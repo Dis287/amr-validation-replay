@@ -1,0 +1,30 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-v3-protocol-audit-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V3",
+  "parent_acceptance_commit": "8a389c18a20d614fa92516b14ae93ff5d24cc0de",
+  "protocol_files": {
+    "markdown_sha256": "38d59850e30d0e17eadbcd10ea010e60485a6c39324f0b5f874841118a8543ee",
+    "json_sha256": "4c2de9dce67b565bc59aa12650877daa3f44e0a8efa8f541f2c3f64a4fdce883"
+  },
+  "checks": {
+    "input_policy": true,
+    "tool": true,
+    "sample_list": true,
+    "combine": true,
+    "execution_envelope": true,
+    "preflight_records": true,
+    "oracle": true,
+    "terminal_states": true,
+    "retry_policy": true,
+    "pass_rule": true,
+    "input_scientific_identities_exact": true,
+    "all_sources_unified": true,
+    "unified_release_pass": true,
+    "status_frozen": true,
+    "execution_not_authorized": true,
+    "full_cohort_not_authorized": true,
+    "training_not_authorized": true
+  },
+  "all_exact": true,
+  "execution_occurred": false
+}
