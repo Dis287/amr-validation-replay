@@ -8,7 +8,6 @@ concurrency:
   group: corrected-seer-n8-combine-v1-single-attempt
   cancel-in-progress: false
 env:
-  ROOT: ${{ runner.temp }}/corrected-seer-n8-combine-v1
   HARNESS: experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v1.py
   ORACLE: experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v1.py
   BOUNDED: experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v1.py
@@ -22,6 +21,8 @@ jobs:
     steps:
       - name: Initialize mandatory outcome
         run: |
+          ROOT="$RUNNER_TEMP/corrected-seer-n8-combine-v1"
+          echo "ROOT=$ROOT" >> "$GITHUB_ENV"
           mkdir -p "$ROOT/evidence"
           printf '%s\n' '{"experiment_id":"CORRECTED_SEER_N8_COMBINE_V1","state":"INCOMPLETE","one_attempt":true}' > "$ROOT/evidence/outcome.json"
       - name: Check out frozen harness
@@ -125,6 +126,8 @@ jobs:
     steps:
       - name: Initialize final outcome
         run: |
+          ROOT="$RUNNER_TEMP/corrected-seer-n8-combine-v1"
+          echo "ROOT=$ROOT" >> "$GITHUB_ENV"
           mkdir -p "$ROOT-final"
           printf '%s\n' '{"experiment_id":"CORRECTED_SEER_N8_COMBINE_V1","state":"INCOMPLETE"}' > "$ROOT-final/outcome.json"
       - name: Check out frozen harness

@@ -4,6 +4,16 @@
   "status": "PASS_STATIC_HARNESS_ONLY",
   "scientific_execution_performed": false,
   "workflow_dispatched": false,
+  "github_validation_history": {
+    "invalid_commit": "ba3a4bac8d390913cb581afd038bf497e0be4616",
+    "run_id": 38962302292,
+    "event": "push",
+    "jobs_created": 0,
+    "artifacts_created": 0,
+    "error": "workflow-level env used unavailable runner.temp context",
+    "scientific_execution_performed": false,
+    "correction": "derive ROOT from RUNNER_TEMP inside each job's first shell step and export through GITHUB_ENV"
+  },
   "checks": {
     "manual_workflow_dispatch_only": true,
     "push_trigger_absent": true,

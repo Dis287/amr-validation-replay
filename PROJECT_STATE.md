@@ -328,9 +328,17 @@ read-back. Synthetic tests prove that the oracle accepts the exact positive
 fixture and rejects missing, extra, duplicate-row, duplicate-tag, unknown-tag,
 missing-tag, abundance, and extra-known-sample-tag defects.
 
+GitHub rejected the first harness commit
+`ba3a4bac8d390913cb581afd038bf497e0be4616` during workflow validation:
+run `38962302292` contains zero jobs and zero artifacts. The exact error was
+use of the unavailable `runner.temp` context at workflow-level `env`. This
+was an infrastructural validation failure, not a scientific run. The corrected
+harness derives the same root from `RUNNER_TEMP` inside each job before any
+checkout or scientific step; the failed validation record remains preserved.
+
 No biological input was acquired, no SEER source was downloaded or compiled,
-no combine or scientific oracle was run, no release was created, and no
-workflow was dispatched in the harness-freeze commit. The next allowed action
+no combine or scientific oracle was run, no release was created, and no valid
+workflow was dispatched in the harness-freeze commits. The next allowed action
 is independent read-back of the frozen harness followed by a separate explicit
 execution authorization decision. Full-cohort reconstruction and model
 training remain unauthorized.
