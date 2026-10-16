@@ -357,12 +357,23 @@ recoverability, not a V2 pass. See
 `CORRECTED_SEER_N8_COMBINE_V2_FAILURE.md` and
 `corrected_seer_n8_combine_v2_failure.json`.
 
-V2 must not be rerun or reclassified. The next allowed action is a separately
-named, prospectively frozen input-consolidation experiment that creates one
-immutable, independently read-back-verified release containing all eight exact
-DSK inputs. Only after that release exists may a new corrected-SEER n=8 combine
-protocol reference one stable source. Full-cohort reconstruction and model
-training remain unauthorized.
+V2 must not be rerun or reclassified.
+
+`N8_DSK_UNIFIED_RELEASE_V1` is now **FROZEN / NOT EXECUTED**. It preserves
+all eight V2 input identities and the exact sample list. It may only package the
+eight already verified files into a deterministic archive, create release
+`experiment001-n8-exact-inputs-v2` once, download it fresh, and independently
+reverify the archive and every extracted file. Regeneration, substitution,
+biological download, SPAdes, DSK execution, SEER, and model training are
+forbidden. See `N8_DSK_UNIFIED_RELEASE_V1.md`,
+`n8_dsk_unified_release_v1.json`, and
+`n8_dsk_unified_release_v1_protocol_audit.json`.
+
+This protocol-freeze step does not execute packaging or create the release. The
+next allowed action is a dedicated local harness and static audit. Only a
+read-back-verified unified release may authorize a new corrected-SEER n=8
+combine protocol. Full-cohort reconstruction and model training remain
+unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -414,4 +425,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve terminal corrected-SEER n=8 V1 run `38962929988` and V2 run `38964235718` plus all earlier evidence. V2 acquired and verified the seven release inputs but received a non-200 response for maximum artifact `11950830857`; SEER and the oracle did not run. Do not rerun V1 or V2. Next freeze a separately named input-consolidation protocol for one immutable, independently read-back-verified release containing all eight exact DSK inputs. Do not authorize a new combine until that release passes. Do not authorize full-cohort execution or model training.
+> Preserve terminal corrected-SEER n=8 V1/V2 and all earlier evidence. `N8_DSK_UNIFIED_RELEASE_V1` is frozen but not executed. Next build and statically audit its dedicated local, one-attempt deterministic packaging/release harness; do not execute packaging in the harness commit. Do not authorize a new combine until the unified release is freshly downloaded and all eight identities pass. Do not authorize full-cohort execution or model training.
