@@ -412,9 +412,19 @@ See `CORRECTED_SEER_N8_COMBINE_V3.md`,
 `corrected_seer_n8_combine_v3.json`, and
 `corrected_seer_n8_combine_v3_protocol_audit.json`.
 
-No V3 execution occurred in this protocol-freeze commit. The next allowed
-action is a dedicated manual-only harness and static audit. Full-cohort
-reconstruction and model training remain unauthorized.
+The dedicated V3 manual-only, single-attempt execution harness is now
+**FROZEN / NOT EXECUTED**. Static checks passed for YAML structure, Python
+syntax, protected protocol hashes, exact unified-release acquisition, mutated
+archive rejection, and the independent oracle's positive and defect-control
+cases. The harness records exact input/tool identities, bounded combine and
+oracle resources, every terminal outcome, durable candidate evidence, an
+independent audit, immutable result release, and fresh release readback. See
+`corrected_seer_n8_combine_v3_harness_audit.json`.
+
+No V3 execution occurred in the harness-freeze commit. The next allowed action
+is an independent readback of that commit followed by exactly one manual V3
+dispatch if every guard passes. Full-cohort reconstruction and model training
+remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -466,4 +476,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve all terminal failures and unified-release V2 PASS run `38967348167`. `CORRECTED_SEER_N8_COMBINE_V3` is frozen but not executed and may use only `experiment001-n8-exact-inputs-v2`. Next build and statically audit its dedicated manual-only, single-attempt harness; do not execute in the harness commit. Preserve every scientific command, ceiling, oracle rule, and downstream prohibition.
+> Preserve all terminal failures and unified-release V2 PASS run `38967348167`. `CORRECTED_SEER_N8_COMBINE_V3` protocol and dedicated harness are frozen but not executed and may use only `experiment001-n8-exact-inputs-v2`. Independently read back the harness commit; only if every protected hash, static check, manual-only trigger, no-retry guard, and absent result-release/run guard passes, dispatch V3 exactly once. Audit durable artifacts and release readback before classifying the result. Preserve every scientific command, ceiling, oracle rule, and downstream prohibition.

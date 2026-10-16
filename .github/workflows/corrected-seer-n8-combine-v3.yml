@@ -1,0 +1,245 @@
+name: CORRECTED_SEER_N8_COMBINE_V3
+on:
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: corrected-seer-n8-combine-v3-single-attempt
+  cancel-in-progress: false
+env:
+  HARNESS: experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py
+  ORACLE: experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v3.py
+  BOUNDED: experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v3.py
+  RELEASE_TAG: experiment001-corrected-seer-n8-v3
+  RELEASE_ASSET: experiment001-corrected-seer-n8-v3.tar.gz
+
+jobs:
+  execute:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Initialize mandatory outcome
+        run: |
+          ROOT="$RUNNER_TEMP/corrected-seer-n8-combine-v3"
+          echo "ROOT=$ROOT" >> "$GITHUB_ENV"
+          mkdir -p "$ROOT/evidence"
+          printf '%s\n' '{"experiment_id":"CORRECTED_SEER_N8_COMBINE_V3","state":"INCOMPLETE","one_attempt":true}' > "$ROOT/evidence/outcome.json"
+      - name: Check out frozen harness
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Confirm frozen harness initialization
+        run: python3 "$HARNESS" initialize --root "$ROOT"
+      - name: Install build dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends g++ libboost-program-options-dev libgzstream-dev zlib1g-dev
+      - name: Execute exactly one frozen combine path
+        id: scientific
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 "$HARNESS" preflight --root "$ROOT"
+          set +e
+          gh release download experiment001-n8-exact-inputs-v2 \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern experiment001-n8-exact-inputs-v2.tar.gz \
+            --dir "$ROOT/sources" \
+            >"$ROOT/evidence/input_release_download.stdout" \
+            2>"$ROOT/evidence/input_release_download.stderr"
+          download_exit=$?
+          set -e
+          if [ "$download_exit" -ne 0 ]; then
+            python3 - "$ROOT" "$download_exit" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          (root / "evidence" / "outcome.json").write_text(json.dumps({
+              "experiment_id": "CORRECTED_SEER_N8_COMBINE_V3",
+              "state": "FAIL_INPUT_AVAILABILITY",
+              "source": "experiment001-n8-exact-inputs-v2",
+              "download_exit": int(sys.argv[2])
+          }, indent=2, sort_keys=True) + "\n")
+          PY
+            exit "$download_exit"
+          fi
+          python3 "$HARNESS" acquire --root "$ROOT" \
+            --archive "$ROOT/sources/experiment001-n8-exact-inputs-v2.tar.gz"
+          python3 "$HARNESS" build --root "$ROOT"
+          python3 "$BOUNDED" --name combine --cwd "$ROOT" --watch-root "$ROOT" \
+            --evidence "$ROOT/evidence/combine.stage.json" --log "$ROOT/evidence/combine.log" \
+            --timeout 900 --rss-kib 12582912 --disk-bytes 10737418240 -- \
+            "$ROOT/tools/combineKmers-a6bd405" -r inputs/n8_samples.tsv \
+            -o work/combined/panel8_combined --min_samples 2
+          python3 "$BOUNDED" --name oracle --cwd "$ROOT" --watch-root "$ROOT" \
+            --evidence "$ROOT/evidence/oracle.stage.json" --log "$ROOT/evidence/oracle.log" \
+            --timeout 900 --rss-kib 12582912 --disk-bytes 10737418240 -- \
+            python3 "$GITHUB_WORKSPACE/$ORACLE" \
+            --inputs \
+            "min=ERR1067833=$ROOT/inputs/min/kmers.txt" \
+            "p10=ERR1067740=$ROOT/inputs/p10/kmers.txt" \
+            "p25=ERR1067765=$ROOT/inputs/p25/kmers.txt" \
+            "median=ERR855281=$ROOT/inputs/median/kmers.txt" \
+            "p75=ERR855022=$ROOT/inputs/p75/kmers.txt" \
+            "p90=ERR854935=$ROOT/inputs/p90/kmers.txt" \
+            "p99=ERR223664=$ROOT/inputs/p99/kmers.txt" \
+            "max=ERR223688=$ROOT/inputs/max/kmers.txt" \
+            --combined "$ROOT/work/combined/panel8_combined.gz" \
+            --work "$ROOT/oracle-work" --out "$ROOT/evidence/oracle.json"
+      - name: Classify and manifest every terminal path
+        if: always()
+        id: classify
+        env:
+          SCIENTIFIC_OUTCOME: ${{ steps.scientific.outcome }}
+        run: python3 "$HARNESS" classify --root "$ROOT" --run-outcome "$SCIENTIFIC_OUTCOME"
+      - name: Upload candidate or failure evidence
+        if: always()
+        id: candidate_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: corrected-seer-n8-combine-v3-candidate
+          path: ${{ env.ROOT }}/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Write candidate receipt
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          root=pathlib.Path(os.environ["ROOT"])
+          outcome=json.loads((root/"evidence/outcome.json").read_text())
+          upload="${{ steps.candidate_upload.outcome }}"
+          pathlib.Path(os.environ["RUNNER_TEMP"],"corrected-seer-n8-candidate-receipt.json").write_text(json.dumps({
+            "artifact_id":"${{ steps.candidate_upload.outputs.artifact-id }}",
+            "artifact_digest":"${{ steps.candidate_upload.outputs.artifact-digest }}",
+            "upload_outcome":upload,
+            "pre_upload_state":outcome.get("state"),
+            "effective_terminal_state":outcome.get("state") if upload=="success" else "FAIL_EVIDENCE_RETENTION"
+          },indent=2,sort_keys=True)+"\n")
+          PY
+      - name: Upload candidate receipt
+        if: always()
+        id: candidate_receipt
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: corrected-seer-n8-combine-v3-candidate-receipt
+          path: ${{ runner.temp }}/corrected-seer-n8-candidate-receipt.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce candidate retention
+        if: always()
+        env:
+          CLASSIFY: ${{ steps.classify.outcome }}
+          UPLOAD: ${{ steps.candidate_upload.outcome }}
+          RECEIPT: ${{ steps.candidate_receipt.outcome }}
+        run: |
+          test "$CLASSIFY" = success
+          test "$UPLOAD" = success
+          test "$RECEIPT" = success
+
+  independent-audit-release:
+    needs: execute
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Initialize final outcome
+        run: |
+          ROOT="$RUNNER_TEMP/corrected-seer-n8-combine-v3"
+          echo "ROOT=$ROOT" >> "$GITHUB_ENV"
+          mkdir -p "$ROOT-final"
+          printf '%s\n' '{"experiment_id":"CORRECTED_SEER_N8_COMBINE_V3","state":"INCOMPLETE"}' > "$ROOT-final/outcome.json"
+      - name: Check out frozen harness
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Download retained candidate
+        id: download
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: corrected-seer-n8-combine-v3-candidate
+          path: ${{ runner.temp }}/corrected-seer-n8-candidate
+      - name: Independently audit and package
+        if: steps.download.outcome == 'success'
+        id: audit
+        run: python3 "$HARNESS" audit --source "$RUNNER_TEMP/corrected-seer-n8-candidate" --output "$ROOT-final"
+      - name: Create immutable result release
+        if: steps.audit.outcome == 'success'
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" "$ROOT-final/$RELEASE_ASSET#Exact corrected-SEER n8 evidence" \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "Experiment 001 corrected-SEER n8 v3" \
+            --notes "Frozen result of CORRECTED_SEER_N8_COMBINE_V3; no full-cohort or model execution."
+      - name: Fresh release download
+        if: steps.release.outcome == 'success'
+        id: release_download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/corrected-seer-n8-release-readback"
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "$RELEASE_ASSET" --dir "$RUNNER_TEMP/corrected-seer-n8-release-readback"
+      - name: Verify fresh release
+        if: steps.release_download.outcome == 'success'
+        id: readback
+        run: python3 "$HARNESS" audit-release --archive "$RUNNER_TEMP/corrected-seer-n8-release-readback/$RELEASE_ASSET" --ledger "$ROOT-final/bundle_ledger.json" --output "$ROOT-final"
+      - name: Upload final audit
+        if: always()
+        id: final_upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: corrected-seer-n8-combine-v3-final-audit
+          path: ${{ env.ROOT }}-final/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Write final receipt
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ["ROOT"]+"-final")
+          outcome=json.loads((root/"outcome.json").read_text())
+          upload="${{ steps.final_upload.outcome }}"
+          pathlib.Path(os.environ["RUNNER_TEMP"],"corrected-seer-n8-final-receipt.json").write_text(json.dumps({
+            "artifact_id":"${{ steps.final_upload.outputs.artifact-id }}",
+            "artifact_digest":"${{ steps.final_upload.outputs.artifact-digest }}",
+            "upload_outcome":upload,
+            "pre_upload_state":outcome.get("state"),
+            "effective_terminal_state":outcome.get("state") if upload=="success" else "FAIL_EVIDENCE_RETENTION"
+          },indent=2,sort_keys=True)+"\n")
+          PY
+      - name: Upload final receipt
+        if: always()
+        id: final_receipt
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: corrected-seer-n8-combine-v3-final-receipt
+          path: ${{ runner.temp }}/corrected-seer-n8-final-receipt.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce independent PASS and retention
+        if: always()
+        env:
+          READBACK: ${{ steps.readback.outcome }}
+          UPLOAD: ${{ steps.final_upload.outcome }}
+          RECEIPT: ${{ steps.final_receipt.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          outcome=json.loads(pathlib.Path(os.environ["ROOT"]+"-final/outcome.json").read_text())
+          accepted=(os.environ["READBACK"]=="success" and os.environ["UPLOAD"]=="success" and os.environ["RECEIPT"]=="success" and outcome.get("state")=="PASS")
+          print(json.dumps({"outcome":outcome,"accepted":accepted},indent=2,sort_keys=True))
+          raise SystemExit(0 if accepted else 1)
+          PY

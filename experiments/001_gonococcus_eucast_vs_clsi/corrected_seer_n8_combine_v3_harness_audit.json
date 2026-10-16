@@ -1,0 +1,369 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-v3-harness-audit-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V3",
+  "status": "HARNESS_FROZEN_NOT_EXECUTED",
+  "parent_protocol_commit": "371c2343775c53d15e5ba2c554c8fe911101bfa6",
+  "requirements": [
+    {
+      "protocol_requirement": "experiment identity",
+      "frozen_value": "CORRECTED_SEER_N8_COMBINE_V3",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "name",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "manual-only trigger",
+      "frozen_value": "workflow_dispatch only",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "on.workflow_dispatch",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "standard runner",
+      "frozen_value": "ubuntu-24.04",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "jobs.*.runs-on",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "whole-job ceiling seconds",
+      "frozen_value": 5400,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "jobs.execute.timeout-minutes=90",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "unified input release tag",
+      "frozen_value": "experiment001-n8-exact-inputs-v2",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific release download",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "unified input asset",
+      "frozen_value": "experiment001-n8-exact-inputs-v2.tar.gz",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "acquire",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "unified input asset bytes",
+      "frozen_value": 141491724,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.json",
+      "implementation_line_or_key": "unified_input_release.asset_bytes",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "unified input asset SHA-256",
+      "frozen_value": "4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "acquire exact archive check",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "all eight DSK identities",
+      "frozen_value": "frozen rows, bytes, SHA-256",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "acquire/inspect/exact",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "exact sample list",
+      "frozen_value": "254 bytes; 8 rows; SHA-256 2efa6bddf14a4f6b8e26fca0a3eb7d62d408d37c9d563393402d7270f38241d8",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "acquire sample-list check",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SEER upstream revision",
+      "frozen_value": "a6bd405754726467a93f39820fb4719457395ae7",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "SOURCE_URL/build",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SEER source archive SHA-256",
+      "frozen_value": "e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "build source check",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SEER source blob identities",
+      "frozen_value": "three frozen Git blob hashes",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "build blob checks",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "combine command",
+      "frozen_value": "combineKmers-a6bd405 -r inputs/n8_samples.tsv -o work/combined/panel8_combined --min_samples 2",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific combine",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "combine wall ceiling seconds",
+      "frozen_value": 900,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific combine --timeout",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "oracle wall ceiling seconds",
+      "frozen_value": 900,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific oracle --timeout",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "maximum vCPU",
+      "frozen_value": 4,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "preflight.checks.cpu",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "maximum RAM GiB",
+      "frozen_value": 16,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "preflight.checks.ram",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "minimum preacquisition free bytes",
+      "frozen_value": 12884901888,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "preflight.checks.free_disk",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "RSS ceiling KiB",
+      "frozen_value": 12582912,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific bounded stages --rss-kib",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "working-root ceiling bytes",
+      "frozen_value": 10737418240,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific bounded stages --disk-bytes",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "sample interval seconds",
+      "frozen_value": 0.5,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v3.py",
+      "implementation_line_or_key": "monitor loop",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "termination",
+      "frozen_value": "SIGTERM; 10-second grace; SIGKILL",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v3.py",
+      "implementation_line_or_key": "bounded termination",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "independent oracle",
+      "frozen_value": "external sort plus k-way merge",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v3.py",
+      "implementation_line_or_key": "normalize/sort/merged_groups/compare",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "all required oracle counters",
+      "frozen_value": "zero plus physical rows = expected = unique actual",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v3.py",
+      "implementation_line_or_key": "compare exact rule",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "input-download failure classification",
+      "frozen_value": "FAIL_INPUT_AVAILABILITY",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "scientific release-download guard",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "preflight CPU model record",
+      "frozen_value": "required",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "preflight.cpu_model",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "artifact retention days",
+      "frozen_value": 90,
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "all upload-artifact steps",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "result release tag",
+      "frozen_value": "experiment001-corrected-seer-n8-v3",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "env.RELEASE_TAG",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "fresh release readback",
+      "frozen_value": "required",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "independent-audit-release",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "one attempt",
+      "frozen_value": "no automatic, silent, matrix, or in-experiment retry",
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py",
+      "implementation_line_or_key": "guard/run attempt",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no full cohort",
+      "frozen_value": "false",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "absent",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no model training",
+      "frozen_value": "false",
+      "implementation_file": ".github/workflows/corrected-seer-n8-combine-v3.yml",
+      "implementation_line_or_key": "absent",
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "protected_files": {
+    "v3_protocol_md": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/CORRECTED_SEER_N8_COMBINE_V3.md",
+      "expected_sha256": "38d59850e30d0e17eadbcd10ea010e60485a6c39324f0b5f874841118a8543ee",
+      "observed_sha256": "38d59850e30d0e17eadbcd10ea010e60485a6c39324f0b5f874841118a8543ee",
+      "exact_match": true
+    },
+    "v3_protocol_json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.json",
+      "expected_sha256": "4c2de9dce67b565bc59aa12650877daa3f44e0a8efa8f541f2c3f64a4fdce883",
+      "observed_sha256": "4c2de9dce67b565bc59aa12650877daa3f44e0a8efa8f541f2c3f64a4fdce883",
+      "exact_match": true
+    },
+    "v1_terminal_md": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/CORRECTED_SEER_N8_COMBINE_V1_FAILURE.md",
+      "expected_sha256": "bcfe34630a88466e91120708fc51d7b33c4df2e43e51f3289b15173fb0401547",
+      "observed_sha256": "bcfe34630a88466e91120708fc51d7b33c4df2e43e51f3289b15173fb0401547",
+      "exact_match": true
+    },
+    "v1_terminal_json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v1_failure.json",
+      "expected_sha256": "31b3ee24c15efd7fe2b5114f59a26de89d78f9954eab91fee2d3b1bd3c947a7f",
+      "observed_sha256": "31b3ee24c15efd7fe2b5114f59a26de89d78f9954eab91fee2d3b1bd3c947a7f",
+      "exact_match": true
+    },
+    "v2_terminal_md": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/CORRECTED_SEER_N8_COMBINE_V2_FAILURE.md",
+      "expected_sha256": "843b6ee881e5cf9faea38d7de7b5da040ef0161ac81aeb40d9197eda15604664",
+      "observed_sha256": "843b6ee881e5cf9faea38d7de7b5da040ef0161ac81aeb40d9197eda15604664",
+      "exact_match": true
+    },
+    "v2_terminal_json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v2_failure.json",
+      "expected_sha256": "b2b0414fe44652c7cdc2e3740e246be535532be1d630530723b4250420f3066b",
+      "observed_sha256": "b2b0414fe44652c7cdc2e3740e246be535532be1d630530723b4250420f3066b",
+      "exact_match": true
+    },
+    "original_n8_failure": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/resource_panel_n8_failure.json",
+      "expected_sha256": "9eb3d5debc56d250b3807c7f3ced0e2ea1d21e193a3fd57f6bd6eacae424f516",
+      "observed_sha256": "9eb3d5debc56d250b3807c7f3ced0e2ea1d21e193a3fd57f6bd6eacae424f516",
+      "exact_match": true
+    },
+    "original_n8_workflow": {
+      "path": ".github/workflows/experiment001-n8.yml",
+      "expected_sha256": "0dc37a81f35af557e9a5bd61214373b8010115a32d625cd719b0928695c5b6f8",
+      "observed_sha256": "0dc37a81f35af557e9a5bd61214373b8010115a32d625cd719b0928695c5b6f8",
+      "exact_match": true
+    }
+  },
+  "implementation_sha256": {
+    ".github/workflows/corrected-seer-n8-combine-v3.yml": "1b54daeb4308a9550e1eefae32642018b6303987795304e4afba6e581e611628",
+    "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3.py": "142cf383515de37359d28f29901168486e2bfd1d5c6463302a9bc0f3d88575cb",
+    "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_oracle_v3.py": "801f8cf29637534e308056c642896c0263217fb6cad3e6b417876de583e305f2",
+    "experiments/001_gonococcus_eucast_vs_clsi/bounded_combine_v3.py": "01d2082598d53f45d09191459febb3747edc0fa4bb835870057179d050dfece2",
+    "experiments/001_gonococcus_eucast_vs_clsi/test_corrected_seer_n8_acquire_v3.py": "1b34c7b214aac14853903d7b63267428f74f75030f6d3c413dde91372e8fb014"
+  },
+  "execution_trigger_check": {
+    "manual_only": true,
+    "push_trigger": false,
+    "schedule_trigger": false
+  },
+  "retry_check": {
+    "one_attempt_guard": true,
+    "automatic_retry": false,
+    "matrix_retry": false,
+    "hidden_timeout_fallback": false
+  },
+  "artifact_retention_check": {
+    "if_always_candidate": true,
+    "if_always_final": true,
+    "retention_days": 90,
+    "upload_enforced": true,
+    "fresh_release_readback": true
+  },
+  "forbidden_action_check": {
+    "v1_or_v2_rerun": false,
+    "old_n8_reinterpretation": false,
+    "full_cohort": false,
+    "model_training": false,
+    "other_isolate": false,
+    "larger_runner": false,
+    "protocol_change": false,
+    "historical_seer_binary": false
+  },
+  "static_test_requirements": {
+    "python_compile": true,
+    "protocol_self_test": true,
+    "unified_acquisition_positive": true,
+    "mutated_archive_rejected": true,
+    "oracle_positive_and_nine_defect_cases": true,
+    "yaml_parse": true,
+    "biological_download": false,
+    "seer_download_compile_or_run": false,
+    "workflow_dispatch": false
+  },
+  "all_exact": true
+}
