@@ -1,0 +1,25 @@
+{
+  "schema": "amr-n8-dsk-unified-release-v2-protocol-audit-v1",
+  "experiment_id": "N8_DSK_UNIFIED_RELEASE_V2",
+  "parent_failure_commit": "bbdbff89c848fd6c38e7e19f4f191c9ac0a5e6fe",
+  "protocol_files": {
+    "markdown_sha256": "049af7fd2154ca418549c95c975e912d5c6e897340060a181f5041bf063ffadb",
+    "json_sha256": "a5ceef1f30b3462f8e3bc0e1270053124460c8155a892202466fbcea9c74ffd7"
+  },
+  "checks": {
+    "inputs_exact": true,
+    "sample_list_exact": true,
+    "input_totals_exact": true,
+    "packaging_exact": true,
+    "pass_rule_exact": true,
+    "terminal_states_exact": true,
+    "v1_terminal_preserved": true,
+    "official_action_pinned": true,
+    "status_frozen": true,
+    "execution_not_authorized": true,
+    "release_not_authorized": true,
+    "combine_not_authorized": true
+  },
+  "all_exact": true,
+  "execution_occurred": false
+}

@@ -1,0 +1,248 @@
+{
+  "schema": "amr-n8-dsk-unified-release-protocol-v2",
+  "experiment_id": "N8_DSK_UNIFIED_RELEASE_V2",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_failure_commit": "bbdbff89c848fd6c38e7e19f4f191c9ac0a5e6fe",
+  "objective": "Create one immutable independently read-back-verified release containing the eight exact DSK ASCII inputs; do not regenerate or transform scientific content.",
+  "inputs": [
+    {
+      "order": 1,
+      "rank": "min",
+      "sample": "ERR1067833",
+      "path": "inputs/min/kmers.txt",
+      "rows": 2103513,
+      "bytes": 71519738,
+      "sha256": "1b60a3c86547f95055e3d51e138c6f7d6b2329967f3851ebe7112df309276a44",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 2,
+      "rank": "p10",
+      "sample": "ERR1067740",
+      "path": "inputs/p10/kmers.txt",
+      "rows": 2100606,
+      "bytes": 71420896,
+      "sha256": "4ad0b03e3d184f5d694d43f5f43d7bfc7478eb655018e0bcefe58c6070f5eab2",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 3,
+      "rank": "p25",
+      "sample": "ERR1067765",
+      "path": "inputs/p25/kmers.txt",
+      "rows": 2101892,
+      "bytes": 71464617,
+      "sha256": "9489718a0b3990b0c59146861148f9898a96128fce09202cb6fb5b1e12c687e3",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 4,
+      "rank": "median",
+      "sample": "ERR855281",
+      "path": "inputs/median/kmers.txt",
+      "rows": 2092013,
+      "bytes": 71128704,
+      "sha256": "dee3cf91f0bba7fb5667a5818aa6992fe904209e26ddc73a77b8fc505f48355c",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 5,
+      "rank": "p75",
+      "sample": "ERR855022",
+      "path": "inputs/p75/kmers.txt",
+      "rows": 2045008,
+      "bytes": 69530491,
+      "sha256": "518d08abb3127485e555e46c73dc71c16a14e218c267ea99d197d89bcca79a9b",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 6,
+      "rank": "p90",
+      "sample": "ERR854935",
+      "path": "inputs/p90/kmers.txt",
+      "rows": 2094204,
+      "bytes": 71203186,
+      "sha256": "d6b821a29508df203a057620830004b3eab96eeea3b90ba495830fb2d1bd9175",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 7,
+      "rank": "p99",
+      "sample": "ERR223664",
+      "path": "inputs/p99/kmers.txt",
+      "rows": 2096522,
+      "bytes": 71281996,
+      "sha256": "d3a57a04d3a3093e86e8af73dd966598112cde6790eceb166d547140886fdb0d",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 8,
+      "rank": "max",
+      "sample": "ERR223688",
+      "path": "inputs/max/kmers.txt",
+      "rows": 2098204,
+      "bytes": 71339203,
+      "sha256": "cc33735372a337f45c1cb07681739bb14adaf14ae4142fcad1e9326e3b42695b",
+      "source": {
+        "kind": "github_actions_artifact_or_exact_verified_copy",
+        "run_id": 38680749205,
+        "artifact_id": 11950830857,
+        "artifact_sha256": "f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+        "internal_archive_sha256": "9415eade3e0ce172e6443f09a285b8dff08d23eda107958123ccb2fc65ceeaa0"
+      }
+    }
+  ],
+  "input_totals": {
+    "files": 8,
+    "rows": 16731962,
+    "bytes": 568888831
+  },
+  "sample_list": {
+    "path": "inputs/n8_samples.tsv",
+    "encoding": "UTF-8",
+    "line_endings": "LF",
+    "bytes": 254,
+    "sha256": "2efa6bddf14a4f6b8e26fca0a3eb7d62d408d37c9d563393402d7270f38241d8",
+    "row_count": 8,
+    "distinct_sample_count": 8,
+    "distinct_path_count": 8,
+    "content_lines": [
+      "ERR1067833\tinputs/min/kmers.txt",
+      "ERR1067740\tinputs/p10/kmers.txt",
+      "ERR1067765\tinputs/p25/kmers.txt",
+      "ERR855281\tinputs/median/kmers.txt",
+      "ERR855022\tinputs/p75/kmers.txt",
+      "ERR854935\tinputs/p90/kmers.txt",
+      "ERR223664\tinputs/p99/kmers.txt",
+      "ERR223688\tinputs/max/kmers.txt"
+    ]
+  },
+  "source_policy": {
+    "seven_source_release_tag": "experiment001-n8-exact-inputs-v1",
+    "seven_source_asset_id": 647907441,
+    "seven_source_archive_bytes": 120220273,
+    "seven_source_archive_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b",
+    "maximum_source_artifact_id": 11950830857,
+    "maximum_source_outer_zip_bytes": 35661650,
+    "maximum_source_outer_zip_sha256": "f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+    "maximum_source_internal_tar_bytes": 35664515,
+    "maximum_source_internal_tar_sha256": "9415eade3e0ce172e6443f09a285b8dff08d23eda107958123ccb2fc65ceeaa0",
+    "regeneration_allowed": false,
+    "substitution_allowed": false,
+    "maximum_source_acquisition": "actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 with repository, run-id 38680749205, artifact name, and github-token",
+    "maximum_source_artifact_name": "max-isolate-resource-resolution-v3-evidence",
+    "maximum_source_artifact_digest": "sha256:f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+    "outer_zip_file_required_after_official_action": false
+  },
+  "packaging": {
+    "release_tag": "experiment001-n8-exact-inputs-v2",
+    "asset_name": "experiment001-n8-exact-inputs-v2.tar.gz",
+    "sorted_paths": true,
+    "tar_format": "PAX",
+    "gzip_mtime": 0,
+    "member_mtime": 0,
+    "uid": 0,
+    "gid": 0,
+    "uname": "",
+    "gname": "",
+    "included": [
+      "inputs/{rank}/kmers.txt for all eight ranks",
+      "inputs/n8_samples.tsv",
+      "complete_manifest.json",
+      "source_receipts.json"
+    ],
+    "raw_fastq_included": false
+  },
+  "execution": {
+    "environment": "public standard ubuntu-24.04 x64 GitHub Actions runner",
+    "runner_max_vcpu": 4,
+    "runner_max_ram_gib": 16,
+    "larger_runner_allowed": false,
+    "one_attempt": true,
+    "automatic_retry": false,
+    "manual_second_attempt": false,
+    "minimum_free_bytes": 12884901888,
+    "whole_job_wall_seconds": 5400,
+    "release_must_be_absent_before_execution": true,
+    "repository_head_must_match_harness_commit": true,
+    "workflow_dispatch_only": true,
+    "official_cross_run_artifact_action_required": true,
+    "no_biological_download": true,
+    "no_spades": true,
+    "no_dsk_execution": true,
+    "no_seer": true,
+    "no_model_training": true
+  },
+  "pass_rule": {
+    "all_eight_source_files_exact_before_packaging": true,
+    "sample_list_exact": true,
+    "manifest_exact": true,
+    "archive_bytes_and_sha256_recorded": true,
+    "release_created_once": true,
+    "fresh_release_download_required": true,
+    "fresh_archive_hash_exact": true,
+    "all_eight_extracted_files_exact_after_readback": true,
+    "process_exit_alone_sufficient": false
+  },
+  "terminal_states": [
+    "PASS",
+    "FAIL_PREFLIGHT",
+    "FAIL_SOURCE_AVAILABILITY",
+    "FAIL_SOURCE_INTEGRITY",
+    "FAIL_PACKAGE_INTEGRITY",
+    "FAIL_RELEASE_CREATE",
+    "FAIL_RELEASE_READBACK",
+    "FAIL_EVIDENCE_RETENTION"
+  ],
+  "authorization": {
+    "protocol_frozen": true,
+    "execution_authorized_in_this_commit": false,
+    "release_creation_authorized_in_this_commit": false,
+    "corrected_seer_n8_combine_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "next_authorized_action": "build and statically audit a dedicated manual-only GitHub Actions harness; do not execute it"
+  },
+  "parent_terminal_experiment": {
+    "experiment_id": "N8_DSK_UNIFIED_RELEASE_V1",
+    "terminal_state": "FAIL_PREFLIGHT",
+    "observed_free_bytes": 1589616640,
+    "minimum_free_bytes": 3221225472,
+    "must_not_be_rerun_or_reclassified": true
+  }
+}

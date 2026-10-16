@@ -378,13 +378,22 @@ source copy, packaging, release creation, or scientific execution occurred.
 The bound was not lowered. See `N8_DSK_UNIFIED_RELEASE_V1_FAILURE.md` and
 `n8_dsk_unified_release_v1_failure.json`.
 
-V1 must not be rerun or reclassified. The next allowed action is a separately
-named consolidation experiment on a standard GitHub Actions runner using the
-official cross-run `actions/download-artifact` mechanism for maximum artifact
-`11950830857`, while preserving the same eight scientific identities and
-deterministic release/readback rules. Only a read-back-verified unified release
-may authorize a new corrected-SEER n=8 combine protocol. Full-cohort
-reconstruction and model training remain unauthorized.
+V1 must not be rerun or reclassified.
+
+`N8_DSK_UNIFIED_RELEASE_V2` is now **FROZEN / NOT EXECUTED**. It preserves
+the exact eight inputs, sample list, deterministic package format, PASS rule,
+and terminal states from V1. Its only execution change is a standard
+`ubuntu-24.04` GitHub Actions runner with at least 12,884,901,888 free bytes
+and pinned official `actions/download-artifact` cross-run acquisition for
+maximum artifact `11950830857`. See `N8_DSK_UNIFIED_RELEASE_V2.md`,
+`n8_dsk_unified_release_v2.json`, and
+`n8_dsk_unified_release_v2_protocol_audit.json`.
+
+No V2 packaging or release creation occurred in this protocol-freeze commit.
+The next allowed action is a dedicated manual-only harness and static audit.
+Only a read-back-verified unified release may authorize a new corrected-SEER
+n=8 combine protocol. Full-cohort reconstruction and model training remain
+unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -436,4 +445,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve terminal corrected-SEER n=8 V1/V2 and unified-release V1 `FAIL_PREFLIGHT`. Do not rerun or reclassify them. Next freeze a separately named GitHub Actions consolidation protocol using official cross-run artifact download for maximum artifact `11950830857`, preserving all eight exact inputs and deterministic release/readback rules. Do not authorize a new combine until the unified release is freshly downloaded and all eight identities pass.
+> Preserve terminal corrected-SEER n=8 V1/V2 and unified-release V1 `FAIL_PREFLIGHT`. Unified-release V2 is frozen but not executed. Next build and statically audit only its dedicated manual-only GitHub Actions harness with pinned official cross-run artifact download. Do not execute in the harness commit. Do not authorize a new combine until the V2 release is freshly downloaded and all eight identities pass.
