@@ -1,0 +1,46 @@
+{
+  "schema": "amr-n8-dsk-unified-release-failure-v1",
+  "experiment_id": "N8_DSK_UNIFIED_RELEASE_V1",
+  "repository_commit": "4d5967456e939334232fb01bd43bf89d60043da8",
+  "terminal_state": "FAIL_PREFLIGHT",
+  "preflight": {
+    "head_exact": true,
+    "remote_exact": true,
+    "api_exact": true,
+    "release_absent": true,
+    "protocol_hashes_exact": true,
+    "harness_hash_exact": true,
+    "minimum_free_bytes": 3221225472,
+    "observed_free_bytes": 1589616640,
+    "free_disk_pass": false,
+    "passed": false
+  },
+  "execution_reached": {
+    "source_copy": false,
+    "packaging": false,
+    "release_creation": false,
+    "release_readback": false,
+    "biological_download": false,
+    "seer": false
+  },
+  "interpretation": {
+    "established": "The authorized local filesystem did not meet the prospectively frozen 3 GiB minimum.",
+    "not_established": [
+      "source input integrity inside this experiment",
+      "package integrity",
+      "release integrity"
+    ],
+    "v1_must_not_be_rerun_or_reclassified": true
+  },
+  "next_gate": {
+    "separate_experiment_required": true,
+    "compute_environment": "GitHub Actions standard ubuntu-24.04",
+    "maximum_source_acquisition": "official actions/download-artifact cross-run mechanism",
+    "scientific_identities_changed": false
+  },
+  "authorization": {
+    "corrected_seer_n8_combine_authorized": false,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false
+  }
+}
