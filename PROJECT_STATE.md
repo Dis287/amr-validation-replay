@@ -316,9 +316,23 @@ PASS rule, and release read-back requirement are frozen in
 `corrected_seer_n8_combine_v1.json`.
 
 No corrected-SEER n=8 execution occurred in the protocol-freeze commit, and its
-correctness is not established. The only newly allowed next action is to build
-and statically audit a dedicated manual-only execution harness implementing
-that protocol exactly. Workflow dispatch, full-cohort reconstruction, and model
+correctness is not established.
+
+The dedicated `CORRECTED_SEER_N8_COMBINE_V1` execution harness is now
+**FROZEN / NOT EXECUTED**. Its workflow is manual-only and single-attempt. It
+implements exact acquisition and verification of all eight inputs, the frozen
+corrected-SEER source/build/command, bounded combine, a bounded independent
+external-sort/k-way-merge oracle, explicit terminal taxonomy, always-attempted
+evidence uploads, an all-eight-input result release, and fresh release
+read-back. Synthetic tests prove that the oracle accepts the exact positive
+fixture and rejects missing, extra, duplicate-row, duplicate-tag, unknown-tag,
+missing-tag, abundance, and extra-known-sample-tag defects.
+
+No biological input was acquired, no SEER source was downloaded or compiled,
+no combine or scientific oracle was run, no release was created, and no
+workflow was dispatched in the harness-freeze commit. The next allowed action
+is independent read-back of the frozen harness followed by a separate explicit
+execution authorization decision. Full-cohort reconstruction and model
 training remain unauthorized.
 
 ## Active task — Experiment 001 only
@@ -371,4 +385,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve the failed original n=8, V1, and V2 records, the independently audited V3 pass, and the independently audited seven-file recovery pass. `CORRECTED_SEER_N8_COMBINE_V1` is frozen but not executed. Next, build and statically audit only its dedicated manual-only execution harness. Do not acquire inputs, compile or run SEER, construct the oracle output, create the result release, or dispatch a workflow in that harness-freeze step. Full-cohort reconstruction and model training remain unauthorized.
+> Preserve the failed original n=8, V1, and V2 records, the independently audited V3 and seven-file recovery passes, and the frozen `CORRECTED_SEER_N8_COMBINE_V1` protocol. Its dedicated manual-only harness is frozen but not executed. Next, independently read back the committed harness, verify its hashes and zero-run state, and make a separate execution-authorization decision. Do not reinterpret the original n=8 failure. Full-cohort reconstruction and model training remain unauthorized.
