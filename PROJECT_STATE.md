@@ -273,48 +273,42 @@ This V3 pass does not change the terminal failures of the original n=8 gate,
 V1, or V2. It does not establish corrected-SEER n=8 correctness, full-cohort
 feasibility, or Hicks model replay.
 
-A prospective corrected-SEER n=8 combine protocol cannot yet be frozen as an
-executable experiment. On 2026-10-15, GitHub returned zero artifacts for run
-`36665031444`, and direct retrieval of all seven recorded passing-isolate
-artifact IDs returned HTTP 404. Their committed identities and prior audit
-results survive, but their DSK ASCII byte streams do not survive in the queried
-artifact store. The V3 maximum-rank artifact remains available. See
-`CORRECTED_SEER_N8_INPUT_AVAILABILITY_AUDIT.md` and
-`corrected_seer_n8_input_availability_audit.json`.
+The earlier corrected-SEER n=8 input-availability audit remains historically
+valid: on 2026-10-15, the seven recorded passing-isolate Actions artifacts were
+unavailable. That blockage triggered the separately frozen
+`N8_DSK_EXACT_INPUT_RECOVERY_V1` experiment and is not rewritten.
 
-Corrected-SEER n=8 remains blocked and unexecuted.
+`N8_DSK_EXACT_INPUT_RECOVERY_V1` is now
+**PASS_INDEPENDENTLY_AUDITED**. Manual GitHub Actions run `38922709421`
+executed once from frozen commit
+`b10e424a17b4ba82586159493e22e398b69aa03b`. Phase A found all seven
+historical artifacts unavailable and froze the complete seven-isolate missing
+subset before any FASTQ download. Each isolate then completed exactly one
+prospectively bounded regeneration path with no automatic or silent retry.
 
-`N8_DSK_EXACT_INPUT_RECOVERY_V1` is **FROZEN / NOT EXECUTED**. It searches for
-exact surviving copies before allowing prospectively bounded regeneration of
-only the missing subset. An isolate is accepted only on its recorded DSK ASCII
-byte count and SHA-256; regeneration also requires the frozen filtered-FASTA
-hash and exact independent canonical-k-mer equality. A semantically equal but
-byte-different output is reconstruction divergence, not an accepted substitute.
+For `min`, `p10`, `p25`, `median`, `p75`, `p90`, and `p99`, the
+frozen FASTQ byte counts and MD5 values, filtered-FASTA SHA-256, DSK row count,
+DSK byte count, and DSK SHA-256 all matched exactly. Every independent A<C<T<G
+reverse-complement oracle reported zero missing, extra, duplicate, and
+abundance-mismatched rows. The seven accepted DSK files total exactly
+497,549,628 bytes.
 
-The protocol also closes the prior retention defect: a future PASS requires a
-read-back-verified, versioned GitHub Release asset containing the exact seven
-inputs and manifest. Temporary Actions artifacts alone cannot pass. See
-`EXACT_INPUT_RECOVERY_V1.md` and `exact_input_recovery_v1.json`.
+The versioned release
+`experiment001-n8-exact-inputs-v1` contains exactly those seven DSK inputs and
+the complete manifest. A fresh release download independently matched the
+120,220,273-byte asset and SHA-256
+`b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b`;
+every extracted DSK file again matched its frozen identity. See
+`EXACT_INPUT_RECOVERY_V1_RESULT.md` and
+`exact_input_recovery_v1_result.json`.
 
-No recovery, download, regeneration, release creation, or workflow execution is
-authorized by the protocol commit. The only authorized next action is to build
-and statically audit a dedicated manual-only recovery harness. Corrected-SEER
-n=8, full-cohort reconstruction, and model training remain unauthorized.
-
-The dedicated `N8_DSK_EXACT_INPUT_RECOVERY_V1` execution harness is now
-**FROZEN / NOT EXECUTED** in this commit. Its separately named workflow is
-manual-only. Phase A freezes the missing subset before any biological download;
-Phase B permits exactly one unchanged bounded path per missing isolate; final
-acceptance requires all seven frozen byte-count/SHA-256 identities, independent
-audit, a versioned Release asset, and a fresh release download/read-back audit.
-The harness static audit used only local synthetic fixtures. It did not query
-historical artifacts, read candidate copies, download FASTQs, run SPAdes/QUAST/
-DSK, create a release, or dispatch a workflow.
-
-Execution remains unauthorized in this commit. The next permitted step is an
-independent read-back of the committed harness and audit, followed by a separate
-explicit execution authorization decision. Corrected-SEER n=8, full-cohort
-reconstruction, and model training remain unauthorized.
+This PASS resolves only the exact-input availability gate. It does not rewrite
+the failed original n=8 gate, V1, or V2. Corrected-SEER n=8 remains unexecuted,
+and its correctness is not established. The only newly allowed next action is
+to design, audit, and freeze a separate prospective corrected-SEER n=8 combine
+protocol using the seven release-verified inputs and the independently audited
+maximum-isolate V3 output. Full-cohort reconstruction and model training remain
+unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -366,4 +360,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve the failed original n=8, V1, and V2 records, the independently audited V3 pass, and the n=8 input-availability blockage. `N8_DSK_EXACT_INPUT_RECOVERY_V1` is frozen but not executed. Next, build and statically audit only its dedicated manual-only harness; do not query recovery sources, read candidate files, download FASTQs, dispatch a workflow, regenerate isolates, create a release, or run SEER in that step. Require all seven exact byte-count/SHA-256 identities and durable release read-back before any corrected-SEER n=8 combine protocol can be frozen. Full-cohort reconstruction and model training remain unauthorized.
+> Preserve the failed original n=8, V1, and V2 records and the independently audited V3 pass. `N8_DSK_EXACT_INPUT_RECOVERY_V1` passed independently: all seven exact DSK identities survive in the read-back-verified release `experiment001-n8-exact-inputs-v1`. Next, design, audit, and freeze only a separate prospective corrected-SEER n=8 combine protocol using those seven release-verified inputs plus the independently audited V3 maximum input. Do not execute SEER in that protocol-freeze step. Full-cohort reconstruction and model training remain unauthorized.
