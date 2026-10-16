@@ -340,24 +340,29 @@ must pass a synthetic fresh-root acquisition-path test before commit. See
 `corrected_seer_n8_combine_v2.json`, and
 `corrected_seer_n8_combine_v2_protocol_audit.json`.
 
-The dedicated `CORRECTED_SEER_N8_COMBINE_V2` harness is now **FROZEN /
-NOT EXECUTED**. It is manual-only and single-attempt. It pre-creates the fixed
-working tree before acquisition, preserves every frozen scientific value, and
-retains the same bounded combine, independent external-sort/k-way-merge oracle,
-always-attempted evidence uploads, release packaging, and fresh release
-read-back.
+`CORRECTED_SEER_N8_COMBINE_V2` is terminal after exactly one manual
+dispatch, run `38964235718`, from
+`995e40f42a2bca66b9b6d81def39fc736dc8af62`. Preflight passed. The
+seven-input release downloaded and all seven extracted DSK files matched their
+frozen identities. Acquisition of maximum artifact `11950830857` returned a
+non-200 status before `sources/maximum.zip` survived, so all-eight input
+verification, SEER build, combine, and the independent oracle were not reached.
 
-Static checks passed: Python compilation; frozen-protocol hash self-test; YAML
-parse; manual-trigger/no-retry inspection; the oracle positive fixture and all
-nine declared defect cases; and an actual synthetic acquisition through the V2
-`acquire` function from a fresh nonexistent root. That synthetic test proved
-the destination directories exist before writes, all eight synthetic identities
-match, and the sample list matches, without a biological download or SEER
-execution. See `corrected_seer_n8_combine_v2_harness_audit.json`.
+The emitted state `FAIL_INPUT_INTEGRITY` is preserved. It is not proof of a
+maximum DSK mismatch: the runner received no outer ZIP to hash. The exact HTTP
+status was not recorded and is UNKNOWN. An independent post-run download
+verified the still-available source artifact's outer ZIP, internal TAR, and
+maximum DSK against every frozen byte count and SHA-256. That establishes
+recoverability, not a V2 pass. See
+`CORRECTED_SEER_N8_COMBINE_V2_FAILURE.md` and
+`corrected_seer_n8_combine_v2_failure.json`.
 
-No V2 workflow was dispatched in this harness-freeze step. The next allowed
-action is independent remote read-back and a separate single execution decision.
-Full-cohort reconstruction and model training remain unauthorized.
+V2 must not be rerun or reclassified. The next allowed action is a separately
+named, prospectively frozen input-consolidation experiment that creates one
+immutable, independently read-back-verified release containing all eight exact
+DSK inputs. Only after that release exists may a new corrected-SEER n=8 combine
+protocol reference one stable source. Full-cohort reconstruction and model
+training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -409,4 +414,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve terminal `CORRECTED_SEER_N8_COMBINE_V1` run `38962929988` and all earlier failed/pass records. The V2 protocol and dedicated manual-only, single-attempt harness are frozen but not executed. Next independently read back the remote harness, verify protected hashes, manual-only trigger, zero V2 manual runs, and absent V2 result release; only then make the separate one-attempt execution decision. Do not rerun V1. Do not authorize full-cohort execution or model training.
+> Preserve terminal corrected-SEER n=8 V1 run `38962929988` and V2 run `38964235718` plus all earlier evidence. V2 acquired and verified the seven release inputs but received a non-200 response for maximum artifact `11950830857`; SEER and the oracle did not run. Do not rerun V1 or V2. Next freeze a separately named input-consolidation protocol for one immutable, independently read-back-verified release containing all eight exact DSK inputs. Do not authorize a new combine until that release passes. Do not authorize full-cohort execution or model training.
