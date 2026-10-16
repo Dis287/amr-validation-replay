@@ -1,0 +1,185 @@
+name: N8_DSK_UNIFIED_RELEASE_V2
+on:
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: n8-dsk-unified-release-v2-single-attempt
+  cancel-in-progress: false
+
+env:
+  HARNESS: experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py
+  RELEASE_TAG: experiment001-n8-exact-inputs-v2
+  RELEASE_ASSET: experiment001-n8-exact-inputs-v2.tar.gz
+
+jobs:
+  package-release-readback:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Initialize evidence
+        run: |
+          ROOT="$RUNNER_TEMP/n8-dsk-unified-release-v2"
+          echo "ROOT=$ROOT" >> "$GITHUB_ENV"
+          mkdir -p "$ROOT/evidence" "$ROOT/sources"
+          printf '%s\n' '{"experiment_id":"N8_DSK_UNIFIED_RELEASE_V2","state":"INCOMPLETE","one_attempt":true}' > "$ROOT/evidence/outcome.json"
+
+      - name: Check out frozen harness
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Preflight exact environment and one-attempt guard
+        id: preflight
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 "$HARNESS" preflight --expected-head "$GITHUB_SHA" | tee "$ROOT/evidence/preflight.json"
+
+      - name: Download exact seven-input release
+        id: seven
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release download experiment001-n8-exact-inputs-v1             --repo "$GITHUB_REPOSITORY"             --pattern experiment001-n8-exact-inputs-v1.tar.gz             --dir "$ROOT/sources"
+          mkdir -p "$ROOT/sources/seven"
+          tar -xzf "$ROOT/sources/experiment001-n8-exact-inputs-v1.tar.gz"             -C "$ROOT/sources/seven"
+
+      - name: Download maximum artifact with official cross-run action
+        id: maximum
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: max-isolate-resource-resolution-v3-evidence
+          path: ${{ env.ROOT }}/sources/maximum-action
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 38680749205
+
+      - name: Verify maximum artifact metadata and extract
+        id: maximum_extract
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/11950830857"             --jq .digest > "$ROOT/sources/maximum.digest"
+          mkdir -p "$ROOT/sources/maximum"
+          tar -xzf "$ROOT/sources/maximum-action/bundle/max-isolate-resource-resolution-v3-evidence.tar.gz"             -C "$ROOT/sources/maximum"
+
+      - name: Build deterministic unified archive
+        id: package
+        run: |
+          set -euo pipefail
+          python3 "$HARNESS" stage             --root "$ROOT/build"             --seven-archive "$ROOT/sources/experiment001-n8-exact-inputs-v1.tar.gz"             --seven-dir "$ROOT/sources/seven/accepted"             --artifact-digest "$(tr -d '\n' < "$ROOT/sources/maximum.digest")"             --maximum-tar "$ROOT/sources/maximum-action/bundle/max-isolate-resource-resolution-v3-evidence.tar.gz"             --maximum-kmers "$ROOT/sources/maximum/evidence/primary/kmers.txt"             | tee "$ROOT/evidence/package.stdout.json"
+          python3 - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ["ROOT"])
+          value=json.loads((root/"build/package_result.json").read_text())
+          with pathlib.Path(os.environ["GITHUB_OUTPUT"]).open("a") as handle:
+              handle.write("archive_sha256="+value["archive"]["sha256"]+"\n")
+              handle.write("archive_bytes="+str(value["archive"]["bytes"])+"\n")
+          PY
+
+      - name: Create immutable unified-input release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG"             "$ROOT/build/$RELEASE_ASSET#Eight exact DSK inputs"             --repo "$GITHUB_REPOSITORY"             --target "$GITHUB_SHA"             --title "Experiment 001 exact n8 inputs v2"             --notes "Deterministic exact-input consolidation only; no SEER, full-cohort, or model execution."
+
+      - name: Fresh release download
+        id: readback_download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$ROOT/readback"
+          gh release download "$RELEASE_TAG"             --repo "$GITHUB_REPOSITORY"             --pattern "$RELEASE_ASSET"             --dir "$ROOT/readback"
+
+      - name: Independently verify fresh release
+        id: readback
+        run: |
+          set -euo pipefail
+          python3 "$HARNESS" verify-readback             --archive "$ROOT/readback/$RELEASE_ASSET"             --expected-sha256 "${{ steps.package.outputs.archive_sha256 }}"             --expected-bytes "${{ steps.package.outputs.archive_bytes }}"             --output "$ROOT/evidence/readback.json"
+
+      - name: Classify every terminal path
+        if: always()
+        env:
+          PREFLIGHT: ${{ steps.preflight.outcome }}
+          SEVEN: ${{ steps.seven.outcome }}
+          MAXIMUM: ${{ steps.maximum.outcome }}
+          MAXIMUM_EXTRACT: ${{ steps.maximum_extract.outcome }}
+          PACKAGE: ${{ steps.package.outcome }}
+          RELEASE: ${{ steps.release.outcome }}
+          DOWNLOAD: ${{ steps.readback_download.outcome }}
+          READBACK: ${{ steps.readback.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ["ROOT"])
+          stages={name:os.environ[name] for name in ["PREFLIGHT","SEVEN","MAXIMUM","MAXIMUM_EXTRACT","PACKAGE","RELEASE","DOWNLOAD","READBACK"]}
+          state="FAIL_EVIDENCE_RETENTION"
+          if stages["PREFLIGHT"]!="success": state="FAIL_PREFLIGHT"
+          elif stages["SEVEN"]!="success" or stages["MAXIMUM"]!="success": state="FAIL_SOURCE_AVAILABILITY"
+          elif stages["MAXIMUM_EXTRACT"]!="success" or stages["PACKAGE"]!="success": state="FAIL_SOURCE_INTEGRITY"
+          elif stages["RELEASE"]!="success": state="FAIL_RELEASE_CREATE"
+          elif stages["DOWNLOAD"]!="success" or stages["READBACK"]!="success": state="FAIL_RELEASE_READBACK"
+          else:
+              record=json.loads((root/"evidence/readback.json").read_text())
+              state="PASS" if record.get("state")=="PASS" else "FAIL_RELEASE_READBACK"
+          outcome={"experiment_id":"N8_DSK_UNIFIED_RELEASE_V2","state":state,"stages":stages,"one_attempt":True,"no_retry_occurred":True,"corrected_seer_n8_combine_authorized":False,"full_1102_reconstruction_authorized":False,"model_training_authorized":False}
+          (root/"evidence/outcome.json").write_text(json.dumps(outcome,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload terminal evidence
+        if: always()
+        id: upload
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: n8-dsk-unified-release-v2-evidence
+          path: |
+            ${{ env.ROOT }}/evidence/
+            ${{ env.ROOT }}/build/package_result.json
+            ${{ env.ROOT }}/build/package/complete_manifest.json
+            ${{ env.ROOT }}/build/package/source_receipts.json
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Record upload receipt
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ["ROOT"])
+          receipt={"artifact_id":"${{ steps.upload.outputs.artifact-id }}","artifact_digest":"${{ steps.upload.outputs.artifact-digest }}","upload_outcome":"${{ steps.upload.outcome }}"}
+          (root/"evidence/upload_receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          PY
+
+      - name: Upload receipt
+        if: always()
+        id: receipt
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: n8-dsk-unified-release-v2-receipt
+          path: ${{ env.ROOT }}/evidence/upload_receipt.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce PASS and retention
+        if: always()
+        env:
+          UPLOAD: ${{ steps.upload.outcome }}
+          RECEIPT: ${{ steps.receipt.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          outcome=json.loads(pathlib.Path(os.environ["ROOT"],"evidence/outcome.json").read_text())
+          accepted=outcome.get("state")=="PASS" and os.environ["UPLOAD"]=="success" and os.environ["RECEIPT"]=="success"
+          print(json.dumps({"outcome":outcome,"accepted":accepted},indent=2,sort_keys=True))
+          raise SystemExit(0 if accepted else 1)
+          PY

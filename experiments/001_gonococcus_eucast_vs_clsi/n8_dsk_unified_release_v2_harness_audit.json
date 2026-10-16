@@ -1,0 +1,181 @@
+{
+  "schema": "amr-n8-dsk-unified-release-v2-harness-audit-v1",
+  "experiment_id": "N8_DSK_UNIFIED_RELEASE_V2",
+  "parent_protocol_commit": "4c8581c5f5df9de47e54c179a76821ffef43bd05",
+  "requirements": [
+    {
+      "protocol_requirement": "manual-only trigger",
+      "frozen_value": "workflow_dispatch only",
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 3,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "standard runner",
+      "frozen_value": "ubuntu-24.04",
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 18,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "whole job ceiling",
+      "frozen_value": 5400,
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 19,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "official cross-run action",
+      "frozen_value": "d3f86a106a0bac45b974a628896c90dbdf5c8093",
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 53,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "source run id",
+      "frozen_value": 38680749205,
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 59,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "source artifact name",
+      "frozen_value": "max-isolate-resource-resolution-v3-evidence",
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 55,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "protocol hashes protected",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 19,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "one attempt guard",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 164,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "release absent guard",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 165,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "artifact metadata exact",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 166,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "all eight exact before and after copy",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 184,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "deterministic package",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 100,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "fresh release readback",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 260,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "release tag",
+      "frozen_value": "experiment001-n8-exact-inputs-v2",
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 13,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "retention days",
+      "frozen_value": 90,
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": 150,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no retry or matrix",
+      "frozen_value": false,
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": null,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "no scientific execution",
+      "frozen_value": false,
+      "implementation_file": ".github/workflows/n8-dsk-unified-release-v2.yml",
+      "implementation_line_or_key": null,
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "synthetic stage and mutation controls",
+      "frozen_value": true,
+      "implementation_file": "experiments/001_gonococcus_eucast_vs_clsi/test_n8_dsk_unified_release_v2.py",
+      "implementation_line_or_key": 68,
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "protected_files": {
+    "v2_md": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/N8_DSK_UNIFIED_RELEASE_V2.md",
+      "observed_sha256": "049af7fd2154ca418549c95c975e912d5c6e897340060a181f5041bf063ffadb",
+      "expected_sha256": "049af7fd2154ca418549c95c975e912d5c6e897340060a181f5041bf063ffadb",
+      "exact_match": true
+    },
+    "v2_json": {
+      "path": "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.json",
+      "observed_sha256": "a5ceef1f30b3462f8e3bc0e1270053124460c8155a892202466fbcea9c74ffd7",
+      "expected_sha256": "a5ceef1f30b3462f8e3bc0e1270053124460c8155a892202466fbcea9c74ffd7",
+      "exact_match": true
+    }
+  },
+  "implementation_sha256": {
+    "experiments/001_gonococcus_eucast_vs_clsi/n8_dsk_unified_release_v2.py": "eab153b15ecc023c9e148d89a8a0a86b8cbd0269e23e5b721644d884b898adc1",
+    ".github/workflows/n8-dsk-unified-release-v2.yml": "bd7d9e79eafa39edfd2c89d15a8aa867f8a097d690ed3c035575f309cb4e76bd",
+    "experiments/001_gonococcus_eucast_vs_clsi/test_n8_dsk_unified_release_v2.py": "d1dba329350e9bc42ec9979ed54b0c80d9139b1053b927f18f33b2791796e148"
+  },
+  "static_tests": {
+    "python_compile": true,
+    "yaml_parse": true,
+    "deterministic_archive": true,
+    "synthetic_stage": true,
+    "fresh_readback": true,
+    "mutation_rejected": true,
+    "workflow_dispatch": false,
+    "biological_download": false
+  },
+  "all_exact": true
+}

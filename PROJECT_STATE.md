@@ -389,10 +389,22 @@ maximum artifact `11950830857`. See `N8_DSK_UNIFIED_RELEASE_V2.md`,
 `n8_dsk_unified_release_v2.json`, and
 `n8_dsk_unified_release_v2_protocol_audit.json`.
 
-No V2 packaging or release creation occurred in this protocol-freeze commit.
-The next allowed action is a dedicated manual-only harness and static audit.
-Only a read-back-verified unified release may authorize a new corrected-SEER
-n=8 combine protocol. Full-cohort reconstruction and model training remain
+The dedicated `N8_DSK_UNIFIED_RELEASE_V2` workflow and harness are now
+**FROZEN / NOT EXECUTED**. The workflow is manual-only, single-attempt,
+standard `ubuntu-24.04`, and pinned to official cross-run artifact download
+commit `d3f86a106a0bac45b974a628896c90dbdf5c8093`, source run
+`38680749205`, and maximum artifact name
+`max-isolate-resource-resolution-v3-evidence`. It verifies artifact metadata,
+internal TAR, all eight DSK files before and after copy, deterministic packaging,
+one-time release creation, fresh download, and exact readback.
+
+Static checks passed: Python compilation, YAML parse, deterministic archive
+self-test, complete synthetic eight-input stage, fresh readback, and a mutation
+control that was rejected. No workflow was dispatched and no release was
+created in this harness-freeze step. The next allowed action is independent
+remote read-back and a separate single execution decision. Only a
+read-back-verified unified release may authorize a new corrected-SEER n=8
+combine protocol. Full-cohort reconstruction and model training remain
 unauthorized.
 
 ## Active task — Experiment 001 only
@@ -445,4 +457,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve terminal corrected-SEER n=8 V1/V2 and unified-release V1 `FAIL_PREFLIGHT`. Unified-release V2 is frozen but not executed. Next build and statically audit only its dedicated manual-only GitHub Actions harness with pinned official cross-run artifact download. Do not execute in the harness commit. Do not authorize a new combine until the V2 release is freshly downloaded and all eight identities pass.
+> Preserve all terminal failures. Unified-release V2 protocol and dedicated manual-only, single-attempt GitHub Actions harness are frozen but not executed. Next independently read back hashes, confirm zero V2 runs and absent release, then make the one-attempt execution decision. Do not authorize a corrected-SEER combine until the unified release is freshly downloaded and all eight identities pass.
