@@ -303,12 +303,23 @@ every extracted DSK file again matched its frozen identity. See
 `exact_input_recovery_v1_result.json`.
 
 This PASS resolves only the exact-input availability gate. It does not rewrite
-the failed original n=8 gate, V1, or V2. Corrected-SEER n=8 remains unexecuted,
-and its correctness is not established. The only newly allowed next action is
-to design, audit, and freeze a separate prospective corrected-SEER n=8 combine
-protocol using the seven release-verified inputs and the independently audited
-maximum-isolate V3 output. Full-cohort reconstruction and model training remain
-unauthorized.
+the failed original n=8 gate, V1, or V2.
+
+`CORRECTED_SEER_N8_COMBINE_V1` is now **FROZEN / NOT EXECUTED**. Its exact
+input set is the seven release-verified recovery files plus the independently
+audited V3 maximum file: 8 files, 16,731,962 rows, and 568,888,831 bytes. Input
+order, rows, bytes, SHA-256 values, corrected SEER source revision and source
+blobs, sample-list bytes/hash, command, resource envelopes, termination,
+independent external-sort/k-way-merge oracle, terminal outcomes, retry law,
+PASS rule, and release read-back requirement are frozen in
+`CORRECTED_SEER_N8_COMBINE_V1.md` and
+`corrected_seer_n8_combine_v1.json`.
+
+No corrected-SEER n=8 execution occurred in the protocol-freeze commit, and its
+correctness is not established. The only newly allowed next action is to build
+and statically audit a dedicated manual-only execution harness implementing
+that protocol exactly. Workflow dispatch, full-cohort reconstruction, and model
+training remain unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -360,4 +371,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve the failed original n=8, V1, and V2 records and the independently audited V3 pass. `N8_DSK_EXACT_INPUT_RECOVERY_V1` passed independently: all seven exact DSK identities survive in the read-back-verified release `experiment001-n8-exact-inputs-v1`. Next, design, audit, and freeze only a separate prospective corrected-SEER n=8 combine protocol using those seven release-verified inputs plus the independently audited V3 maximum input. Do not execute SEER in that protocol-freeze step. Full-cohort reconstruction and model training remain unauthorized.
+> Preserve the failed original n=8, V1, and V2 records, the independently audited V3 pass, and the independently audited seven-file recovery pass. `CORRECTED_SEER_N8_COMBINE_V1` is frozen but not executed. Next, build and statically audit only its dedicated manual-only execution harness. Do not acquire inputs, compile or run SEER, construct the oracle output, create the result release, or dispatch a workflow in that harness-freeze step. Full-cohort reconstruction and model training remain unauthorized.

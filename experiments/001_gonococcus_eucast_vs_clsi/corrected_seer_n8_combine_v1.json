@@ -1,0 +1,339 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-protocol-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V1",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_acceptance_commit": "0fe8dc8e3ecd266fcf2952d642fd64c4119a11a6",
+  "question": "Can corrected SEER a6bd405 produce the exact independently verified feature matrix for the eight frozen resource-panel DSK inputs?",
+  "facts": {
+    "seven_input_recovery_status": "PASS_INDEPENDENTLY_AUDITED",
+    "maximum_input_status": "PASS_INDEPENDENTLY_AUDITED",
+    "corrected_seer_n8_previously_executed": false,
+    "exact_input_file_count": 8,
+    "exact_input_total_rows": 16731962,
+    "exact_input_total_bytes": 568888831,
+    "n4_combine_wall_seconds": 16.724,
+    "n4_combine_sampled_peak_rss_kib": 417732,
+    "n4_inputs_identical_to_frozen_n8_subset": false
+  },
+  "unknowns": [
+    "n8 output feature count",
+    "n8 output bytes and SHA-256",
+    "n8 runtime and peak RSS",
+    "whether combine and oracle finish inside the frozen envelope",
+    "scaling behavior at 1102 isolates",
+    "exact Hicks SEER revision",
+    "Hicks feature matrix and replayed model metrics"
+  ],
+  "inputs": [
+    {
+      "order": 1,
+      "rank": "min",
+      "sample": "ERR1067833",
+      "path": "inputs/min/kmers.txt",
+      "rows": 2103513,
+      "bytes": 71519738,
+      "sha256": "1b60a3c86547f95055e3d51e138c6f7d6b2329967f3851ebe7112df309276a44",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 2,
+      "rank": "p10",
+      "sample": "ERR1067740",
+      "path": "inputs/p10/kmers.txt",
+      "rows": 2100606,
+      "bytes": 71420896,
+      "sha256": "4ad0b03e3d184f5d694d43f5f43d7bfc7478eb655018e0bcefe58c6070f5eab2",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 3,
+      "rank": "p25",
+      "sample": "ERR1067765",
+      "path": "inputs/p25/kmers.txt",
+      "rows": 2101892,
+      "bytes": 71464617,
+      "sha256": "9489718a0b3990b0c59146861148f9898a96128fce09202cb6fb5b1e12c687e3",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 4,
+      "rank": "median",
+      "sample": "ERR855281",
+      "path": "inputs/median/kmers.txt",
+      "rows": 2092013,
+      "bytes": 71128704,
+      "sha256": "dee3cf91f0bba7fb5667a5818aa6992fe904209e26ddc73a77b8fc505f48355c",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 5,
+      "rank": "p75",
+      "sample": "ERR855022",
+      "path": "inputs/p75/kmers.txt",
+      "rows": 2045008,
+      "bytes": 69530491,
+      "sha256": "518d08abb3127485e555e46c73dc71c16a14e218c267ea99d197d89bcca79a9b",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 6,
+      "rank": "p90",
+      "sample": "ERR854935",
+      "path": "inputs/p90/kmers.txt",
+      "rows": 2094204,
+      "bytes": 71203186,
+      "sha256": "d6b821a29508df203a057620830004b3eab96eeea3b90ba495830fb2d1bd9175",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 7,
+      "rank": "p99",
+      "sample": "ERR223664",
+      "path": "inputs/p99/kmers.txt",
+      "rows": 2096522,
+      "bytes": 71281996,
+      "sha256": "d3a57a04d3a3093e86e8af73dd966598112cde6790eceb166d547140886fdb0d",
+      "source": {
+        "kind": "github_release",
+        "tag": "experiment001-n8-exact-inputs-v1",
+        "asset_id": 647907441,
+        "asset_sha256": "b132c289f07d18378e052b69d2987fb6f5ee03f74d38958cdc7c1e7f1f2aca5b"
+      }
+    },
+    {
+      "order": 8,
+      "rank": "max",
+      "sample": "ERR223688",
+      "path": "inputs/max/kmers.txt",
+      "rows": 2098204,
+      "bytes": 71339203,
+      "sha256": "cc33735372a337f45c1cb07681739bb14adaf14ae4142fcad1e9326e3b42695b",
+      "source": {
+        "kind": "github_actions_artifact_or_exact_verified_copy",
+        "run_id": 38680749205,
+        "artifact_id": 11950830857,
+        "artifact_sha256": "f6b889c5084eda46f2469a763cf44ee2f80bff6eb346cecd008e73496633e6e6",
+        "internal_archive_sha256": "9415eade3e0ce172e6443f09a285b8dff08d23eda107958123ccb2fc65ceeaa0"
+      }
+    }
+  ],
+  "input_policy": {
+    "regeneration_allowed": false,
+    "substitution_allowed": false,
+    "semantic_equality_without_exact_identity_allowed": false,
+    "unavailable_input_state": "FAIL_INPUT_AVAILABILITY"
+  },
+  "tool": {
+    "name": "SEER combineKmers",
+    "upstream_commit": "a6bd405754726467a93f39820fb4719457395ae7",
+    "source_archive_sha256": "e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01",
+    "source_git_blobs": {
+      "src/combineKmers.cpp": "54cb1acb01abf3285e6255f4e6f8480f2a27b4a3",
+      "src/combineInit.cpp": "8a0b168e51fa8f6994fc54035d4abd2b970effe7",
+      "src/combineCmdLine.cpp": "4cd634590631ff61096174d9c6eb45c1517f2af8"
+    },
+    "build_command": [
+      "g++",
+      "-O3",
+      "-std=c++11",
+      "-Isrc",
+      "-o",
+      "combineKmers-a6bd405",
+      "src/combineInit.cpp",
+      "src/combineCmdLine.cpp",
+      "src/combineKmers.cpp",
+      "-lgzstream",
+      "-lz",
+      "-lboost_program_options"
+    ],
+    "source_edits_allowed": false,
+    "record_compiler_and_library_versions": true,
+    "record_binary_bytes_and_sha256": true,
+    "historical_1_1_3_binary_allowed": false
+  },
+  "sample_list": {
+    "path": "inputs/n8_samples.tsv",
+    "encoding": "UTF-8",
+    "line_endings": "LF",
+    "bytes": 254,
+    "sha256": "2efa6bddf14a4f6b8e26fca0a3eb7d62d408d37c9d563393402d7270f38241d8",
+    "row_count": 8,
+    "distinct_sample_count": 8,
+    "distinct_path_count": 8,
+    "content_lines": [
+      "ERR1067833\tinputs/min/kmers.txt",
+      "ERR1067740\tinputs/p10/kmers.txt",
+      "ERR1067765\tinputs/p25/kmers.txt",
+      "ERR855281\tinputs/median/kmers.txt",
+      "ERR855022\tinputs/p75/kmers.txt",
+      "ERR854935\tinputs/p90/kmers.txt",
+      "ERR223664\tinputs/p99/kmers.txt",
+      "ERR223688\tinputs/max/kmers.txt"
+    ]
+  },
+  "combine": {
+    "command": [
+      "tools/combineKmers-a6bd405",
+      "-r",
+      "inputs/n8_samples.tsv",
+      "-o",
+      "work/combined/panel8_combined",
+      "--min_samples",
+      "2"
+    ],
+    "minimum_samples": 2,
+    "output_gzip": "work/combined/panel8_combined.gz",
+    "model_training": false
+  },
+  "execution_envelope": {
+    "runner_label": "ubuntu-24.04",
+    "architecture": "x64",
+    "runner_class": "public_standard_only",
+    "maximum_vcpu": 4,
+    "maximum_ram_gib": 16,
+    "larger_runner_allowed": false,
+    "minimum_preacquisition_free_bytes": 12884901888,
+    "complete_working_root_ceiling_bytes": 10737418240,
+    "sampled_process_tree_rss_ceiling_kib": 12582912,
+    "combine_wall_seconds": 900,
+    "oracle_wall_seconds": 900,
+    "whole_job_wall_seconds": 5400,
+    "sample_interval_seconds": 0.5,
+    "termination": {
+      "first": "SIGTERM",
+      "grace_seconds": 10,
+      "then": "SIGKILL"
+    },
+    "combine_wall_bound_rationale": "retained from the pre-existing prospective n8 resource protocol as an experimental containment limit, not a runtime prediction",
+    "n4_linear_extrapolation_claimed": false
+  },
+  "preflight_records": [
+    "runner image and version",
+    "architecture",
+    "CPU model and count",
+    "total RAM",
+    "filesystem free bytes",
+    "repository commit",
+    "protocol file SHA-256 values",
+    "input source identities",
+    "tool archive and source identities",
+    "compiler and resolved library versions"
+  ],
+  "oracle": {
+    "independent_of_seer_source": true,
+    "strategy": "bounded external sort plus k-way merge",
+    "assume_input_order": false,
+    "load_all_rows_into_memory": false,
+    "input_validation": {
+      "fields_per_row": 2,
+      "kmer_length": 31,
+      "alphabet": "ACGT",
+      "abundance": "positive_integer",
+      "exact_rows_bytes_sha256": true,
+      "duplicate_input_rows_required": 0
+    },
+    "expected_feature_rule": "present in at least two distinct samples",
+    "expected_tag_rule": "sample_identifier:abundance",
+    "required_counters": {
+      "malformed_rows": 0,
+      "missing_expected": 0,
+      "extra_or_below_minimum": 0,
+      "duplicate_output_rows": 0,
+      "duplicate_sample_tags": 0,
+      "unknown_sample_tags": 0,
+      "missing_sample_tags": 0,
+      "abundance_mismatches": 0
+    },
+    "physical_output_rows_must_equal_unique_expected_features": true,
+    "record_output_bytes_and_sha256": true,
+    "process_exit_alone_sufficient": false
+  },
+  "terminal_states": [
+    "PASS",
+    "FAIL_PREFLIGHT_INFRASTRUCTURE",
+    "FAIL_INPUT_AVAILABILITY",
+    "FAIL_INPUT_INTEGRITY",
+    "FAIL_TOOL_INTEGRITY",
+    "FAIL_SAMPLE_LIST_INTEGRITY",
+    "FAIL_COMBINE_TIMEOUT",
+    "FAIL_MEMORY_ENVELOPE",
+    "FAIL_STORAGE_ENVELOPE",
+    "FAIL_COMBINE_NONZERO",
+    "FAIL_COMBINE_OUTPUT",
+    "FAIL_ORACLE_TIMEOUT",
+    "FAIL_ORACLE_STAGE",
+    "FAIL_FEATURE_EQUALITY",
+    "FAIL_EVIDENCE_RETENTION"
+  ],
+  "retry_policy": {
+    "attempts": 1,
+    "automatic_retry": false,
+    "silent_retry": false,
+    "parameter_mutation_after_dispatch": false
+  },
+  "pass_rule": {
+    "all_eight_exact_inputs": true,
+    "exact_source_and_sample_list": true,
+    "combine_exit_zero_inside_envelope": true,
+    "completed_gzip_output": true,
+    "all_oracle_counters_zero": true,
+    "physical_rows_equal_unique_expected": true,
+    "resource_and_hash_records_survive": true,
+    "independent_post_run_audit": true,
+    "release_readback_required": true,
+    "process_exit_alone_sufficient": false
+  },
+  "evidence_retention": {
+    "actions_upload_if_always": true,
+    "actions_retention_days": 90,
+    "release_tag": "experiment001-corrected-seer-n8-v1",
+    "release_asset_name": "experiment001-corrected-seer-n8-v1.tar.gz",
+    "recursive_manifest_required": true,
+    "archive_bytes_and_sha256_required": true,
+    "fresh_release_download_readback_required": true,
+    "actions_artifact_alone_sufficient": false,
+    "raw_dsk_inputs_required_in_output_release": true,
+    "input_identity_and_source_receipts_required": true
+  },
+  "authorization": {
+    "protocol_frozen": true,
+    "execution_authorized_in_this_commit": false,
+    "execution_harness_authorized_in_this_commit": false,
+    "workflow_dispatch_authorized_in_this_commit": false,
+    "original_n8_gate_remains_failed": true,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "hicks_metric_replay_established": false,
+    "next_authorized_action": "build and statically audit a dedicated manual-only CORRECTED_SEER_N8_COMBINE_V1 execution harness; do not execute it"
+  }
+}

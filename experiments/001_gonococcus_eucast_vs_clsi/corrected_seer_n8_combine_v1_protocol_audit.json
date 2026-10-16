@@ -1,0 +1,269 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-protocol-audit-v1",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V1",
+  "audit_status": "PASS_STATIC_PROTOCOL_ONLY",
+  "execution_performed": false,
+  "mappings": [
+    {
+      "requirement": "distinct prospective experiment",
+      "frozen_value": "CORRECTED_SEER_N8_COMBINE_V1",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "experiment_id",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "protocol state",
+      "frozen_value": "FROZEN_NOT_EXECUTED",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "status",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "exact input count",
+      "frozen_value": 8,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "inputs",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "exact input total rows",
+      "frozen_value": 16731962,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "facts.exact_input_total_rows",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "exact input total bytes",
+      "frozen_value": 568888831,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "facts.exact_input_total_bytes",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "seven recovered inputs use release identity",
+      "frozen_value": "experiment001-n8-exact-inputs-v1 / asset 647907441 / b132c289...",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "inputs[0:7].source",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "maximum exact input",
+      "frozen_value": "2098204 rows / 71339203 bytes / cc337353...",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "inputs[7]",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "no input regeneration or substitution",
+      "frozen_value": false,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "input_policy.regeneration_allowed and substitution_allowed",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "corrected SEER revision",
+      "frozen_value": "a6bd405754726467a93f39820fb4719457395ae7",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "tool.upstream_commit",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "source archive SHA-256",
+      "frozen_value": "e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "tool.source_archive_sha256",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "three source blob identities",
+      "frozen_value": "54cb1acb... / 8a0b168e... / 4cd63459...",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "tool.source_git_blobs",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "source edits forbidden",
+      "frozen_value": false,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "tool.source_edits_allowed",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "sample list identity",
+      "frozen_value": "254 bytes / 8 rows / 2efa6bdd...",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "sample_list",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "minimum samples",
+      "frozen_value": 2,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "combine.minimum_samples",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "exact combine command",
+      "frozen_value": "combineKmers-a6bd405 -r inputs/n8_samples.tsv -o work/combined/panel8_combined --min_samples 2",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "combine.command",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "standard runner only",
+      "frozen_value": "ubuntu-24.04 x64 / <=4 vCPU / <=16 GiB",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "execution_envelope",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "combine wall ceiling",
+      "frozen_value": 900,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "execution_envelope.combine_wall_seconds",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "oracle wall ceiling",
+      "frozen_value": 900,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "execution_envelope.oracle_wall_seconds",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "resource containment",
+      "frozen_value": "12582912 KiB RSS / 10737418240 working-root bytes / 5400 whole-job seconds",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "execution_envelope",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "fixed termination",
+      "frozen_value": "SIGTERM / 10 seconds / SIGKILL",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "execution_envelope.termination",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "independent bounded oracle",
+      "frozen_value": "external sort plus k-way merge; no SEER code; no all-row in-memory load",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "oracle",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "all equality counters zero",
+      "frozen_value": 0,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "oracle.required_counters",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "process exit alone insufficient",
+      "frozen_value": false,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "oracle.process_exit_alone_sufficient",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "one attempt and no retry",
+      "frozen_value": "1 / false / false",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "retry_policy",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "every terminal path retains evidence",
+      "frozen_value": "outcome plus if-always upload and 90-day retention",
+      "implementation_file": "CORRECTED_SEER_N8_COMBINE_V1.md",
+      "implementation_key": "Outcomes and Evidence retention",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "versioned release readback",
+      "frozen_value": "experiment001-corrected-seer-n8-v1",
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "evidence_retention",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "protocol commit cannot execute",
+      "frozen_value": false,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "authorization.execution_authorized_in_this_commit",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "no harness or workflow in this step",
+      "frozen_value": false,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "authorization.execution_harness_authorized_in_this_commit",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "original n8 failure preserved",
+      "frozen_value": true,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "authorization.original_n8_gate_remains_failed",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "requirement": "full cohort and training forbidden",
+      "frozen_value": false,
+      "implementation_file": "corrected_seer_n8_combine_v1.json",
+      "implementation_key": "authorization.full_1102_reconstruction_authorized and model_training_authorized",
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "static_checks_required_before_commit": [
+    "JSON parsing",
+    "human/machine input set equality",
+    "independent row and byte totals",
+    "sample-list byte count and SHA-256",
+    "terminal-state uniqueness",
+    "authorization booleans false",
+    "git diff check",
+    "changed-path allowlist",
+    "no workflow file added or changed",
+    "no execution run created"
+  ],
+  "forbidden_action_checks": {
+    "seer_executed": false,
+    "workflow_added_or_modified": false,
+    "workflow_dispatched": false,
+    "input_regenerated": false,
+    "full_cohort_logic_added": false,
+    "model_training_added": false,
+    "old_failure_reinterpreted": false
+  }
+}
