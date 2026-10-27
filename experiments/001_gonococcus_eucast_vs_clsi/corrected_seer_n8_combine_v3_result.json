@@ -1,0 +1,149 @@
+{
+  "schema": "amr-corrected-seer-n8-combine-result-v3",
+  "experiment_id": "CORRECTED_SEER_N8_COMBINE_V3",
+  "terminal_state": "PASS",
+  "run": {
+    "id": 38969013276,
+    "event": "workflow_dispatch",
+    "head_sha": "615a76598cf426df7b93564f68f2cf55b17f3561",
+    "attempt": 1,
+    "prior_run_ids": [],
+    "execute_job_id": 117202489178,
+    "independent_audit_job_id": 117205073651,
+    "execute_conclusion": "success",
+    "independent_audit_conclusion": "success"
+  },
+  "frozen_protocol": {
+    "markdown_sha256": "38d59850e30d0e17eadbcd10ea010e60485a6c39324f0b5f874841118a8543ee",
+    "json_sha256": "4c2de9dce67b565bc59aa12650877daa3f44e0a8efa8f541f2c3f64a4fdce883"
+  },
+  "environment": {
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261012.334.1",
+    "architecture": "x86_64",
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "cpu_count": 4,
+    "total_ram_kib": 16373452,
+    "filesystem_total_bytes": 154894188544,
+    "filesystem_free_bytes": 91770884096,
+    "all_preflight_checks": true
+  },
+  "input_integrity": {
+    "source_release_tag": "experiment001-n8-exact-inputs-v2",
+    "source_asset_id": 648632466,
+    "source_asset_bytes": 141491724,
+    "source_asset_sha256": "4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6",
+    "file_count": 8,
+    "total_rows": 16731962,
+    "total_bytes": 568888831,
+    "all_exact": true,
+    "malformed_rows": 0,
+    "sample_list_bytes": 254,
+    "sample_list_rows": 8,
+    "sample_list_sha256": "2efa6bddf14a4f6b8e26fca0a3eb7d62d408d37c9d563393402d7270f38241d8"
+  },
+  "corrected_seer": {
+    "upstream_commit": "a6bd405754726467a93f39820fb4719457395ae7",
+    "source_archive_bytes": 972245,
+    "source_archive_sha256": "e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01",
+    "binary_bytes": 148096,
+    "binary_sha256": "a63e13be3a7d12550be6ef17b2021dc7a5903e95bd0222d62ed0ab1008184185",
+    "minimum_samples": 2
+  },
+  "combine": {
+    "exit_code": 0,
+    "termination_reason": null,
+    "wall_seconds": 21.325,
+    "sampled_peak_process_tree_rss_kib": 583528,
+    "sampled_peak_working_root_bytes": 1309767078,
+    "output_rows": 2210121,
+    "output_bytes": 26014737,
+    "output_sha256": "31bd862b2e3f93796a5241c5ce7bd86400297099203f2dd48bfd064d3a73b732"
+  },
+  "oracle": {
+    "exact": true,
+    "strategy": "bounded external sort plus k-way merge",
+    "wall_seconds": 88.912,
+    "sampled_peak_process_tree_rss_kib": 502216,
+    "sampled_peak_working_root_bytes": 2865103878,
+    "expected_features": 2210121,
+    "physical_output_rows": 2210121,
+    "unique_output_features": 2210121,
+    "expected_stream_bytes": 275328521,
+    "expected_stream_sha256": "97f9c7c84113d0ab59383a13777e8c06c853dfc901d12d79e8d8923c6c8adc57",
+    "counters": {
+      "malformed_rows": 0,
+      "duplicate_input_rows": 0,
+      "missing_expected": 0,
+      "extra_or_below_minimum": 0,
+      "duplicate_output_rows": 0,
+      "duplicate_sample_tags": 0,
+      "unknown_sample_tags": 0,
+      "missing_sample_tags": 0,
+      "abundance_mismatches": 0
+    }
+  },
+  "durable_evidence": {
+    "candidate_artifact": {
+      "id": 12075234594,
+      "digest": "sha256:b05859504aa870b4e4b0f1bf15a74065cede2b1c69e1240196f6a01de5f77689",
+      "expired": false
+    },
+    "candidate_receipt": {
+      "id": 12076510939,
+      "digest": "sha256:9fe88e0436a5efcf638850e96bd7f92528fca6c029d95f829ad8c9dc7c28cea9",
+      "expired": false
+    },
+    "final_audit_artifact": {
+      "id": 12077017286,
+      "digest": "sha256:243e874d5b151ce1f9e51b12e8487fbab3cf177c0c40d0d9fccbb5a39f69e7da",
+      "expired": false
+    },
+    "final_receipt": {
+      "id": 12077426921,
+      "digest": "sha256:a739833b549c362882d289a5f5fc5e8d15b181164f5d38016a6b4af9403d3c88",
+      "expired": false,
+      "effective_terminal_state": "PASS"
+    },
+    "release": {
+      "tag": "experiment001-corrected-seer-n8-v3",
+      "target_commit": "615a76598cf426df7b93564f68f2cf55b17f3561",
+      "asset_id": 648713206,
+      "asset_name": "experiment001-corrected-seer-n8-v3.tar.gz",
+      "asset_bytes": 490458525,
+      "asset_sha256": "19dff7c3ec05c0b0783b45e13d11da843b125eb0c6ea01b03b9b4fb9d5856bfe",
+      "fresh_download_readback": true,
+      "all_eight_inputs_exact": true,
+      "oracle_exact": true
+    }
+  },
+  "packaging_audit": {
+    "classification": "NON_SCIENTIFIC_ARCHIVE_REDUNDANCY",
+    "regular_member_count": 60,
+    "distinct_regular_paths": 26,
+    "duplicate_regular_paths": 25,
+    "all_duplicate_occurrences_byte_identical": true,
+    "conflicting_duplicate_paths": 0,
+    "effect_on_scientific_result": "none established; fresh readback and per-occurrence hashes resolve to one exact scientific tree",
+    "correction_rule": "do not rewrite or replace the immutable V3 release; prevent recursive duplicate TAR insertion in future harnesses"
+  },
+  "claims_established": [
+    "corrected SEER a6bd405 produced the exact independently expected n=8 feature set and exact sample-abundance tags for the eight frozen DSK inputs",
+    "corrected-SEER feature-combine correctness is established at n=8 inside the frozen envelope"
+  ],
+  "claims_not_established": [
+    "the original failed n=8 resource gate passed",
+    "full 1102-isolate reconstruction feasibility",
+    "faithful Hicks SCM or RF model replay",
+    "any EUCAST-versus-CLSI model metric reproduction",
+    "a final claim-state transition",
+    "commercial value",
+    "breakthrough status"
+  ],
+  "authorization": {
+    "original_n8_gate_remains_failed": true,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "next_allowed_action": "freeze and audit a separate resource-feasibility decision using the durable isolate resource measurements and corrected-SEER n=8 measurements; do not execute the cohort"
+  }
+}

@@ -400,31 +400,35 @@ This PASS establishes one stable, read-back-verified n=8 input source only.
 It does not establish corrected-SEER n=8 correctness, full-cohort feasibility,
 or Hicks model replay.
 
-`CORRECTED_SEER_N8_COMBINE_V3` is now **FROZEN / NOT EXECUTED**. All eight
-scientific input identities, the corrected SEER source/build/command, sample
-order, resource ceilings, independent oracle, terminal taxonomy, no-retry law,
-PASS rule, and downstream authorization boundary are value-for-value inherited
-from V2. The sole acquisition source is unified release
-`experiment001-n8-exact-inputs-v2`, asset ID `648632466`, 141,491,724
-bytes, SHA-256
-`4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6`.
-See `CORRECTED_SEER_N8_COMBINE_V3.md`,
-`corrected_seer_n8_combine_v3.json`, and
-`corrected_seer_n8_combine_v3_protocol_audit.json`.
+`CORRECTED_SEER_N8_COMBINE_V3` is **PASS** at run `38969013276`, frozen
+harness commit `615a76598cf426df7b93564f68f2cf55b17f3561`. All eight DSK inputs
+were exact: 16,731,962 rows and 568,888,831 bytes. Corrected SEER revision
+`a6bd405…` emitted 2,210,121 physical/unique features. The independent
+external-sort/k-way-merge oracle expected 2,210,121 and returned zero missing,
+extra/below-minimum, duplicate-row, duplicate-tag, unknown-tag, missing-tag,
+abundance, malformed-row, and duplicate-input mismatches. The combined gzip is
+26,014,737 bytes with SHA-256
+`31bd862b2e3f93796a5241c5ce7bd86400297099203f2dd48bfd064d3a73b732`.
+Combine wall time was 21.325 s with sampled peak RSS 583,528 KiB; oracle wall
+time was 88.912 s with sampled peak RSS 502,216 KiB.
 
-The dedicated V3 manual-only, single-attempt execution harness is now
-**FROZEN / NOT EXECUTED**. Static checks passed for YAML structure, Python
-syntax, protected protocol hashes, exact unified-release acquisition, mutated
-archive rejection, and the independent oracle's positive and defect-control
-cases. The harness records exact input/tool identities, bounded combine and
-oracle resources, every terminal outcome, durable candidate evidence, an
-independent audit, immutable result release, and fresh release readback. See
-`corrected_seer_n8_combine_v3_harness_audit.json`.
+The immutable release `experiment001-corrected-seer-n8-v3` is 490,458,525
+bytes with SHA-256
+`19dff7c3ec05c0b0783b45e13d11da843b125eb0c6ea01b03b9b4fb9d5856bfe`.
+Fresh readback passed. A post-run audit found redundant TAR members caused by
+recursive packing: 60 regular members at 26 distinct paths, with 25 repeated
+paths. Every repeated occurrence is byte-identical; conflicting duplicate
+paths = 0. This is recorded as a non-scientific packaging defect and does not
+rewrite the immutable release or the scientific PASS. See
+`CORRECTED_SEER_N8_COMBINE_V3_RESULT.md` and
+`corrected_seer_n8_combine_v3_result.json`.
 
-No V3 execution occurred in the harness-freeze commit. The next allowed action
-is an independent readback of that commit followed by exactly one manual V3
-dispatch if every guard passes. Full-cohort reconstruction and model training
-remain unauthorized.
+The original n=8 resource gate remains failed. This PASS establishes corrected
+SEER feature-combine correctness at n=8 only. Full-cohort reconstruction,
+model training, Hicks metric replay, final claim-state transition, commercial
+value, and breakthrough status remain unestablished and unauthorized. The next
+allowed action is a separately frozen resource-feasibility decision using the
+durable isolate and n=8 combine evidence; do not execute the cohort yet.
 
 ## Active task — Experiment 001 only
 
@@ -476,4 +480,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve all terminal failures and unified-release V2 PASS run `38967348167`. `CORRECTED_SEER_N8_COMBINE_V3` protocol and dedicated harness are frozen but not executed and may use only `experiment001-n8-exact-inputs-v2`. Independently read back the harness commit; only if every protected hash, static check, manual-only trigger, no-retry guard, and absent result-release/run guard passes, dispatch V3 exactly once. Audit durable artifacts and release readback before classifying the result. Preserve every scientific command, ceiling, oracle rule, and downstream prohibition.
+> Preserve all terminal failures, unified-release V2 PASS run `38967348167`, and corrected-SEER n8 V3 PASS run `38969013276`. V3 establishes exact feature-combine correctness at n=8 only; its immutable release has a disclosed byte-identical duplicate-member packaging defect. Next freeze and audit one resource-feasibility decision from the durable isolate and n=8 combine evidence. Do not execute the 1,102-isolate cohort or train models until that separate decision authorizes a bounded next action. Preserve every scientific identity, failure, and downstream prohibition.
