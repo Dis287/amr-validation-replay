@@ -1,0 +1,679 @@
+{
+  "add_to_16_rank_indices_in_selection_order": [
+    688,
+    412,
+    192,
+    908,
+    481,
+    619,
+    757,
+    343
+  ],
+  "add_to_32_rank_indices_in_selection_order": [
+    55,
+    1040,
+    233,
+    949,
+    151,
+    867,
+    377,
+    446,
+    515,
+    584,
+    653,
+    722,
+    791,
+    309,
+    27,
+    82
+  ],
+  "algorithm": "start with frozen BASE8; repeatedly select floor midpoint of widest adjacent rank interval, tie by lower left endpoint; add 8 for n16 then 16 for n32",
+  "base8_rank_indices": [
+    0,
+    110,
+    275,
+    550,
+    826,
+    991,
+    1090,
+    1101
+  ],
+  "manifest_path": "experiments/001_gonococcus_eucast_vs_clsi/ena_dataset2_manifest.tsv",
+  "manifest_rows": 1102,
+  "manifest_sha256": "f15dfdcdf649e5e4a067e4bcdc1b643c1a124fcba7d6d24bfe135d992f58610f",
+  "n16_rank_indices_sorted": [
+    0,
+    110,
+    192,
+    275,
+    343,
+    412,
+    481,
+    550,
+    619,
+    688,
+    757,
+    826,
+    908,
+    991,
+    1090,
+    1101
+  ],
+  "n32_rank_indices_sorted": [
+    0,
+    27,
+    55,
+    82,
+    110,
+    151,
+    192,
+    233,
+    275,
+    309,
+    343,
+    377,
+    412,
+    446,
+    481,
+    515,
+    550,
+    584,
+    619,
+    653,
+    688,
+    722,
+    757,
+    791,
+    826,
+    867,
+    908,
+    949,
+    991,
+    1040,
+    1090,
+    1101
+  ],
+  "records": [
+    {
+      "fastq_bytes": [
+        35204390,
+        35451915
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/003/ERR1067833/ERR1067833_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/003/ERR1067833/ERR1067833_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "b2e9cf0b59ad5f339c32a1c7cbe8dd9b",
+        "4ff4e92056137f16f49ff7bf45cac20c"
+      ],
+      "rank_index_zero_based": 0,
+      "run_accession": "ERR1067833",
+      "stage": "existing8",
+      "total_bytes": 70656305
+    },
+    {
+      "fastq_bytes": [
+        80487282,
+        82674675
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/006/ERR1067726/ERR1067726_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/006/ERR1067726/ERR1067726_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "5c430a4c977ba6e3c0b56ab9e2aff0c8",
+        "03f4a2840c65c44725c75d82e3aaa8be"
+      ],
+      "rank_index_zero_based": 27,
+      "run_accession": "ERR1067726",
+      "stage": "add_to_32",
+      "total_bytes": 163161957
+    },
+    {
+      "fastq_bytes": [
+        81148785,
+        87917337
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/009/ERR1067829/ERR1067829_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/009/ERR1067829/ERR1067829_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "00f70bb0aa78889b56bc874ea98f37fa",
+        "3c9720f6e1c4295f110f21a0d0c0176c"
+      ],
+      "rank_index_zero_based": 55,
+      "run_accession": "ERR1067829",
+      "stage": "add_to_32",
+      "total_bytes": 169066122
+    },
+    {
+      "fastq_bytes": [
+        86726064,
+        86590189
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/002/ERR1067842/ERR1067842_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/002/ERR1067842/ERR1067842_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "4cd011a9bdabd36bc2637168a555ded6",
+        "a35c8facee6e2265908b49a5f4324cc7"
+      ],
+      "rank_index_zero_based": 82,
+      "run_accession": "ERR1067842",
+      "stage": "add_to_32",
+      "total_bytes": 173316253
+    },
+    {
+      "fastq_bytes": [
+        87872847,
+        89268361
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/000/ERR1067740/ERR1067740_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/000/ERR1067740/ERR1067740_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "4571426afa06e4645477a2f78c9a15b6",
+        "55e8622fcc0cfa531b1abddaddf89d63"
+      ],
+      "rank_index_zero_based": 110,
+      "run_accession": "ERR1067740",
+      "stage": "existing8",
+      "total_bytes": 177141208
+    },
+    {
+      "fastq_bytes": [
+        92080605,
+        91216420
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/002/ERR1067772/ERR1067772_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/002/ERR1067772/ERR1067772_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "d0b01f699d0357062d365a47d32cddd5",
+        "ece774f59faac217efbe914950985c50"
+      ],
+      "rank_index_zero_based": 151,
+      "run_accession": "ERR1067772",
+      "stage": "add_to_32",
+      "total_bytes": 183297025
+    },
+    {
+      "fastq_bytes": [
+        94911633,
+        97521906
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/004/ERR1067714/ERR1067714_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/004/ERR1067714/ERR1067714_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "73722d6515065d57bf25a8cf843804aa",
+        "ae216afd3edeee43c73193cbec6df3b1"
+      ],
+      "rank_index_zero_based": 192,
+      "run_accession": "ERR1067714",
+      "stage": "add_to_16",
+      "total_bytes": 192433539
+    },
+    {
+      "fastq_bytes": [
+        102117245,
+        103605911
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/000/ERR1067840/ERR1067840_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/000/ERR1067840/ERR1067840_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "cd7f214845a7de770117b3f0e2313dfe",
+        "f183cf51595676cc94c1188e8c865c36"
+      ],
+      "rank_index_zero_based": 233,
+      "run_accession": "ERR1067840",
+      "stage": "add_to_32",
+      "total_bytes": 205723156
+    },
+    {
+      "fastq_bytes": [
+        113016971,
+        113900948
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/005/ERR1067765/ERR1067765_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR106/005/ERR1067765/ERR1067765_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "6ace1e2116e0c9404db1c07d007c59d7",
+        "7b5a5076a5d6d2b636e5f347b797379f"
+      ],
+      "rank_index_zero_based": 275,
+      "run_accession": "ERR1067765",
+      "stage": "existing8",
+      "total_bytes": 226917919
+    },
+    {
+      "fastq_bytes": [
+        134831342,
+        138891688
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855058/ERR855058_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855058/ERR855058_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "13864fc4e523c10d2827792b03c73ae9",
+        "da4ea2e6303c62b40332fe2bdd244038"
+      ],
+      "rank_index_zero_based": 309,
+      "run_accession": "ERR855058",
+      "stage": "add_to_32",
+      "total_bytes": 273723030
+    },
+    {
+      "fastq_bytes": [
+        143834953,
+        148142181
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855099/ERR855099_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855099/ERR855099_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "e8618a08a64cd955009f807efce03bc0",
+        "953c942dfdc62db6217992ab636ea2fe"
+      ],
+      "rank_index_zero_based": 343,
+      "run_accession": "ERR855099",
+      "stage": "add_to_16",
+      "total_bytes": 291977134
+    },
+    {
+      "fastq_bytes": [
+        147579321,
+        153016873
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855195/ERR855195_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855195/ERR855195_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "10c4df6030b8ac0c4dcc718f1b02e037",
+        "59315f08c45cc41c5cacc26e6a52754a"
+      ],
+      "rank_index_zero_based": 377,
+      "run_accession": "ERR855195",
+      "stage": "add_to_32",
+      "total_bytes": 300596194
+    },
+    {
+      "fastq_bytes": [
+        150479421,
+        155884759
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR956/ERR956692/ERR956692_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR956/ERR956692/ERR956692_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "3c5cf913aa20a0082926bf95eab49ed2",
+        "6c390eb1d1d4af4abafe01c06d95a330"
+      ],
+      "rank_index_zero_based": 412,
+      "run_accession": "ERR956692",
+      "stage": "add_to_16",
+      "total_bytes": 306364180
+    },
+    {
+      "fastq_bytes": [
+        153538312,
+        158527650
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855059/ERR855059_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855059/ERR855059_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "1d25afc7239653b20313d70832589e19",
+        "7c215000582fccb7e49c6f3e1baa4113"
+      ],
+      "rank_index_zero_based": 446,
+      "run_accession": "ERR855059",
+      "stage": "add_to_32",
+      "total_bytes": 312065962
+    },
+    {
+      "fastq_bytes": [
+        156137107,
+        160864571
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855062/ERR855062_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855062/ERR855062_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "ea33aae765f49cc7c1ca751e9700c9a8",
+        "7b37ad549569eb72c98ffe5432ca6738"
+      ],
+      "rank_index_zero_based": 481,
+      "run_accession": "ERR855062",
+      "stage": "add_to_16",
+      "total_bytes": 317001678
+    },
+    {
+      "fastq_bytes": [
+        158483799,
+        162606120
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855120/ERR855120_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855120/ERR855120_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "114d1f04d7b6a838d8589f6dabf098e5",
+        "5595cb57b8adac9ed1054dc8b4ffa4b2"
+      ],
+      "rank_index_zero_based": 515,
+      "run_accession": "ERR855120",
+      "stage": "add_to_32",
+      "total_bytes": 321089919
+    },
+    {
+      "fastq_bytes": [
+        159832392,
+        165310988
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855281/ERR855281_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855281/ERR855281_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "4d94a6c4e9bf48574b1268494f079a5c",
+        "48937b9dceeb433a3757b0903f0d0936"
+      ],
+      "rank_index_zero_based": 550,
+      "run_accession": "ERR855281",
+      "stage": "existing8",
+      "total_bytes": 325143380
+    },
+    {
+      "fastq_bytes": [
+        161889809,
+        166597724
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854953/ERR854953_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854953/ERR854953_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "0166178485ba6f474a51a0a19d370e73",
+        "d79545c48ca03d14e1e565ff0732219f"
+      ],
+      "rank_index_zero_based": 584,
+      "run_accession": "ERR854953",
+      "stage": "add_to_32",
+      "total_bytes": 328487533
+    },
+    {
+      "fastq_bytes": [
+        163074886,
+        168080481
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855434/ERR855434_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855434/ERR855434_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "5546d068dfc732b9064305dd6f28e223",
+        "28b26b809aaa2157ef298df1dbdde6e2"
+      ],
+      "rank_index_zero_based": 619,
+      "run_accession": "ERR855434",
+      "stage": "add_to_16",
+      "total_bytes": 331155367
+    },
+    {
+      "fastq_bytes": [
+        165779274,
+        169843348
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854907/ERR854907_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854907/ERR854907_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "ee4c5e8539eb114c5574ba2b598eff31",
+        "35a9bc0196deeaa6839b83d57f63b1cb"
+      ],
+      "rank_index_zero_based": 653,
+      "run_accession": "ERR854907",
+      "stage": "add_to_32",
+      "total_bytes": 335622622
+    },
+    {
+      "fastq_bytes": [
+        167048242,
+        172452381
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854974/ERR854974_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854974/ERR854974_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "181e50238d86dcfa152a2e5654e30fab",
+        "b2975674b15e251facd7e64daa0d19db"
+      ],
+      "rank_index_zero_based": 688,
+      "run_accession": "ERR854974",
+      "stage": "add_to_16",
+      "total_bytes": 339500623
+    },
+    {
+      "fastq_bytes": [
+        168629740,
+        173656705
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854952/ERR854952_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854952/ERR854952_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "8919eaa3f570b3284e6c2b2f4503f5d8",
+        "b0d6743148fcc70137626a7ff4c291bb"
+      ],
+      "rank_index_zero_based": 722,
+      "run_accession": "ERR854952",
+      "stage": "add_to_32",
+      "total_bytes": 342286445
+    },
+    {
+      "fastq_bytes": [
+        170667667,
+        175889200
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854902/ERR854902_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854902/ERR854902_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "118261e5acb971b9ad23281ca8ff7e04",
+        "91adb7bc90ee3f5043a863d3b80baf21"
+      ],
+      "rank_index_zero_based": 757,
+      "run_accession": "ERR854902",
+      "stage": "add_to_16",
+      "total_bytes": 346556867
+    },
+    {
+      "fastq_bytes": [
+        172338683,
+        176733949
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854898/ERR854898_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854898/ERR854898_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "e89967ecf58c0ae9e57db1fb6d40defb",
+        "52dc41e719b2ba51aae0a8c9975e6c8b"
+      ],
+      "rank_index_zero_based": 791,
+      "run_accession": "ERR854898",
+      "stage": "add_to_32",
+      "total_bytes": 349072632
+    },
+    {
+      "fastq_bytes": [
+        174914715,
+        180309252
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855022/ERR855022_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855022/ERR855022_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "5dd2d5e869875046cab33a515ba1af8b",
+        "09992162f84607c77ce4ea5e4de72fc3"
+      ],
+      "rank_index_zero_based": 826,
+      "run_accession": "ERR855022",
+      "stage": "existing8",
+      "total_bytes": 355223967
+    },
+    {
+      "fastq_bytes": [
+        177394486,
+        183105587
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855372/ERR855372_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR855/ERR855372/ERR855372_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "91ea241addd7904d7f0a403a3edcc238",
+        "2c122ae06b5a9619880c6ab436353507"
+      ],
+      "rank_index_zero_based": 867,
+      "run_accession": "ERR855372",
+      "stage": "add_to_32",
+      "total_bytes": 360500073
+    },
+    {
+      "fastq_bytes": [
+        180951906,
+        187113688
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR222/ERR222928/ERR222928_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR222/ERR222928/ERR222928_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "d6b65e1dc6c8c6e25af2bc558f9a3068",
+        "61def73052ac0cb62a0a127bdf2dc69a"
+      ],
+      "rank_index_zero_based": 908,
+      "run_accession": "ERR222928",
+      "stage": "add_to_16",
+      "total_bytes": 368065594
+    },
+    {
+      "fastq_bytes": [
+        185970068,
+        191552785
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854879/ERR854879_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854879/ERR854879_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "bae97d11c5763c06da736ead9dd7b08b",
+        "ce66504817e567aa39d22df078e9ff96"
+      ],
+      "rank_index_zero_based": 949,
+      "run_accession": "ERR854879",
+      "stage": "add_to_32",
+      "total_bytes": 377522853
+    },
+    {
+      "fastq_bytes": [
+        192013858,
+        197548971
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854935/ERR854935_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR854/ERR854935/ERR854935_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "8455b4df44da542a1de5b31d9676eb73",
+        "43b24bac47caef467cce9fec0f67345b"
+      ],
+      "rank_index_zero_based": 991,
+      "run_accession": "ERR854935",
+      "stage": "existing8",
+      "total_bytes": 389562829
+    },
+    {
+      "fastq_bytes": [
+        214948729,
+        222882793
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223657/ERR223657_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223657/ERR223657_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "2483128629a093e460706b8228458761",
+        "bf0d10b9f2c9e9b3c6f71e9501b1505b"
+      ],
+      "rank_index_zero_based": 1040,
+      "run_accession": "ERR223657",
+      "stage": "add_to_32",
+      "total_bytes": 437831522
+    },
+    {
+      "fastq_bytes": [
+        377899592,
+        393134325
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223664/ERR223664_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223664/ERR223664_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "59ecbe0c66b5ad93ead9577308724bce",
+        "668fb209d9ef01b1897c1105e09ef7ba"
+      ],
+      "rank_index_zero_based": 1090,
+      "run_accession": "ERR223664",
+      "stage": "existing8",
+      "total_bytes": 771033917
+    },
+    {
+      "fastq_bytes": [
+        529561823,
+        548974863
+      ],
+      "fastq_ftp": [
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223688/ERR223688_1.fastq.gz",
+        "ftp.sra.ebi.ac.uk/vol1/fastq/ERR223/ERR223688/ERR223688_2.fastq.gz"
+      ],
+      "fastq_md5": [
+        "7cec28e9c5123b8a4ec8dee92efe71c6",
+        "a7f04fcc8cddc16b3d54f267d551528c"
+      ],
+      "rank_index_zero_based": 1101,
+      "run_accession": "ERR223688",
+      "stage": "existing8",
+      "total_bytes": 1078536686
+    }
+  ],
+  "schema": "amr-cohort-resource-calibration-selection-v1",
+  "sort": [
+    "total paired compressed FASTQ bytes ascending",
+    "run accession ascending"
+  ]
+}

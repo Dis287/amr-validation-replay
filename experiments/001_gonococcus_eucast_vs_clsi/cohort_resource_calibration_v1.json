@@ -1,0 +1,363 @@
+{
+  "schema": "amr-cohort-resource-calibration-protocol-v1",
+  "experiment_id": "COHORT_RESOURCE_CALIBRATION_V1",
+  "status": "FROZEN_NOT_EXECUTED",
+  "parent_decision_commit": "4b7b6aee3d511e29196a770047816acc207b99ed",
+  "purpose": "Measure additional size-stratified assembly-resource variability and corrected-SEER growth at n=16 and n=32 without executing the 1102-isolate cohort.",
+  "scientific_boundary": {
+    "is_full_cohort": false,
+    "is_model_training": false,
+    "is_hicks_metric_replay": false,
+    "historical_hicks_equivalence_claimed": false,
+    "execution_authorized_by_protocol_commit": false
+  },
+  "selection": {
+    "manifest_path": "experiments/001_gonococcus_eucast_vs_clsi/ena_dataset2_manifest.tsv",
+    "manifest_rows": 1102,
+    "manifest_sha256": "f15dfdcdf649e5e4a067e4bcdc1b643c1a124fcba7d6d24bfe135d992f58610f",
+    "selection_file": "experiments/001_gonococcus_eucast_vs_clsi/cohort_resource_calibration_v1_selection.json",
+    "selection_file_sha256": "415fa09449730b23d2308fdc7aefd630b66a69c6eeee9b61c39b70b2b2897497",
+    "selector_file": "experiments/001_gonococcus_eucast_vs_clsi/select_cohort_resource_calibration_v1.py",
+    "selector_file_sha256": "d30e0f427cf825d98da7465d0853338a4b9cbe985a37bbbe2b9ad8132df77308",
+    "sort": [
+      "total paired compressed FASTQ bytes ascending",
+      "run accession ascending"
+    ],
+    "algorithm": "start with frozen ranks [0,110,275,550,826,991,1090,1101]; repeatedly bisect the widest adjacent rank interval using floor midpoint and lower-left tie break; add 8 for n16, then 16 for n32",
+    "existing8_rank_indices": [
+      0,
+      110,
+      275,
+      550,
+      826,
+      991,
+      1090,
+      1101
+    ],
+    "add_to_16_rank_indices_in_selection_order": [
+      688,
+      412,
+      192,
+      908,
+      481,
+      619,
+      757,
+      343
+    ],
+    "add_to_32_rank_indices_in_selection_order": [
+      55,
+      1040,
+      233,
+      949,
+      151,
+      867,
+      377,
+      446,
+      515,
+      584,
+      653,
+      722,
+      791,
+      309,
+      27,
+      82
+    ],
+    "n16_rank_indices_sorted": [
+      0,
+      110,
+      192,
+      275,
+      343,
+      412,
+      481,
+      550,
+      619,
+      688,
+      757,
+      826,
+      908,
+      991,
+      1090,
+      1101
+    ],
+    "n32_rank_indices_sorted": [
+      0,
+      27,
+      55,
+      82,
+      110,
+      151,
+      192,
+      233,
+      275,
+      309,
+      343,
+      377,
+      412,
+      446,
+      481,
+      515,
+      550,
+      584,
+      619,
+      653,
+      688,
+      722,
+      757,
+      791,
+      826,
+      867,
+      908,
+      949,
+      991,
+      1040,
+      1090,
+      1101
+    ],
+    "existing_outputs_source": {
+      "tag": "experiment001-n8-exact-inputs-v2",
+      "asset_id": 648632466,
+      "asset_bytes": 141491724,
+      "asset_sha256": "4685554ea77eba521198ed73edff197fa65ac9b0967eb86b6842fff3188edef6",
+      "exact_file_count": 8
+    },
+    "new_isolates": 24,
+    "total_panel": 32
+  },
+  "scientific_invariants": {
+    "spades": {
+      "version": "4.3.0",
+      "archive_sha256": "e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034",
+      "mode": "default paired-read assembly",
+      "threads": 2,
+      "memory_parameter_gb": 8,
+      "command_template": [
+        "spades.py",
+        "-1",
+        "MATE1",
+        "-2",
+        "MATE2",
+        "-o",
+        "spades",
+        "-t",
+        "2",
+        "-m",
+        "8"
+      ]
+    },
+    "filter": {
+      "minimum_contig_length_bp": 200,
+      "minimum_spades_header_coverage": 10,
+      "logic": "length>=200 AND SPAdes header _cov_>=10"
+    },
+    "quast": {
+      "version": "5.2.0",
+      "archive_sha256": "ccd911087cfa254ad4b8eadac4f95d4685e44c3996f5516b8e0ce6f7cfa7e0db",
+      "command_template": [
+        "quast.py",
+        "--min-contig",
+        "200",
+        "--no-plots",
+        "--no-html",
+        "--no-icarus",
+        "-t",
+        "2",
+        "-l",
+        "raw,filtered",
+        "-o",
+        "quast",
+        "spades/contigs.fasta",
+        "filtered.fasta"
+      ]
+    },
+    "dsk": {
+      "version": "2.3.3",
+      "archive_sha256": "626a4663f70323a80834c013f1d9dcb4a3b3a73a1c9ab5da95a013783d81b0f6",
+      "kmer_size": 31,
+      "abundance_minimum": 1,
+      "max_memory_mb": 8000,
+      "command_template": [
+        "dsk",
+        "-file",
+        "filtered.fasta",
+        "-kmer-size",
+        "31",
+        "-abundance-min",
+        "1",
+        "-out",
+        "kmers",
+        "-out-tmp",
+        "dsk_tmp",
+        "-max-memory",
+        "8000"
+      ],
+      "dsk2ascii_command_template": [
+        "dsk2ascii",
+        "-file",
+        "kmers.h5",
+        "-out",
+        "kmers.txt"
+      ]
+    },
+    "dsk_oracle": {
+      "canonical_order": "A<C<T<G",
+      "reverse_complement_canonicalization": true,
+      "exact_set_and_abundance_equality": true
+    },
+    "corrected_seer": {
+      "upstream_commit": "a6bd405754726467a93f39820fb4719457395ae7",
+      "source_archive_sha256": "e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01",
+      "minimum_samples": 2,
+      "checkpoints": [
+        16,
+        32
+      ]
+    },
+    "combine_oracle": {
+      "strategy": "bounded external sort plus k-way merge",
+      "exact_features_tags_and_abundances": true,
+      "required_zero_counters": [
+        "malformed_rows",
+        "missing_expected",
+        "extra_or_below_minimum",
+        "duplicate_output_rows",
+        "duplicate_sample_tags",
+        "unknown_sample_tags",
+        "missing_sample_tags",
+        "abundance_mismatches",
+        "duplicate_input_rows"
+      ]
+    }
+  },
+  "execution_environment": {
+    "provider": "GitHub Actions",
+    "runner_label": "ubuntu-24.04",
+    "architecture": "x64",
+    "public_standard_only": true,
+    "maximum_vcpu_per_job": 4,
+    "maximum_ram_gib_per_job": 16,
+    "maximum_ssd_gb_per_job": 14,
+    "maximum_parallel_isolate_jobs": 4,
+    "workflow_dispatch_only": true
+  },
+  "isolate_envelope": {
+    "minimum_free_disk_before_download_bytes": 12884901888,
+    "sample_interval_seconds": 0.5,
+    "sampled_process_tree_rss_ceiling_kib": 10485760,
+    "watched_spades_stage_disk_ceiling_bytes": 8589934592,
+    "complete_working_root_ceiling_bytes": 15032385536,
+    "spades_wall_seconds": 5400,
+    "quast_wall_seconds": 300,
+    "dsk_wall_seconds": 900,
+    "dsk2ascii_wall_seconds": 300,
+    "oracle_wall_seconds": 900,
+    "whole_job_wall_seconds": 9000,
+    "termination": {
+      "first": "SIGTERM",
+      "grace_seconds": 10,
+      "then": "SIGKILL"
+    },
+    "rationale": "inherit the prospectively justified maximum-isolate V1/V3 containment envelope unchanged for every newly selected isolate; it is a safety bound, not a runtime prediction"
+  },
+  "combine_envelope": {
+    "combine_wall_seconds": 900,
+    "oracle_wall_seconds": 900,
+    "sampled_process_tree_rss_ceiling_kib": 12582912,
+    "working_root_ceiling_bytes": 10737418240,
+    "whole_job_wall_seconds": 5400,
+    "sample_interval_seconds": 0.5,
+    "termination": {
+      "first": "SIGTERM",
+      "grace_seconds": 10,
+      "then": "SIGKILL"
+    },
+    "rationale": "retain the frozen corrected-SEER n8 containment envelope unchanged at both checkpoints; no scaling success is presumed"
+  },
+  "execution_order": [
+    "verify frozen protocol, selector, manifest, and selection hashes",
+    "acquire and verify the eight existing exact DSK inputs from the immutable release",
+    "execute exactly one bounded attempt for each of the eight add_to_16 isolates, with maximum parallelism four",
+    "only if all n16 constituents pass and survive durably, run corrected-SEER n16 and the independent oracle",
+    "execute exactly one bounded attempt for each of the sixteen add_to_32 isolates, with maximum parallelism four",
+    "only if all n32 constituents pass and survive durably, run corrected-SEER n32 and the independent oracle",
+    "independently audit all retained results and release readback"
+  ],
+  "retry_policy": {
+    "attempts_per_new_isolate": 1,
+    "automatic_retry": false,
+    "silent_retry": false,
+    "matrix_retry": false,
+    "manual_second_attempt_inside_experiment": false,
+    "parameter_mutation_after_start": false
+  },
+  "failure_taxonomy": [
+    "FAIL_PREFLIGHT_INFRASTRUCTURE",
+    "FAIL_INPUT_AVAILABILITY",
+    "FAIL_INPUT_INTEGRITY",
+    "FAIL_TOOL_INTEGRITY",
+    "FAIL_SPADES_TIMEOUT",
+    "FAIL_MEMORY_ENVELOPE",
+    "FAIL_STORAGE_ENVELOPE",
+    "FAIL_SPADES_NONZERO",
+    "FAIL_SPADES_OUTPUT",
+    "FAIL_QC_STAGE",
+    "FAIL_DSK_STAGE",
+    "FAIL_DSK_EQUALITY",
+    "FAIL_COMBINE_TIMEOUT",
+    "FAIL_COMBINE_NONZERO",
+    "FAIL_COMBINE_OUTPUT",
+    "FAIL_ORACLE_TIMEOUT",
+    "FAIL_ORACLE_STAGE",
+    "FAIL_FEATURE_EQUALITY",
+    "FAIL_EVIDENCE_RETENTION"
+  ],
+  "pass_rule": {
+    "all_24_new_input_pairs_exact": true,
+    "all_24_new_isolate_pipelines_complete_inside_envelope": true,
+    "all_24_new_dsk_oracles_exact": true,
+    "existing8_inputs_exact": true,
+    "corrected_seer_n16_exact": true,
+    "corrected_seer_n32_exact": true,
+    "all_required_resource_records_survive": true,
+    "independent_post_run_audit": true,
+    "immutable_release_and_fresh_readback": true,
+    "process_exit_alone_sufficient": false
+  },
+  "evidence_retention": {
+    "actions_upload_condition": "always",
+    "retention_days": 90,
+    "every_terminal_path_outcome_json": true,
+    "recursive_path_size_sha256_manifest": true,
+    "raw_fastqs_uploaded": false,
+    "raw_fastq_identities_retained": true,
+    "primary_outputs_required": true,
+    "unique_archive_member_paths_required": true,
+    "duplicate_archive_members_allowed": false,
+    "immutable_release_required_for_pass": true,
+    "fresh_release_readback_required": true
+  },
+  "post_pass_boundary": {
+    "original_n8_gate_remains_failed": true,
+    "full_1102_reconstruction_authorized": false,
+    "model_training_authorized": false,
+    "automatic_scale_up": false,
+    "next_action": "freeze a new resource-feasibility decision from the n32 evidence"
+  },
+  "forbidden": [
+    "full cohort execution",
+    "model training",
+    "Hicks metric claim",
+    "dashboard or product expansion",
+    "other organism",
+    "parameter changes after dispatch",
+    "retry",
+    "rewriting prior failures",
+    "replacing immutable releases"
+  ],
+  "authorization": {
+    "protocol_frozen": true,
+    "harness_authorized_in_this_commit": false,
+    "execution_authorized_in_this_commit": false,
+    "next_authorized_action": "build and statically audit a dedicated manual-only execution harness; do not execute in the harness commit"
+  }
+}

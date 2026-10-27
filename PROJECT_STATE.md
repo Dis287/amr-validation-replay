@@ -435,14 +435,33 @@ only, not an acceptance bound. No n=1,102 combine resource evidence exists.
 See `RESOURCE_FEASIBILITY_DECISION_V1.md` and
 `resource_feasibility_decision_v1.json`.
 
-The next allowed action is protocol design only for a nested 32-isolate
-`COHORT_RESOURCE_CALIBRATION_V1`: preserve the eight exact outputs, select 24
-additional isolates prospectively, allow at most four parallel isolate jobs,
-and require exact corrected-SEER plus independent oracles at n=16 and n=32.
-Even a calibration PASS must return to a new feasibility decision. Full-cohort
-reconstruction, model training, Hicks metric replay, final claim-state
-transition, commercial value, and breakthrough status remain unestablished and
-unauthorized.
+`COHORT_RESOURCE_CALIBRATION_V1` is now `FROZEN_NOT_EXECUTED`.
+The deterministic nested panel preserves the eight exact outputs and selects 24
+prospective additions from the exact 1,102-row ENA manifest: eight additions
+for n=16 and sixteen further additions for n=32. Selection sorts by total paired
+compressed FASTQ bytes, then accession, and repeatedly bisects the widest
+adjacent selected-rank interval with a lower-left tie break. A clean selector
+rerun reproduced the frozen selection byte-for-byte; all 32 rows matched the
+manifest exactly for accession, both URLs, byte counts, and MD5s.
+
+The frozen protocol retains SPAdes 4.3.0 (`-t 2 -m 8`), the declared filter,
+QUAST 5.2.0, DSK 2.3.3 k=31 abundance-minimum 1, exact independent canonical
+verification, corrected SEER `a6bd405…`, and exact combine/oracle checkpoints
+at n=16 and n=32. At most four isolate jobs may run concurrently, every new
+isolate has one bounded attempt, and archive member paths must be unique.
+Protocol and static audit are in `COHORT_RESOURCE_CALIBRATION_V1.md`,
+`cohort_resource_calibration_v1.json`,
+`cohort_resource_calibration_v1_selection.json`,
+`select_cohort_resource_calibration_v1.py`, and
+`cohort_resource_calibration_v1_protocol_audit.json`.
+
+No harness or workflow is yet frozen and no calibration execution is
+authorized by the protocol commit. The next allowed action is to build and
+statically audit a dedicated manual-only harness in a separate commit, without
+dispatching it. Even a future calibration PASS must return to a new feasibility
+decision. Full-cohort reconstruction, model training, Hicks metric replay,
+final claim-state transition, commercial value, and breakthrough status remain
+unestablished and unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -494,4 +513,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve all terminal failures, unified-release V2 PASS run `38967348167`, corrected-SEER n8 V3 PASS run `38969013276`, and `RESOURCE_FEASIBILITY_DECISION_V1`. The full cohort is not authorized. Next design and freeze only `COHORT_RESOURCE_CALIBRATION_V1`: a nested deterministic 32-isolate panel retaining the eight exact outputs, 24 prospectively selected additions, at most four parallel jobs, and exact corrected-SEER/oracle checkpoints at n=16 and n=32. Do not execute it in the protocol commit. Preserve every scientific identity, failure, and downstream prohibition.
+> Preserve all terminal failures, unified-release V2 PASS run `38967348167`, corrected-SEER n8 V3 PASS run `38969013276`, `RESOURCE_FEASIBILITY_DECISION_V1`, and the frozen-not-executed `COHORT_RESOURCE_CALIBRATION_V1` protocol. The full cohort is not authorized. Next build and statically audit only a dedicated manual-dispatch calibration harness in a separate commit. Do not dispatch it in the harness commit. Preserve the deterministic 32-isolate selection, every scientific identity and resource envelope, single-attempt law, unique archive paths, exact n=16/n=32 combine oracles, prior failures, and all downstream prohibitions.

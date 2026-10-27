@@ -1,0 +1,228 @@
+{
+  "schema": "amr-cohort-resource-calibration-protocol-audit-v1",
+  "experiment_id": "COHORT_RESOURCE_CALIBRATION_V1",
+  "audit_scope": "static protocol-only audit; no biological input download and no scientific execution",
+  "parent_commit": "4b7b6aee3d511e29196a770047816acc207b99ed",
+  "result": "PASS",
+  "audited_hashes": {
+    "protocol_json_sha256": "70cd8013df50254e10dddf1e5033fad4c9f1c34bc4a1cd8d0a2ffeed9ac1cc32",
+    "protocol_markdown_sha256": "7c95b1966d40e80f13b34a21377b2492da48e7e3a0c5a5dfa22815817e7fbfa9",
+    "selection_json_sha256": "415fa09449730b23d2308fdc7aefd630b66a69c6eeee9b61c39b70b2b2897497",
+    "selector_python_sha256": "d30e0f427cf825d98da7465d0853338a4b9cbe985a37bbbe2b9ad8132df77308",
+    "ena_manifest_sha256": "f15dfdcdf649e5e4a067e4bcdc1b643c1a124fcba7d6d24bfe135d992f58610f"
+  },
+  "deterministic_selection_audit": {
+    "selector_rerun_byte_identical": true,
+    "manifest_rows": 1102,
+    "selected_records": 32,
+    "distinct_rank_indices": 32,
+    "distinct_accessions": 32,
+    "stage_counts": {
+      "existing8": 8,
+      "add_to_16": 8,
+      "add_to_32": 16
+    },
+    "every_record_exact_against_manifest": {
+      "run_accession": true,
+      "fastq_ftp_pair": true,
+      "fastq_byte_pair": true,
+      "fastq_md5_pair": true,
+      "total_bytes": true
+    },
+    "sort_exact": true,
+    "midpoint_algorithm_exact": true
+  },
+  "requirement_map": [
+    {
+      "protocol_requirement": "protocol status",
+      "frozen_value": "FROZEN_NOT_EXECUTED",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "status",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "manifest identity",
+      "frozen_value": "1102 rows; SHA-256 f15dfdcdf649e5e4a067e4bcdc1b643c1a124fcba7d6d24bfe135d992f58610f",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "selection.manifest_rows / selection.manifest_sha256",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "nested panel",
+      "frozen_value": "existing 8 + 8 additions at n16 + 16 additions at n32",
+      "implementation_file": "cohort_resource_calibration_v1_selection.json",
+      "implementation_key": "records[].stage",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "SPAdes identity",
+      "frozen_value": "4.3.0; archive SHA-256 e88a8c533c8614dd4b7c5788cfcd46427848a0575267f97c690a75fd2a343034; default paired; -t 2 -m 8",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.spades",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "contig filter",
+      "frozen_value": "length>=200 AND SPAdes header coverage>=10",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.filter",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "QUAST identity",
+      "frozen_value": "5.2.0; archive SHA-256 ccd911087cfa254ad4b8eadac4f95d4685e44c3996f5516b8e0ce6f7cfa7e0db",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.quast",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "DSK identity",
+      "frozen_value": "2.3.3; archive SHA-256 626a4663f70323a80834c013f1d9dcb4a3b3a73a1c9ab5da95a013783d81b0f6; k31; abundance-min 1; max-memory 8000",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.dsk",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "independent isolate oracle",
+      "frozen_value": "A<C<T<G reverse-complement canonicalization; exact set and abundance equality",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.dsk_oracle",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "corrected SEER identity",
+      "frozen_value": "commit a6bd405754726467a93f39820fb4719457395ae7; source SHA-256 e6ed83b2e60c1c45beeee24949203bd34e7dbc5107b77bc120d5afddff8e8e01; min_samples 2",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.corrected_seer",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "combine checkpoints",
+      "frozen_value": "n=16 and n=32",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "scientific_invariants.corrected_seer.checkpoints",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "runner class",
+      "frozen_value": "public standard ubuntu-24.04 x64; <=4 vCPU; <=16 GiB RAM; <=14 GB SSD per job",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "execution_environment",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "parallelism",
+      "frozen_value": "maximum four isolate jobs",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "execution_environment.maximum_parallel_isolate_jobs",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "isolate containment",
+      "frozen_value": "SPAdes 5400s; whole job 9000s; RSS 10485760 KiB; stage disk 8589934592 bytes; complete root 15032385536 bytes",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "isolate_envelope",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "combine containment",
+      "frozen_value": "combine 900s; oracle 900s; whole job 5400s; RSS 12582912 KiB; root 10737418240 bytes",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "combine_envelope",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "single-attempt law",
+      "frozen_value": "one attempt; no automatic, silent, matrix, or manual retry; no parameter mutation",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "retry_policy",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "artifact retention",
+      "frozen_value": "always; 90 days; unique archive paths; immutable release and fresh readback required",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "evidence_retention",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "protocol commit authorization",
+      "frozen_value": "no harness and no execution authorized in protocol commit",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "authorization",
+      "exact_match": true,
+      "discrepancy": null
+    },
+    {
+      "protocol_requirement": "post-pass boundary",
+      "frozen_value": "no automatic full cohort or model training; return to new feasibility decision",
+      "implementation_file": "cohort_resource_calibration_v1.json",
+      "implementation_key": "post_pass_boundary",
+      "exact_match": true,
+      "discrepancy": null
+    }
+  ],
+  "protected_prior_evidence": [
+    {
+      "file": "experiments/001_gonococcus_eucast_vs_clsi/resource_feasibility_decision_v1.json",
+      "sha256": "e22e0bf6c4bf0f9e3784eb6210aff3e76af2aedf4f112c0be73f4584c099b71b",
+      "unchanged": true
+    },
+    {
+      "file": "experiments/001_gonococcus_eucast_vs_clsi/resource_panel_n8_failure.json",
+      "sha256": "9eb3d5debc56d250b3807c7f3ced0e2ea1d21e193a3fd57f6bd6eacae424f516",
+      "unchanged": true
+    },
+    {
+      "file": ".github/workflows/experiment001-n8.yml",
+      "sha256": "0dc37a81f35af557e9a5bd61214373b8010115a32d625cd719b0928695c5b6f8",
+      "unchanged": true
+    },
+    {
+      "file": "experiments/001_gonococcus_eucast_vs_clsi/corrected_seer_n8_combine_v3_result.json",
+      "sha256": "b7ca298a894546fab8b9042d34b2c7ed09c680c3e463968d1a6ecadc8a9e3257",
+      "unchanged": true
+    }
+  ],
+  "execution_trigger_check": {
+    "new_workflow_added": false,
+    "workflow_dispatched": false,
+    "pass": true
+  },
+  "retry_check": {
+    "retry_path_present": false,
+    "pass": true
+  },
+  "artifact_retention_check": {
+    "protocol_requires_always_upload": true,
+    "retention_days": 90,
+    "immutable_release_required": true,
+    "unique_archive_paths_required": true,
+    "pass": true
+  },
+  "forbidden_action_check": {
+    "biological_download": false,
+    "scientific_execution": false,
+    "corrected_seer_execution": false,
+    "full_cohort": false,
+    "model_training": false,
+    "pass": true
+  },
+  "final_statement": "Static protocol audit passed. This audit authorizes only a separately committed, statically audited manual-only harness. It does not authorize execution."
+}
