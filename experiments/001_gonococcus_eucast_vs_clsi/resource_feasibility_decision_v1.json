@@ -1,0 +1,173 @@
+{
+  "schema": "amr-resource-feasibility-decision-v1",
+  "decision_id": "RESOURCE_FEASIBILITY_DECISION_V1",
+  "status": "FROZEN_DECISION",
+  "parent_scientific_result_commit": "d4ae653e909c8e7bfbc047e598b4424e3a1f37ed",
+  "decision": "FULL_COHORT_NOT_AUTHORIZED",
+  "next_gate": "COHORT_RESOURCE_CALIBRATION_V1",
+  "facts": {
+    "cohort_isolates": 1102,
+    "cohort_compressed_fastq_bytes": 344835597770,
+    "cohort_compressed_fastq_gib": 321.15317673422396,
+    "panel_selection_basis": "input-size ranks 0, p10, p25, median, p75, p90, p99, maximum",
+    "panel_observed_isolates": 8,
+    "panel_observed_fastq_bytes": 3394216211,
+    "panel_observed_spades_wall_seconds": 9673.721492,
+    "panel_runtime_rank_inversions": 4,
+    "panel_runtime_rank_pairs": 28,
+    "spades": [
+      {
+        "rank": "min",
+        "isolate": "ERR1067833",
+        "input_bytes": 70656305,
+        "wall_seconds": 299.528,
+        "peak_rss_kib": 1279840,
+        "peak_stage_disk_bytes": 581808411
+      },
+      {
+        "rank": "p10",
+        "isolate": "ERR1067740",
+        "input_bytes": 177141208,
+        "wall_seconds": 653.872,
+        "peak_rss_kib": 1523880,
+        "peak_stage_disk_bytes": 1431877181
+      },
+      {
+        "rank": "p25",
+        "isolate": "ERR1067765",
+        "input_bytes": 226917919,
+        "wall_seconds": 1074.414,
+        "peak_rss_kib": 1762324,
+        "peak_stage_disk_bytes": 1836688542
+      },
+      {
+        "rank": "median",
+        "isolate": "ERR855281",
+        "input_bytes": 325143380,
+        "wall_seconds": 666.621,
+        "peak_rss_kib": 1279508,
+        "peak_stage_disk_bytes": 1401847618
+      },
+      {
+        "rank": "p75",
+        "isolate": "ERR855022",
+        "input_bytes": 355223967,
+        "wall_seconds": 847.386,
+        "peak_rss_kib": 1279612,
+        "peak_stage_disk_bytes": 1516533857
+      },
+      {
+        "rank": "p90",
+        "isolate": "ERR854935",
+        "input_bytes": 389562829,
+        "wall_seconds": 846.077,
+        "peak_rss_kib": 1704780,
+        "peak_stage_disk_bytes": 1613270878
+      },
+      {
+        "rank": "p99",
+        "isolate": "ERR223664",
+        "input_bytes": 771033917,
+        "wall_seconds": 2365.749,
+        "peak_rss_kib": 2097024,
+        "peak_stage_disk_bytes": 2429652499
+      },
+      {
+        "rank": "maximum",
+        "isolate": "ERR223688",
+        "input_bytes": 1078536686,
+        "wall_seconds": 2920.074492,
+        "peak_rss_kib": 2519092,
+        "peak_stage_disk_bytes": 3415372552,
+        "peak_complete_working_root_bytes": 5552577271
+      }
+    ],
+    "maximum_to_p99": {
+      "input_size_ratio": 1.398818731861312,
+      "wall_time_ratio": 1.2343128928724054
+    },
+    "corrected_seer_n8": {
+      "exact": true,
+      "features": 2210121,
+      "wall_seconds": 21.325,
+      "peak_rss_kib": 583528,
+      "peak_working_root_bytes": 1309767078,
+      "output_bytes": 26014737
+    },
+    "oracle_n8": {
+      "exact": true,
+      "wall_seconds": 88.912,
+      "peak_rss_kib": 502216,
+      "peak_working_root_bytes": 2865103878
+    },
+    "exact_regeneration": {
+      "seven_of_seven_outputs_matched_frozen_filtered_fasta_and_dsk_identities": true,
+      "p99_repeat_wall_seconds": 2472.237,
+      "p99_original_wall_seconds": 2365.749,
+      "p99_wall_change_seconds": 106.488,
+      "p99_wall_change_percent": 4.501242376518358
+    },
+    "original_n8_gate_status": "FAILED",
+    "exact_hicks_spades_quast_versions": "UNKNOWN",
+    "historical_hicks_cohort_qc_cutoff": "UNKNOWN"
+  },
+  "inference": {
+    "illustrative_piecewise_linear_spades_wall_hours": 270.0336858697,
+    "illustrative_allocated_two_core_hours": 540.0673717394,
+    "acceptance_use": false,
+    "reason": "eight size-rank anchors do not bound runtime for 1,094 unsampled isolates and observed runtime is non-monotonic in input size"
+  },
+  "unknowns": [
+    "runtime, peak RSS, peak disk, and terminal outcome for 1094 unsampled isolates",
+    "distribution tails and failure rate under the frozen pipeline",
+    "aggregate transfer and durable-storage behavior for a sharded cohort run",
+    "corrected-SEER combine memory, disk, runtime, and output size at n=1102",
+    "whether a public-standard runner can combine 1102 profiles inside a prospectively frozen envelope",
+    "historical Hicks assembly/QC equivalence",
+    "full-cohort feature matrix",
+    "Hicks SCM/RF replay metrics"
+  ],
+  "prohibitions": {
+    "full_1102_reconstruction": false,
+    "full_1102_combine": false,
+    "model_training": false,
+    "old_n8_reclassification": false,
+    "parameter_mutation": false
+  },
+  "next_gate_requirements": {
+    "purpose": "measure additional size-stratified assembly variability and corrected-SEER growth without launching the cohort",
+    "panel_size": 32,
+    "nested_existing_isolates": 8,
+    "additional_isolates": 24,
+    "selection_rule": "prospectively deterministic rank selection from the 1102-row manifest; freeze exact accessions and hashes before execution",
+    "unchanged_scientific_pipeline": true,
+    "maximum_parallel_isolate_jobs": 4,
+    "durable_per_isolate_evidence": true,
+    "no_retry": true,
+    "corrected_seer_checkpoints": [
+      16,
+      32
+    ],
+    "independent_oracle_required": true,
+    "full_cohort_authorization_after_pass": false,
+    "post_pass_action": "recompute the feasibility decision; do not automatically launch 1102"
+  },
+  "classification": {
+    "FACT": [
+      "all eight declared size-rank isolates completed the unchanged pipeline across the preserved original seven outputs and the separately audited maximum result",
+      "the maximum completed within 5400 seconds and below frozen memory and disk ceilings",
+      "corrected SEER and its independent oracle passed exactly at n=8",
+      "the complete cohort manifest contains 1102 paired runs totaling 344835597770 compressed bytes",
+      "input-size rank does not monotonically order the eight observed runtimes"
+    ],
+    "INFERENCE": [
+      "a 1102-isolate reconstruction likely requires hundreds of allocated core-hours; the 270 wall-hour/540 two-core-hour interpolation is illustrative only"
+    ],
+    "UNKNOWN": [
+      "a defensible upper bound for whole-cohort compute",
+      "a defensible upper bound for whole-cohort intermediate and final storage",
+      "n=1102 combine feasibility",
+      "historical Hicks assembly/QC equivalence"
+    ]
+  }
+}

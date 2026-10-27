@@ -424,11 +424,25 @@ rewrite the immutable release or the scientific PASS. See
 `corrected_seer_n8_combine_v3_result.json`.
 
 The original n=8 resource gate remains failed. This PASS establishes corrected
-SEER feature-combine correctness at n=8 only. Full-cohort reconstruction,
-model training, Hicks metric replay, final claim-state transition, commercial
-value, and breakthrough status remain unestablished and unauthorized. The next
-allowed action is a separately frozen resource-feasibility decision using the
-durable isolate and n=8 combine evidence; do not execute the cohort yet.
+SEER feature-combine correctness at n=8 only.
+
+`RESOURCE_FEASIBILITY_DECISION_V1` is now frozen: **FULL COHORT NOT
+AUTHORIZED**. The 1,102-run manifest contains 344,835,597,770 compressed input
+bytes. Eight size-rank SPAdes observations completed, but runtime has four rank
+inversions among 28 ordered pairs and 1,094 isolates remain unmeasured. The
+270-wall-hour / 540-two-core-hour interpolation is recorded as illustrative
+only, not an acceptance bound. No n=1,102 combine resource evidence exists.
+See `RESOURCE_FEASIBILITY_DECISION_V1.md` and
+`resource_feasibility_decision_v1.json`.
+
+The next allowed action is protocol design only for a nested 32-isolate
+`COHORT_RESOURCE_CALIBRATION_V1`: preserve the eight exact outputs, select 24
+additional isolates prospectively, allow at most four parallel isolate jobs,
+and require exact corrected-SEER plus independent oracles at n=16 and n=32.
+Even a calibration PASS must return to a new feasibility decision. Full-cohort
+reconstruction, model training, Hicks metric replay, final claim-state
+transition, commercial value, and breakthrough status remain unestablished and
+unauthorized.
 
 ## Active task — Experiment 001 only
 
@@ -480,4 +494,4 @@ Two-isolate corrected-SEER result was committed as `ee30c417c14097fec5e4e2c04797
 
 Continue only from this line:
 
-> Preserve all terminal failures, unified-release V2 PASS run `38967348167`, and corrected-SEER n8 V3 PASS run `38969013276`. V3 establishes exact feature-combine correctness at n=8 only; its immutable release has a disclosed byte-identical duplicate-member packaging defect. Next freeze and audit one resource-feasibility decision from the durable isolate and n=8 combine evidence. Do not execute the 1,102-isolate cohort or train models until that separate decision authorizes a bounded next action. Preserve every scientific identity, failure, and downstream prohibition.
+> Preserve all terminal failures, unified-release V2 PASS run `38967348167`, corrected-SEER n8 V3 PASS run `38969013276`, and `RESOURCE_FEASIBILITY_DECISION_V1`. The full cohort is not authorized. Next design and freeze only `COHORT_RESOURCE_CALIBRATION_V1`: a nested deterministic 32-isolate panel retaining the eight exact outputs, 24 prospectively selected additions, at most four parallel jobs, and exact corrected-SEER/oracle checkpoints at n=16 and n=32. Do not execute it in the protocol commit. Preserve every scientific identity, failure, and downstream prohibition.
